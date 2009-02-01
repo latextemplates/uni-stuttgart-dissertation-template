@@ -466,6 +466,7 @@
 
 
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf
+\ifpdf
 \usepackage[
   % Farben fuer die Links
   colorlinks=true,         % Links erhalten Farben statt Kaeten
@@ -504,7 +505,7 @@
   									 % rechts im PDF-Viewer
   %pdfpagelayout=SinglePage, % einseitige Darstellung
 ]{hyperref}
-
+\fi
 
 \usepackage{subfigure}
 
