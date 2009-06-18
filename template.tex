@@ -191,12 +191,19 @@
 % italic letters, including Greek.
 \usepackage{fixmath}
 
+% TODO: DM (for proofs)
+\usepackage{amsthm} % !!! *** load after amsmath ***
+% amssymb causes problems with mathdesign/mdbch --> disable
+
+
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/onlyamsmath/onlyamsmath.dvi
 % Warnt bei Benutzung von Befehlen die mit amsmath inkompatibel sind.
-\usepackage[
-	all,
-	warning
-]{onlyamsmath}
+
+% TODO: DM --> den shit brauchmer net
+% \usepackage[
+% 	all,
+% 	warning
+% ]{onlyamsmath}
 
 %% Tables
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -270,6 +277,8 @@
    \cfoot[\pagemark]{\pagemark} % Mitte unten: Seitenzahlen bei plain
 }
 
+
+% TODO: modified by DM
 \setkomafont{pageheadfoot}{\small\sffamily}
 \setkomafont{pagenumber}{\small\sffamily\bfseries}
 
@@ -439,7 +448,7 @@
         showstringspaces=false      % Leerzeichen in Strings anzeigen ?
 }
 \lstloadlanguages{% Check Dokumentation for further languages ...
-        [Visual]Basic
+        %[Visual]Basic
         %Pascal
         %C
         %C++
@@ -507,7 +516,8 @@
 ]{hyperref}
 \fi
 
-\usepackage{subfigure}
+% TODO: modified by DM
+\usepackage[center]{subfigure}
 
 \usepackage{fixltx2e}
 \usepackage[chapter]{algorithm}
@@ -555,3 +565,80 @@
 % -> nach hyperref laden
 
 \raggedbottom     % Variable Seitenhoehen zulassen
+
+
+% DM: line-breaking-description env vom daniel w.
+
+% credit goes to daniel w. :-)
+%% --- Descriptions with line breaks in labels ---------------------------------
+\usepackage{calc}
+
+\newcommand*\Descriptionlabel[1]
+{\raisebox{0pt}[1ex][0pt]
+  {\makebox[\labelwidth][1]
+    {\parbox[t]{\labelwidth}
+      {\hspace{0pt}\textbf{#1:}}}}}
+
+\newcommand*\Descriptionlabelx[1]
+{\parbox[t]{\textwidth}
+  {\textbf{#1}\\\mbox{}}
+}
+
+\newenvironment{Description}
+{\begin{list}{}{\let\makelabel\Descriptionlabelx
+    \setlength\labelwidth{1em}
+    \setlength\leftmargin{\labelwidth+\labelsep}}}
+{\end{list}}
+
+
+
+% TODO: DM
+% globally change line spacing of lists
+% \setenumerate{format}, \setitemize{format}, \setdescription{format}, \setlist{format}
+\usepackage{enumitem}
+\setitemize{parsep=0pt, itemsep=1pt}
+\setenumerate{parsep=0pt, itemsep=1pt}
+
+
+
+%------------------------------------------------------------------------
+% fquote Fancy Quotation environment
+
+% Use \sloppy to make right-margin easier?
+% Set picture units to be relative to font size (em)?
+% Use begingroup to rest units afterwards?
+
+% \newcommand{\fq@author}{}
+% \newcommand*{\fqsource}[1]{\gdef\fq@source{#1}}
+\definecolor{quotemark}{gray}{0.7}
+
+\newenvironment{fquote}[1][]{%
+% \def\fq@author{#1}% Seem to need to use def for ifx @empty to work
+% \let\fq@source\@empty
+  \vspace{1em}
+  \begin{list}{}{%
+      \setlength{\leftmargin}{0.2\textwidth}
+      \setlength{\rightmargin}{0.2\textwidth}
+    }
+    \item[]%
+    \begin{picture}(0,0)(0,0)
+      \put(-15,-5){\makebox(0,0){%
+	  \scalebox{4.5}{\textcolor{quotemark}{\bfseries``}}}%
+      }
+    \end{picture}\em\ignorespaces%
+}{%
+  \newline%
+  \makebox[0pt][l]{\hspace{0.6\textwidth}%
+  \begin{picture}(0,0)(0,0)
+    \put(15,10){\makebox(0,0){%
+	\scalebox{4.5}{\textcolor{quotemark}{\rm\bfseries''}}}%
+    }
+  \end{picture}}%
+%   \ifx\fq@author\@empty\else\hfill\textsc{--- \fq@author}\fi
+%   \ifx\fq@source\@empty\else\\\mbox{}\hfill\textsl{\small\fq@source}\fi
+  \end{list}
+%   \ifx\fq@author\@empty\else\vspace{1em}\fi
+}
+
+
+
