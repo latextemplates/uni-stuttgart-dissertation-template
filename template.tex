@@ -89,44 +89,35 @@
    }%
 }
 
-%%%% TODO: ce n'est pas une pipe
-%\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
-%\def\@makechapterhead#1{%
-%{\thechapter{}~|~ #1}%
-%  \nobreak\chapterheadendvskip}%
-%%
-%\par\nobreak%
-%\vskip 100\p@}%
-%\def\@makeschapterhead#1{%
-%{\thechapter{}~|~ #1}}%
+\usepackage{fncychap}   
+% Code for my fancy chapters.
+\makeatletter 
+  \ChNameVar{\normalfont\Large\scshape} % sets the style for name 
+  \ChNumVar{\fontsize{85}{100}\selectfont\sffamily\color{white}}
+  \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
+  \renewcommand{\DOCH}{% 
+    \setlength{\fboxrule}{\RW}  
+    \makebox[12.34cm][r]{
+      \rotatebox{90}{
+        \makebox[2cm]{ 
+          \resizebox{2.5cm}{!}{ %\fboxsep=6pt
+            \CNV\FmN{\space\@chapapp}
+          }
+        }
+      }
+      \resizebox{!}{2.5cm}{ \fboxsep=6pt
+        \CNoV\colorbox{black!60}{\thechapter}
+      }
+    }\par\nobreak
+    \vskip 0\p@} 
+  \renewcommand{\DOTI}[1]{% 
+    \CTV\FmTi{#1}\par\nobreak 
+    \vskip 40\p@} 
+  \renewcommand{\DOTIS}[1]{% 
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@} 
+\makeatother 
 
-% \def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
-% \def\@makechapterhead#1{%
-  % \vspace*{10\p@}%
-  % {\parindent \z@ 
-        % \raggedleft
-        % \reset@font\huge\bfseries
-        % \begin{tabular}{c|p{15cm}}
-          % {\qquad\thechapter{}\  }
-          % &\quad
-          % \Huge #1
-        % \end{tabular}
-        % \par\nobreak
-    % \vskip 100\p@
-  % }}
-% \def\@makeschapterhead#1{%
-  % \vspace*{10\p@}%
-  % {\parindent \z@ 
-        % \raggedleft
-        % \reset@font\huge\bfseries
-        % \begin{tabular}{cp{15cm}}
-          % {\qquad\hphantom{\thechapter{}}\  }
-          % &\quad
-          % \Huge #1
-        % \end{tabular}
-        % \par\nobreak
-    % \vskip 100\p@
-  % }}
 
 
 \makeatother
@@ -258,7 +249,17 @@
 \clearscrplain
 %\clearscrheadfoot
 
-%\renewcommand\chaptermark[1]{\markright{\thechapter~$|$~#1}}
+\newcommand{\setchapterfooter}[1]{%
+	\def\mydummy{#1}
+	\renewcommand{\chaptermark}[1]{%
+		\markright{\textbf{\thechapter}~|~\mydummy}{}}
+}
+
+\newcommand{\resetchapterfooter}{%
+ 	\renewcommand{\chaptermark}[1]{%
+ 		\markright{\textbf{\thechapter}~|~##1}{}}
+}
+
 \renewcommand{\chaptermark}[1]{%
 \markright{\textbf{\thechapter}~|~#1}{}}
 
