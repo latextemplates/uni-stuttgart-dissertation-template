@@ -27,6 +27,7 @@
 
 
 \documentclass{book}
+\usepackage{tex4ht}
 
 \usepackage[american]{babel}
 \usepackage[ansinew]{inputenc}
@@ -144,10 +145,17 @@
 
 % von olly --> macht blocksatz im HTML
 % ACHTUNG: tut nur mit tex4ht.exe, NICHT mit latex.exe
-%\Css{body {text-align:both}}
+% TODO: funktioniert irgendwie nicht !? kein blocksatz im HTML
+%\Css{body {text-align:both}} 
 
 % we do not produce a PDF..
-%\pdfoutput=0
+\pdfoutput=0
+
+% tell tex4ht to create picures also for formulas starting with '$'
+% WARNING: a tex4ht run now takes forever!
+% WARNING2: this is a tex4ht macro, do we need to usepackage tex4ht?
+\Configure{$}{\PicMath}{\EndPicMath}{}
+
 
 
 \input{abstract}
