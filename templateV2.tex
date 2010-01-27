@@ -343,6 +343,15 @@
 \usepackage[sortcites=true,hyperref=true,backref=true,style=authoryear-comp,maxnames=1]{biblatex}
 \DefineBibliographyStrings{ngerman}{andothers={et al.}}
 \DefineBibliographyStrings{ngerman}{bibliography={Literaturverzeichnis}}
+%Jahr auch in Klammern - Tipp von http://www.meinews.net/biblatex-t301788p2.html
+\renewbibmacro*{cite:year+labelyear}{%
+\iffieldundef{year}
+{}
+{\printtext[bibhyperref]{%
+\mkbibparens{%
+\printfield{year}%
+\printfield{labelyear}}}}}
+
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % figures and placement
