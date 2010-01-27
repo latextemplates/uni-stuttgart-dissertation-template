@@ -596,14 +596,20 @@
 {\end{list}}
 
 
-
+\IfDefined{OllyUseParalist}
+{
+\usepackage{paralist}
+\setlength{\pltopsep}{0pt}
+\setlength{\plitemsep}{1pt}
+}
+{
 % TODO: DM
 % globally change line spacing of lists
 % \setenumerate{format}, \setitemize{format}, \setdescription{format}, \setlist{format}
 \usepackage{enumitem}
 \setitemize{parsep=0pt, itemsep=1pt}
 \setenumerate{parsep=0pt, itemsep=1pt}
-
+}
 
 
 %------------------------------------------------------------------------
