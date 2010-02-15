@@ -124,8 +124,8 @@
 %%% ----------------------------------------------------------------
 
 %% colors
-\usepackage{color,calc,graphicx,soul}
 \usepackage[dvipsnames, table]{xcolor}
+\usepackage{calc,graphicx,soul}
 
 
 % Farben fuer die Links im PDF
@@ -134,6 +134,11 @@
 \definecolor{pdflinkcolor}{rgb}{0,0,0.6}
 \definecolor{pdfcitecolor}{rgb}{0,0,0.6}
 
+%use TODO with \todo{}
+\usepackage[color=gray!17]{todonotes}
+\let\xtodo\todo
+\renewcommand{\todo}[1]{\xtodo[inline,color=black!5]{#1}}
+\newcommand{\todofix}[1]{\xtodo[color=red!40]{#1}}
 
 %% fonts
 \usepackage{charter}
@@ -360,8 +365,9 @@
 
 %% Bilder und Graphiken ==================================================
 
-%%% Doc: only dtx Package
-\usepackage{float}             % Stellt die Option [H] fuer Floats zur Verfgung
+%%% Doc: floatrow.pdf
+%floatrow is the successor of float
+\usepackage{floatrow}             % Stellt die Option [H] fuer Floats zur Verfgung
 
 %%% Doc: No Documentation
 \usepackage{flafter}          % Floats immer erst nach der Referenz setzen
@@ -393,7 +399,7 @@
 
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex209/contrib/picins/picins.doc
 %\usepackage{picins}          % LaTeX 2.09 Paket von 1992. aber Layout kombatibel
-
+%Olly prefers picins over wrapfig
 
 % Make float placement easier
 \renewcommand{\floatpagefraction}{.75} % vorher: .5
@@ -596,21 +602,12 @@
 {\end{list}}
 
 
-\IfDefined{OllyUseParalist}
-{
+% globally change line spacing of lists
+% paralist is the quasi-successor of enumitem
+%   paralist enables compactenum environment
 \usepackage{paralist}
 \setlength{\pltopsep}{0pt}
 \setlength{\plitemsep}{1pt}
-}
-{
-% TODO: DM
-% globally change line spacing of lists
-% \setenumerate{format}, \setitemize{format}, \setdescription{format}, \setlist{format}
-\usepackage{enumitem}
-\setitemize{parsep=0pt, itemsep=1pt}
-\setenumerate{parsep=0pt, itemsep=1pt}
-}
-
 
 %------------------------------------------------------------------------
 % fquote Fancy Quotation environment
