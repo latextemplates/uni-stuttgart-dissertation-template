@@ -367,7 +367,10 @@
 
 %%% Doc: floatrow.pdf
 %floatrow is the successor of float
-\usepackage{floatrow}             % Stellt die Option [H] fuer Floats zur Verfgung
+%\usepackage{floatrow}             % Stellt die Option [H] fuer Floats zur Verfgung
+%!! DOES NOT WORK WITH tex4ht !!
+%--> use predecessor float
+\usepackage{float}
 
 %%% Doc: No Documentation
 \usepackage{flafter}          % Floats immer erst nach der Referenz setzen
