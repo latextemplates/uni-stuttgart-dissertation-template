@@ -1,3 +1,7 @@
+%Sprachsupport - !!bitte einstellen!!
+\usepackage[ngerman]{babel}
+%\usepackage[american]{babel}
+								
 
 % IfThenElse
 \usepackage{ifthen}
@@ -480,7 +484,8 @@
 \ifpdf
 \usepackage[%
 	expansion=true, % better typography, but with much larger PDF file.
-	protrusion=true
+	protrusion=true,
+	babel=true % use current language when doing microtyping
 ]{microtype}
 \fi
 
