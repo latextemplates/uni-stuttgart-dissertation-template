@@ -8,7 +8,12 @@
 %\input{commands}
 
 \begin{document}
-\frontmatter
+% Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
+% Spielereien mit römischen Ziffern usw. - Die ISO 7144 schreibt das sogar für
+% wissenschaftliche Werke vor.  
+% Von Promitionsordnung verlangt!  
+% Deshalb ist \frontmatter DEAKTIVIERT
+%\frontmatter
 \title{Conversational Web Services}
 \author{\texorpdfstring{\href{http://www.taval.de/}{Tammo van Lessen}}{Tammo van Lessen}}
 \date{\today}
@@ -28,7 +33,7 @@
 \pagestyle{justpagenums}
 % \input{abstract}
 
-\mainmatter
+%\mainmatter
 \pagestyle{scrheadings}
 
 %% --- Zusammenfassung ---------------------------------------------
