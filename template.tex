@@ -632,20 +632,23 @@
 \setlength{\pltopsep}{0pt}
 \setlength{\plitemsep}{1pt}
 
+
 %------------------------------------------------------------------------
 % fquote Fancy Quotation environment
+% supports empty/optional author
 
 % Use \sloppy to make right-margin easier?
 % Set picture units to be relative to font size (em)?
 % Use begingroup to rest units afterwards?
 
-% \newcommand{\fq@author}{}
-% \newcommand*{\fqsource}[1]{\gdef\fq@source{#1}}
+\usepackage{xifthen}% provides \isempty test 
 \definecolor{quotemark}{gray}{0.7}
 
 \newenvironment{fquote}[1][]{%
-% \def\fq@author{#1}% Seem to need to use def for ifx @empty to work
-% \let\fq@source\@empty
+  \newcommand{\fqauthor}{\relax}
+  \ifthenelse{\isempty{#1}}
+  	{}% do nothing
+  	{\renewcommand{\fqauthor}{\hfill\textsc{--- #1}}}
   \vspace{1em}
   \begin{list}{}{%
       \setlength{\leftmargin}{0.2\textwidth}
@@ -665,11 +668,6 @@
 	\scalebox{4.5}{\textcolor{quotemark}{\rm\bfseries''}}}%
     }
   \end{picture}}%
-%   \ifx\fq@author\@empty\else\hfill\textsc{--- \fq@author}\fi
-%   \ifx\fq@source\@empty\else\\\mbox{}\hfill\textsl{\small\fq@source}\fi
+  \fqauthor
   \end{list}
-%   \ifx\fq@author\@empty\else\vspace{1em}\fi
 }
-
-
-
