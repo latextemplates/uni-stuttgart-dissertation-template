@@ -1,5 +1,10 @@
 %% title page
 
+\@ifundefined{bhrule}{
+\newcommand\bhrule{\typeout{------------------------------------------------------------------------------}}
+\newcommand\btypeout[1]{\bhrule\typeout{\space #1}\bhrule}
+}{}
+
 \newcommand{\TBlabel}[1]{\textbf{#1}\hfil}
 \newenvironment{TBlist}{%
   \list{}{\labelwidth 35mm \leftmargin 60mm % alt: 35/60 mm
@@ -49,7 +54,7 @@
       {\LARGE \bf \@title \par}
       \vspace{40pt}
       {Von der \@faculty der \@university
-       zur Erlangung der Würde eines Doktors der
+       zur Erlangung der W\"urde eines Doktors der
        Naturwissenschaften (Dr. rer. nat.) genehmigte Abhandlung \par}
       %\bigskip
       \vspace{40pt}
