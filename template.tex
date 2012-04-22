@@ -1,7 +1,10 @@
 %Sprachsupport - !!bitte einstellen!!
 \usepackage[ngerman]{babel}
 %\usepackage[american]{babel}
-								
+					
+%fix for KOMA-Script 3.10a
+%http://www.komascript.de/release3.10a
+\usepackage{everysel}
 
 % IfThenElse
 \usepackage{ifthen}
@@ -644,6 +647,8 @@
 \usepackage{xifthen}% provides \isempty test 
 \definecolor{quotemark}{gray}{0.7}
 
+%fquote environment with author as optional parameter
+%usage: \begin{fquote}quote\end{fquote} or \begin{fquote}[Author]quote\end{fquote}
 \newenvironment{fquote}[1][]{%
   \newcommand{\fqauthor}{\relax}
   \ifthenelse{\isempty{#1}}
@@ -666,6 +671,38 @@
   \begin{picture}(0,0)(0,0)
     \put(15,10){\makebox(0,0){%
 	\scalebox{4.5}{\textcolor{quotemark}{\rm\bfseries''}}}%
+    }
+  \end{picture}}%
+  \fqauthor
+  \end{list}
+}
+
+%German fquote
+%  1 parameter for the author's name, may be empty ("{}")
+%  guaranteed German quotes (works with lualatex and babel package)
+%  usage: \begin{gfquote}{Author}quote\end{gfquote}
+\newenvironment{gfquote}[1]{%
+  \newcommand{\fqauthor}{\relax}
+  \ifthenelse{\isempty{#1}}
+   {}% do nothing
+   {\renewcommand{\fqauthor}{\hfill\textsc{\textemdash #1}}}
+  \vspace{1em}
+  \begin{list}{}{%
+      \setlength{\leftmargin}{0.2\textwidth}
+      \setlength{\rightmargin}{0.2\textwidth}
+    }
+    \item[]%
+    \begin{picture}(0,0)(0,0)
+      \put(-15,-5){\makebox(0,0){%
+   \scalebox{4.5}{\textcolor{quotemark}{\bfseries \glqq}}}%
+      }
+    \end{picture}\em\ignorespaces%
+}{%
+  \newline%
+  \makebox[0pt][l]{\hspace{0.6\textwidth}%
+  \begin{picture}(0,0)(0,0)
+    \put(15,10){\makebox(0,0){%
+ \scalebox{4.5}{\textcolor{quotemark}{\rm\bfseries \grqq}}}%
     }
   \end{picture}}%
   \fqauthor
