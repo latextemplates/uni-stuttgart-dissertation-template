@@ -506,7 +506,7 @@
   raiselinks=true,			 % calculate real height of the link
   breaklinks,              % Links berstehen Zeilenumbruch
   backref=none,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
-  pagebackref=false,        % Backlinks im Literaturverzeichnis mit Seitenangabe
+  pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe
   verbose,
   hyperindex=true,         % backlinkex index
   linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
@@ -534,6 +534,20 @@
   %pdfpagelayout=SinglePage, % einseitige Darstellung
 ]{hyperref}
 \fi
+\renewcommand*{\backrefalt}[4]{%
+	% alternative interface
+	% #1: number of distinct back references
+	% #2: backref list with distinct entries
+	% #3: number of back references including duplicates
+	% #4: backref list including duplicates
+	\mbox{(cited on %
+	\ifnum#1=1 %
+		page~%
+	\else
+		pages~%
+	\fi
+	#2)}%
+}
 
 % TODO: modified by DM
 % OK: subfig is the successor of subfigure
