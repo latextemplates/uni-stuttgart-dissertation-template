@@ -1,0 +1,90 @@
+%% title page
+
+\@ifundefined{bhrule}{
+\newcommand\bhrule{\typeout{------------------------------------------------------------------------------}}
+\newcommand\btypeout[1]{\bhrule\typeout{\space #1}\bhrule}
+}{}
+
+\newcommand{\TBlabel}[1]{\textbf{#1}\hfil}
+\newenvironment{TBlist}{%
+  \list{}{\labelwidth 35mm \leftmargin 60mm % alt: 35/60 mm
+          \rightmargin 10mm \let\makelabel\TBlabel}%
+}{\endlist}
+
+\newcommand*{\firstexaminer}[1]{\def\@firstexaminer{#1\xspace}}
+\def\@firstexaminer{
+	\@latex@warning@no@line{Package `scrthesis': No \noexpand\firstexaminer given}}
+\newcommand*{\secondexaminer}[1]{\def\@secondexaminer{#1\xspace}}
+\def\@secondexaminer{
+	\@latex@warning@no@line{Package `scrthesis': No \noexpand\secondexaminer given}}
+\newcommand*{\dateofexamination}[1]{\def\@dateofexamination{#1\xspace}}
+\def\@dateofexamination{
+	\@latex@warning@no@line{Package `scrthesis': No \noexpand\dateofexamination given}}
+\newcommand*{\placeofbirth}[1]{\def\@placeofbirth{#1\xspace}}
+\def\@placeofbirth{
+	\@latex@warning@no@line{Package `scrthesis': No \noexpand\placeofbirth given}}
+\newcommand*{\faculty}[1]{\def\@faculty{#1\xspace}}
+\def\@faculty{
+	\@latex@warning@no@line{Package `scrthesis': No \noexpand\faculty given}}
+\newcommand*{\department}[1]{\def\@department{#1\xspace}}
+\def\@department{
+	\@latex@warning@no@line{Package `scrthesis': No \noexpand\department given}}
+\newcommand*{\university}[1]{\def\@university{#1\xspace}}
+\def\@university{Universit\"at Stuttgart\xspace}
+\newcommand*{\keywords}[1]{\def\@keywords{#1}}
+\def\@keywords{}
+
+\renewcommand\maketitle{
+  \btypeout{Title Page}
+  %\hypersetup{pdftitle={\@title}}
+  %\hypersetup{pdfauthor=\@author}
+  %hypersetup{pdfkeywords=\@keywords}
+  \thispagestyle{empty}
+  \begin{titlepage}
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \let \footnote \thanks
+    \setcounter{footnote}{0}
+    %\null\vfil
+    %\vskip 60\p@
+    \begin{center}
+      \setlength{\parskip}{0pt}
+      \includegraphics[width=6cm]{shared/ustutt-logo}
+      \vfill
+      {\LARGE \bf \@title \par}
+      \vspace{40pt}
+      {Von der \@faculty der \@university
+       zur Erlangung der W\"urde eines Doktors der
+       Naturwissenschaften (Dr. rer. nat.) genehmigte Abhandlung \par}
+      %\bigskip
+      \vspace{40pt}
+      {Vorgelegt von \par}
+      {\large \@author \par}
+      {aus \@placeofbirth \par}
+      \vspace{40pt}
+      \begin{TBlist}%
+        \item[Hauptberichter:]\@firstexaminer
+        \item[Mitberichter:]\@secondexaminer
+        \item[Tag der m\"undlichen Pr\"ufung:]\@dateofexamination
+      \end{TBlist}%
+      \vspace{20pt}
+      {\@date \par}
+      \bigskip
+    \end{center}
+    \par
+    \@thanks
+    \vfil\null
+  \end{titlepage}
+  \setcounter{footnote}{0}
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  %\global\let\@author\@empty
+  %\global\let\@date\@empty
+  %\global\let\@title\@empty
+  %\global\let\title\relax
+  %\global\let\author\relax
+  %\global\let\date\relax
+  %\global\let\and\relax
+  \cleardoublepage
+}
