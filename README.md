@@ -8,8 +8,8 @@ Features
 * title page
 * nice chapter headings
 * important LaTeX packages are enabled
+* tex4ht conversion enabled by "make html"
 
 Usage
 -----
 * `thesis-example.tex` is the main document
-* `word.tex` gives you some ideas how to produce a Word file out of the LaTeX version.

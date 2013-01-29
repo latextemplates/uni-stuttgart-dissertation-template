@@ -8,6 +8,20 @@
 %\input{commands}
 
 \begin{document}
+\iftex4ht
+\Configure{graphics*}  % After begin document. Package tex4ht
+  {pdf}
+  {\Link[\csname Gin@base\endcsname .png]{}{}% link the png
+  \Picture[pict]{\csname Gin@base\endcsname .png width:80\% align=center border=0}%  Show the png
+  \EndLink
+  }
+
+\Css{body {text-align:justify;}}
+
+%all LaTeX formulas as pictures
+\Configure{$}{\PicMath}{\EndPicMath}{}
+%$ % <- syntax highlighting fix for emacs
+\fi
 % Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
 % Spielereien mit römischen Ziffern usw. - Die ISO 7144 schreibt das sogar für
 % wissenschaftliche Werke vor.  
