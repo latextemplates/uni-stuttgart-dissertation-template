@@ -79,19 +79,20 @@ I would like to thank the little green men from Mars. Without their anal probing
 \chapter{Test}
 
 \section{Aufzählungen}
-\begin{enumerate}[a)]
+\begin{enumerate}[label=\alph*)]
 \item a
 \item b
 \item c
 \item d
 \end{enumerate}
 
-\begin{inparaenum}[a)]
+Equivalent to paralist's inparaenum:
+\begin{enumerate*}[label=\alph*)]
 \item a
 \item b
 \item c
 \item d
-\end{inparaenum}
+\end{enumerate*}
 
 \begin{description}
 \item[first] Erstens
@@ -105,6 +106,12 @@ I would like to thank the little green men from Mars. Without their anal probing
 \item[\texttt{third}] Drittens
 \end{description}
 
+%works only if package enumitem is loaded
+\begin{description}[font=\ttfamily]
+\item[first] Erstens
+\item[second] Zweitens
+\item[third] Drittens
+\end{description}
 
 \begin{itemize}
 \item Erstens
@@ -119,13 +126,13 @@ Optionaler Parameter ändert den Marker, der vorangestellt ist. Siehe \url{http:/
 \item[C] Drittens
 \end{itemize}
 
-Falsche Benutzung also wie folgt:
+Falsche Benutzung des optionalen Parameters wie folgt:
 \begin{itemize}
 \item[first] Erstens
 \item[second] Zweitens
 \item[third] Drittens
 \end{itemize}
-
+Dabei ist zu beachten, dass es sich bei Einbindung von \texttt{enumitem} anders verhält als bei \texttt{paralist}.
 
 
 \section{fquote}

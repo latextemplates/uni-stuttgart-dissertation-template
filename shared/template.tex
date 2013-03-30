@@ -632,14 +632,10 @@
 
 
 % globally change line spacing of lists
-% paralist is the quasi-successor of enumitem
-%   paralist enables compactenum environment
-%TODO: enumitem package is now newer than paralist.
-%      It enables compact enums via the global setting \setlist{noitemsep}
-\usepackage{paralist}
-\setlength{\pltopsep}{0pt}
-\setlength{\plitemsep}{1pt}
-
+% paralist has suspended development since 10 years.
+% enumitem has been updated 2011-09-28
+\usepackage[inline]{enumitem}
+\setlist{partopsep=0pt,itemsep=1pt}
 
 %------------------------------------------------------------------------
 % fquote Fancy Quotation environment
