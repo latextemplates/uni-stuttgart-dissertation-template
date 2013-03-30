@@ -77,6 +77,8 @@ I would like to thank the little green men from Mars. Without their anal probing
 \pagestyle{scrheadings}
 
 \chapter{Test}
+
+\section{Aufzählungen}
 \begin{enumerate}[a)]
 \item a
 \item b
@@ -90,6 +92,43 @@ I would like to thank the little green men from Mars. Without their anal probing
 \item c
 \item d
 \end{inparaenum}
+
+\begin{description}
+\item[first] Erstens
+\item[second] Zweitens
+\item[third] Drittens
+\end{description}
+
+\begin{description}
+\item[\texttt{first}] Erstens
+\item[\texttt{second}] Zweitens
+\item[\texttt{third}] Drittens
+\end{description}
+
+
+\begin{itemize}
+\item Erstens
+\item Zweitens
+\item Drittens
+\end{itemize}
+
+Optionaler Parameter ändert den Marker, der vorangestellt ist. Siehe \url{http://www.weinelt.de/latex/item.html}.
+\begin{itemize}
+\item[A] Erstens
+\item[B] Zweitens
+\item[C] Drittens
+\end{itemize}
+
+Falsche Benutzung also wie folgt:
+\begin{itemize}
+\item[first] Erstens
+\item[second] Zweitens
+\item[third] Drittens
+\end{itemize}
+
+
+
+\section{fquote}
 
 \begin{fquote}[T.\ Informatiker]
 Bis nächsten Freitag ist das Programm fertig.
