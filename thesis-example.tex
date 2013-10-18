@@ -22,6 +22,16 @@
 \Configure{$}{\PicMath}{\EndPicMath}{}
 %$ % <- syntax highlighting fix for emacs
 \fi
+
+%Tipp von http://goemonx.blogspot.de/2012/01/pdflatex-ligaturen-und-copynpaste.html
+%siehe auch http://tex.stackexchange.com/questions/4397/make-ligatures-in-linux-libertine-copyable-and-searchable
+%
+%ONLY WORKS ON MiKTeX
+%On other systems, download glyphtounicode.tex from http://pdftex.sarovar.org/misc/
+%
+\input glyphtounicode.tex
+\pdfgentounicode=1
+
 % Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
 % Spielereien mit römischen Ziffern usw. - Die ISO 7144 schreibt das sogar für
 % wissenschaftliche Werke vor.  
