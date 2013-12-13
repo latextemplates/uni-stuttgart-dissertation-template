@@ -23,6 +23,7 @@
 *.idx
 *.ilg
 *.ind
+*.thm
 *.ps
 *.xref
 *.code

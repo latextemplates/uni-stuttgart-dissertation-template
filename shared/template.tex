@@ -199,9 +199,13 @@
 % italic letters, including Greek.
 \usepackage{fixmath}
 
-% TODO: DM (for proofs)
-\usepackage{amsthm} % !!! *** load after amsmath ***
-% amssymb causes problems with mathdesign/mdbch --> disable
+%for theorems, replacement for amsthm
+\usepackage[amsmath,hyperref]{ntheorem}
+\theorempreskipamount 2ex plus1ex minus0.5ex
+\theorempostskipamount 2ex plus1ex minus0.5ex
+\theoremstyle{break}
+\newtheorem{definition}{Definition}[section]
+%
 
 
 %%% Doc: ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/onlyamsmath/onlyamsmath.dvi
@@ -554,6 +558,13 @@
 	\fi
 	#2)}%
 }
+
+%Cleveref für clevere Refernzierungen mittels \cref bzw. \Cref am Satzanfang.
+%Deutsch
+\usepackage[ngerman,capitalise,nameinlink]{cleveref}
+%Englisch
+%\usepackage[capitalise,nameinlink]{cleveref}
+
 
 % TODO: modified by DM
 % OK: subfig is the successor of subfigure
