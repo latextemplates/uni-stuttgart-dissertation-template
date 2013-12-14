@@ -1,6 +1,6 @@
 About
 =====
-Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
+Inofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
 Features
 ========
@@ -21,10 +21,10 @@ Using with your git repository
 Initialization
 --------------
 This howto assumes that you have not a git repository for your thesis.
-If you have, just add https://github.com/latextemplates/USTUTT-phd-thesis-template.git as upstream and merge the branch "template" into your "master" branch.
+If you have, just add https://github.com/latextemplates/uni-stuttgart-dissertation-template.git as upstream and merge the branch "template" into your "master" branch.
 
 1. Open command line
-1. git clone https://github.com/latextemplates/USTUTT-phd-thesis-template.git
+1. git clone https://github.com/latextemplates/uni-stuttgart-dissertation-template.git
 1. cd USTUTT-phd-thesis-template
 1. git remote rename origin github
 1. git checkout -b master
@@ -40,5 +40,5 @@ If you want to merge updates from github, do the following:
 
 See also
 ========
-https://github.com/latextemplates/USTUTT-computer-science is a LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
+https://github.com/latextemplates/uni-stuttgart-computer-science-template is a LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
 It has some more LaTeX packages included.
