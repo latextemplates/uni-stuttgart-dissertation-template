@@ -4,6 +4,7 @@ Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany
 
 Features
 ========
+* UTF8 files
 * output format is A5
 * title page
 * nice chapter headings

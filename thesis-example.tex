@@ -1,6 +1,7 @@
+% -*- coding:utf-8 mod:LaTeX -*-
 \documentclass[paper=a5,twoside,fontsize=10pt, DIV=calc, headings=small,bibliography=totoc, listof=totoc]{scrbook}
 \usepackage[ngerman]{babel}
-%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 
 \input{shared/template}
 \usepackage{shared/titlepage}
@@ -33,7 +34,7 @@
 \pdfgentounicode=1
 
 % Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
-% Spielereien mit rˆmischen Ziffern usw. - Die ISO 7144 schreibt das sogar f¸r
+% Spielereien mit r√∂mischen Ziffern usw. - Die ISO 7144 schreibt das sogar f√ºr
 % wissenschaftliche Werke vor.
 % Von Promitionsordnung verlangt!
 % Deshalb ist \frontmatter DEAKTIVIERT
@@ -46,8 +47,8 @@
 \secondexaminer{Prof.~Dr.~Dimka Karastoyanova}
 \dateofexamination{unbekannt}
 \placeofbirth{Bad Schwalbach}
-\faculty{Fakult‰t f¸r Informatik, Elektrotechnik und Informationstechnik}
-\department{Institut f¸r Architektur von Anwendungssystemen}
+\faculty{Fakult√§t f√ºr Informatik, Elektrotechnik und Informationstechnik}
+\department{Institut f√ºr Architektur von Anwendungssystemen}
 
 \maketitle
 
@@ -98,7 +99,7 @@ Definition Text
 \Cref{def:def1} zeigt \ldots
 
 
-\section{Aufz‰hlungen}
+\section{Aufz√§hlungen}
 \begin{enumerate}[label=\alph*)]
 \item a
 \item b
@@ -139,7 +140,7 @@ Equivalent to paralist's inparaenum:
 \item Drittens
 \end{itemize}
 
-Optionaler Parameter ‰ndert den Marker, der vorangestellt ist. Siehe \url{http://www.weinelt.de/latex/item.html}.
+Optionaler Parameter √§ndert den Marker, der vorangestellt ist. Siehe \url{http://www.weinelt.de/latex/item.html}.
 \begin{itemize}
 \item[A] Erstens
 \item[B] Zweitens
@@ -152,20 +153,20 @@ Falsche Benutzung des optionalen Parameters wie folgt:
 \item[second] Zweitens
 \item[third] Drittens
 \end{itemize}
-Dabei ist zu beachten, dass es sich bei Einbindung von \texttt{enumitem} anders verh‰lt als bei \texttt{paralist}.
+Dabei ist zu beachten, dass es sich bei Einbindung von \texttt{enumitem} anders verh√§lt als bei \texttt{paralist}.
 
 
 \section{fquote}
 
 \begin{fquote}[T.\ Informatiker]
-Bis n‰chsten Freitag ist das Programm fertig.
+Bis n√§chsten Freitag ist das Programm fertig.
 \end{fquote}
 
 \begin{gfquote}{T.\ Informatiker}
-Bis n‰chsten Freitag ist das Programm fertig.
+Bis n√§chsten Freitag ist das Programm fertig.
 \end{gfquote}
 
-\todo{Hier muss noch kr‰ftig Text produziert werden}
+\todo{Hier muss noch kr√§ftig Text produziert werden}
 
 \section{Section}
 \blindtext
@@ -236,7 +237,7 @@ Bis n‰chsten Freitag ist das Programm fertig.
 \subsection{Subsection}
 
 %\input{content/chapter1}
-\setchapterfooter{Kleiner Fuﬂ!}
+\setchapterfooter{Kleiner Fu√ü!}
 \chapter{Transformation of WS-BPEL 2.0 into Executable Workflow Networks}
 \label{chap:bpel-ewfn-transformation}
 \resetchapterfooter
