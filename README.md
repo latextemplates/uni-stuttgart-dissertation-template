@@ -37,3 +37,8 @@ If you want to merge updates from github, do the following:
 
 1. git fetch github
 1. git merge github/template
+
+See also
+========
+https://github.com/latextemplates/USTUTT-computer-science is a LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
+It has some more LaTeX packages included.
