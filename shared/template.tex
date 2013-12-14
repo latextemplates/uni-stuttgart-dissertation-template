@@ -6,7 +6,7 @@
 \@ifpackageloaded{tex4ht}{\def\iftex4ht{\iftrue}}
                          {\def\iftex4ht{\iffalse}}
 \makeatother
-					
+
 %fix for KOMA-Script 3.10a
 %http://www.komascript.de/release3.10a
 \usepackage{everysel}
@@ -101,17 +101,17 @@
    }%
 }
 
-\usepackage{fncychap}   
+\usepackage{fncychap}
 % Code for my fancy chapters.
-\makeatletter 
-  \ChNameVar{\normalfont\Large\scshape} % sets the style for name 
+\makeatletter
+  \ChNameVar{\normalfont\Large\scshape} % sets the style for name
   \ChNumVar{\fontsize{85}{100}\selectfont\sffamily\color{white}}
   \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
-  \renewcommand{\DOCH}{% 
-    \setlength{\fboxrule}{\RW}  
+  \renewcommand{\DOCH}{%
+    \setlength{\fboxrule}{\RW}
     \makebox[12.34cm][r]{
       \rotatebox{90}{
-        \makebox[2cm]{ 
+        \makebox[2cm]{
           \resizebox{2.5cm}{!}{ %\fboxsep=6pt
             \CNV\FmN{\space\@chapapp}
           }
@@ -121,14 +121,14 @@
         \CNoV\colorbox{black!40}{\thechapter}
       }
     }\par\nobreak
-    \vskip 0\p@} 
-  \renewcommand{\DOTI}[1]{% 
-    \CTV\FmTi{#1}\par\nobreak 
-    \vskip 40\p@} 
-  \renewcommand{\DOTIS}[1]{% 
+    \vskip 0\p@}
+  \renewcommand{\DOTI}[1]{%
     \CTV\FmTi{#1}\par\nobreak
-    \vskip 40\p@} 
-\makeatother 
+    \vskip 40\p@}
+  \renewcommand{\DOTIS}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@}
+\makeatother
 
 
 
@@ -656,7 +656,7 @@
 % Set picture units to be relative to font size (em)?
 % Use begingroup to rest units afterwards?
 
-\usepackage{xifthen}% provides \isempty test 
+\usepackage{xifthen}% provides \isempty test
 \definecolor{quotemark}{gray}{0.7}
 
 %fquote environment with author as optional parameter
