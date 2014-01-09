@@ -505,6 +505,12 @@
 \newcommand\bhrule{\typeout{------------------------------------------------------------------------------}}
 \newcommand\btypeout[1]{\bhrule\typeout{\space #1}\bhrule}
 
+%See http://tex.stackexchange.com/a/83051/9075
+%Normally, doesn't work with hyperref, but cleveref fixes that
+%Deutsch
+\usepackage[ngerman]{varioref}
+%Englisch
+%\usepackage{varioref}
 
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf
 \usepackage[
