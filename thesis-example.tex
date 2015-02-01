@@ -8,6 +8,8 @@
 
 %\input{commands}
 
+\bibliography{bib/bibliography}
+
 \begin{document}
 \iftex4ht
 \Configure{graphics*}  % After begin document. Package tex4ht
@@ -91,7 +93,7 @@ I would like to thank the little green men from Mars. Without their anal probing
 \chapter{Test}
 \label{chap:test}
 
-Weerawarana et al.~\cite{WSPA} beschreiben die Umsetzung einer serviceorientierten Architektur mittels Web-Services.
+\citeauthor*{WSPA} \cite{WSPA} beschreiben die Umsetzung einer serviceorientierten Architektur mittels Web-Services.
 
 \section{Definitionen}
 \section{Definitionen}
@@ -267,7 +269,9 @@ Anschließend wurde \refEnumFull{Schritt}{spec} beschrieben.
 
 Das Potenzmengensymbol $\powerset$ ist auch korrekt und kein kleines Weierstraß-p ($\wp$).
 
-\bibliography{bib/bibliography}
+\printbibliography
+Alle URLs wurden zuletzt am 17.01.2014 gepr\"uft.
+
 \clearpage
 \listoffigures
 \listoftables

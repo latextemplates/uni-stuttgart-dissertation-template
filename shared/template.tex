@@ -352,33 +352,6 @@
    french=guillemets
 ]{csquotes}
 
-% bib stuff
-% %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/natbib/natbib.pdf
-\usepackage[%
-	%round,	%(default) for round parentheses;
-	square,	% for square brackets;
-	%curly,	% for curly braces;
-	%angle,	% for angle brackets;
-	%colon,	% (default) to separate multiple citations with colons;
-	comma,	% to use commas as separaters;
-	%authoryear,% (default) for author-year citations;
-	numbers,	% for numerical citations;
-	%super,	% for superscripted numerical citations, as in Nature;
-	sort,		% orders multiple citations into the sequence in which they appear in the list of references;
-	sort&compress,    % as sort but in addition multiple numerical citations
-                  % are compressed if possible (as 3-6, 15);
-	%longnamesfirst,  % makes the first citation of any reference the equivalent of
-                  % the starred variant (full author list) and subsequent citations
-                  %normal (abbreviated list);
-	%sectionbib,      % redefines \thebibliography to issue \section* instead of \chapter*;
-                  % valid only for classes with a \chapter command;
-                  % to be used with the chapterbib package;
-	%nonamebreak,     % keeps all the authors names in a citation on one line;
-                  %causes overfull hboxes but helps with some hyperref problems.
-]{natbib}
-
-\bibliographystyle{alphadin}
-
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % figures and placement
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -526,8 +499,8 @@
   % Links
   raiselinks=true,			 % calculate real height of the link
   breaklinks,              % Links berstehen Zeilenumbruch
-  backref=none,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
-  pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe
+  %backref=none,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
+  %pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe. Jetzt mit biblatex
   verbose,
   hyperindex=true,         % backlinkex index
   linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
@@ -554,20 +527,28 @@
   									 % rechts im PDF-Viewer
   %pdfpagelayout=SinglePage, % einseitige Darstellung
 ]{hyperref}
-\renewcommand*{\backrefalt}[4]{%
-	% alternative interface
-	% #1: number of distinct back references
-	% #2: backref list with distinct entries
-	% #3: number of back references including duplicates
-	% #4: backref list including duplicates
-	\mbox{(cited on %
-	\ifnum#1=1 %
-		page~%
-	\else
-		pages~%
-	\fi
-	#2)}%
+
+
+% bib stuff
+% Biblatex has to be loaded after hyperref
+\usepackage[
+  backend       = biber, %minalphanames only works with biber backend
+  bibstyle      = alphabetic,
+  citestyle     = alphabetic,
+  firstinits    = true,
+  minnames      = 1,
+  minalphanames = 3,
+  maxalphanames = 4,
+  maxbibnames   = 99,
+  maxcitenames  = 3,
+  backref=true]{biblatex}
+
+\DefineBibliographyStrings{ngerman}{
+  backrefpage  = {Zitiert auf S\adddot},
+  backrefpages = {Zitiert auf S\adddot},
+  andothers    = {et\ \addabbrvspace al\adddot}
 }
+
 
 %Cleveref für clevere Refernzierungen mittels \cref bzw. \Cref am Satzanfang.
 %Deutsch
