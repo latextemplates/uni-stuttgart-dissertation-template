@@ -141,7 +141,6 @@
 
 %% colors
 \usepackage[dvipsnames, table]{xcolor}
-\usepackage{calc,graphicx,soul}
 
 
 % Farben fuer die Links im PDF
@@ -149,6 +148,15 @@
 \definecolor{pdffilecolor}{rgb}{0.7,0,0}
 \definecolor{pdflinkcolor}{rgb}{0,0,0.6}
 \definecolor{pdfcitecolor}{rgb}{0,0,0.6}
+
+
+\usepackage{calc}
+\usepackage{soul}
+
+\usepackage{graphicx}
+
+% Base folder, so there is no need to repeat this over and over again.
+\graphicspath{ {figures/} }
 
 %use TODO with \todo{}
 \usepackage[color=gray!17]{todonotes}
