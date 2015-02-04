@@ -151,7 +151,11 @@
 
 
 \usepackage{calc}
-\usepackage{soul}
+
+%see http://tex.stackexchange.com/a/48549/9075
+\usepackage[normalem]{ulem} % use normalem to protect \emph
+\newcommand\hl{\bgroup\markoverwith
+  {\textcolor{yellow}{\rule[-.5ex]{2pt}{2.5ex}}}\ULon}
 
 \usepackage{graphicx}
 
