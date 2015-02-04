@@ -206,11 +206,21 @@ Siehe \vref{chap:test}.
 In \cref{sec:method} wurde zuerst \refEnumFull{Schritt}{rqa} vorgestellt.
 Anschließend wurde \refEnumFull{Schritt}{spec} beschrieben.
 
+Referencetest: \Cref{ssec:example}, \cref{fig:Abbildung} und \cref{alg:example}.
+
 \begin{figure}
 \missingfigure{}
 \caption{Abbildung}
 \label{fig:Abbildung}
 \end{figure}
+
+\begin{algorithm}
+\caption{$algo$}
+\label{alg:example}
+\begin{algorithmic}[1]
+\State $a \gets 0$
+\end{algorithmic}
+\end{algorithm}
 
 
 \section{Section}
@@ -257,6 +267,7 @@ Anschließend wurde \refEnumFull{Schritt}{spec} beschrieben.
 \section{Section}
 
 \subsection{Subsection}
+\label{ssec:example}
 \blindtext
 
 \subsection{Subsection}
