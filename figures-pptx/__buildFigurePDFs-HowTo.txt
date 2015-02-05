@@ -1,0 +1,4 @@
+
+1. Put your *.pptx files into the folder 'figures-pptx/'
+
+2. When running '_buildFigurePDFs.bat' the respective PDFs are generated in the folder 'figures/' (for optimization purposes only the PPTX-files which are younger than the respective PDFs are converted)
