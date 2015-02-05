@@ -447,7 +447,8 @@
 % Listings Paket ------------------------------------------------------
 %% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/listings/listings-1.3.pdf
 \usepackage{listings}
-\lstset{
+\lstset{language=XML,
+        captionpos=b,
         basicstyle=\small\ttfamily, % Standardschrift
         numbers=left,               % Ort der Zeilennummern
         numberstyle=\tiny,          % Stil der Zeilennummern
@@ -455,12 +456,12 @@
         numbersep=5pt,              % Abstand der Nummern zum Text
         tabsize=2,                  % Groesse von Tabs
         extendedchars=true,         %
-        breaklines=true,            % Zeilen werden Umgebrochen
+        breaklines=true,            % Zeilen werden umbrochen
 %        keywordstyle=[1]\textbf,    % Stil der Keywords
 %        keywordstyle=[2]\textbf,    %
 %        keywordstyle=[3]\textbf,    %
 %        keywordstyle=[4]\textbf,    %
-        stringstyle=\color{stringcolor}, % Farbe der String
+%        stringstyle=\color{stringcolor}, % Farbe der Strings, stringcolor derzeit undefiniert
         showspaces=false,           % Leerzeichen anzeigen ?
         showtabs=false,             % Tabs anzeigen ?
         showstringspaces=false      % Leerzeichen in Strings anzeigen ?
@@ -473,6 +474,27 @@
         %XML
         %HTML
 }
+
+% Moderner als Listings: minted / pygmentize library
+% See https://github.com/gpoore/minted
+%
+%Derzeit deaktiviert, da
+%  1. -shell-esacpe auf jeden Fall benötigt wird
+%  2. \setminted Version 2.0 erfordert, die noch nicht in MiKTeX enthalten ist
+\iffalse
+%\usepackage[cache]{minted}
+\usepackage{minted}
+
+%\usemintedstyle{autumn}
+%\usemintedstyle{rrt}
+%\usemintedstyle{borland}
+\usemintedstyle{friendly}
+%http://www.jevon.org/wiki/Eclipse_Pygments_Style
+%\usemintedstyle{eclipse}
+
+%Zeilennummern innerhalb vom Rand:
+\setminted{numbersep=5pt, xleftmargin=12pt}
+\fi
 
 %% Inhaltsverzeichnis (Schrift, Aussehen) sowie weitere Verzeichnisse ====
 \setcounter{secnumdepth}{3}    % Abbildungsnummerierung mit groesserer Tiefe

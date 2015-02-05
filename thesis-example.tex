@@ -233,6 +233,27 @@ Bis nächsten Freitag ist das Programm fertig.
 \section{Varioref Demonstration}
 Siehe \vref{chap:test}.
 
+\section{Listing Demonstration}
+Minted ist das beste, aber funktioniert nur, wenn \href{http://pygments.org/download/}{pygments} installiert ist und pdflatex mit \texttt{-shell-escape} ausgeführt wird.
+
+\iffalse
+\begin{listing}
+\begin{minted}[linenos=true]{xml}
+<process name="reisebuero">
+</process>
+\end{minted}
+\caption{Beispielprozess}
+\label{lst:beispielprozess}
+\end{listing}
+\fi
+
+Alter Stil mittels des Listings-Pakets ist in \cref{lst:beispielprozess} gezeigt.
+%Listing-Umgebung wurde durch \newfloat{Listing} definiert
+\begin{lstlisting}[float,caption={Beispielprozess},label={lst:beispielprozess}]
+<process name="reisebuero">
+</process>
+\end{lstlisting}
+
 \section{Methode}
 \label{sec:method}
 %See http://mirror.ctan.org/macros/latex/contrib/refenums/demo.tex for a full usage guide
