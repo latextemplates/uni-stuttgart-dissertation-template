@@ -12,9 +12,6 @@
 %http://www.komascript.de/release3.10a
 \usepackage{everysel}
 
-%fix incompatibilities between KOMA and other packages, mainly float.
-\usepackage{scrhack}
-
 % IfThenElse
 \usepackage{ifthen}
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/oberdiek/ifpdf.sty
@@ -778,3 +775,7 @@
 \usepackage{pifont}
 \newcommand{\dingcheck}{\ding{51}}
 \newcommand{\dingcross}{\ding{55}}
+
+%fix incompatibilities between KOMA and other packages, mainly float.
+%should be loaded at the very - see http://tex.stackexchange.com/a/156256/9075
+\usepackage{scrhack}
