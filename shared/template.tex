@@ -594,6 +594,11 @@
 %Englisch
 %\usepackage[capitalise,nameinlink]{cleveref}
 
+%http://tex.stackexchange.com/a/156404/9075
+\makeatletter
+\providecommand\theHALG@line{\thealgorithm.\arabic{ALG@line}}
+\makeatother
+
 %%%
 % Ermoeglicht es, Abbildungen um 90 Grad zu drehen
 % Alternatives Paket: rotating Allerdings wird hier nur das Bild gedreht, während bei lscape auch die PDF-Seite gedreht wird.
