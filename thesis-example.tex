@@ -141,6 +141,7 @@ Referencetest: \Cref{ssec:example}, \cref{fig:Abbildung} und \cref{alg:example}.
 \label{alg:example}
 \begin{algorithmic}[1]
 \State $a \gets 0$
+\State State 2\label{alg1:state2}
 \end{algorithmic}
 \end{algorithm}
 
@@ -236,6 +237,19 @@ Bis nächsten Freitag ist das Programm fertig.
 
 \section{Varioref Demonstration}
 Siehe \vref{chap:test}.
+
+\section{Algorithmen}
+\begin{algorithm}
+\caption{Algorithmus 2}
+\label{alg:example2}
+\begin{algorithmic}[1]
+\State $a \gets 0$
+\State State 2\label{alg2:state2}
+\end{algorithmic}
+\end{algorithm}
+
+\Cref{alg:example} hat bereits einen Algorithmus gezeigt.
+Test der Zeilenreferenzierung: Zeile~\ref{alg1:state2} (\cref{alg:example}) und Zeile~\ref{alg2:state2} (\cref{alg:example2}).
 
 \section{Listing Demonstration}
 Minted ist das beste, aber funktioniert nur, wenn \href{http://pygments.org/download/}{pygments} installiert ist und pdflatex mit \texttt{-shell-escape} ausgeführt wird.
