@@ -534,6 +534,7 @@
   breaklinks,              % Links berstehen Zeilenumbruch
   %backref=none,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
   %pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe. Jetzt mit biblatex
+  hypertexnames=false,     %http://tex.stackexchange.com/a/156404/9075
   verbose,
   hyperindex=true,         % backlinkex index
   linktocpage=true,        % Inhaltsverzeichnis verlinkt Seiten
@@ -594,10 +595,6 @@
 %Englisch
 %\usepackage[capitalise,nameinlink]{cleveref}
 
-%http://tex.stackexchange.com/a/156404/9075
-\makeatletter
-\providecommand\theHALG@line{\thealgorithm.\arabic{ALG@line}}
-\makeatother
 
 %%%
 % Ermoeglicht es, Abbildungen um 90 Grad zu drehen
