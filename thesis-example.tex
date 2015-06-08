@@ -4,7 +4,6 @@
 %Nur für pdflatex, nicht für lualatex
 \RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
 \documentclass[paper=a5,twoside,fontsize=10pt, DIV=calc, headings=small,bibliography=totoc, listof=totoc]{scrbook}
-\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 
 \input{shared/template}
@@ -89,14 +88,19 @@ AROMA TOSCA BPMN OASIS OMG DMTF IT DevOps
 
 %% --- Zusammenfassung ---------------------------------------------
 \chapter*{Zusammenfassung}
-The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so it can expand into the blank space above the title too\ldots
-Some people think monkeys are weird, but I disagree.
+%Silbentrennung Deutsch
+\begin{otherlanguage}{ngerman}
+Kurzfassung der Arbeit.
+\end{otherlanguage}
 \clearpage
 
 %% --- Abstract Page---------------------------------------------
 \chapter*{Abstract}
+%Silbentrennung Englisch
+\begin{otherlanguage}{american}
 The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so it can expand into the blank space above the title too\ldots
 Some people think monkeys are weird, but I disagree.
+\end{otherlanguage}
 \clearpage
 
 %% --- Acknowledgements page------------------------------------
