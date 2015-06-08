@@ -8,6 +8,8 @@
 *.code
 *.dvi
 *.err
+*.fdb*
+*.fls
 *.glo
 *.gls
 *.hp
@@ -16,6 +18,7 @@
 *.log
 *.lot
 *.out
+*.pyg
 *.tmp
 *.toc
 *.tpt
