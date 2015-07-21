@@ -536,7 +536,7 @@
   citecolor=pdfcitecolor,  %
   % Links
   raiselinks=true,			 % calculate real height of the link
-  breaklinks,              % Links berstehen Zeilenumbruch
+  breaklinks,              % Links ueberstehen Zeilenumbruch
   %backref=none,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
   %pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe. Jetzt mit biblatex
   hypertexnames=false,     %http://tex.stackexchange.com/a/156404/9075
@@ -774,7 +774,7 @@
 % Available on ctan at http://www.ctan.org/pkg/refenums and in latest MiKTeX and TeXLive
 \usepackage{refenums}
 
-%introduce \powerset - tipp by http://matheplanet.com/matheplanet/nuke/html/viewtopic.php?topic=136492&post_id=997377
+%introduce \powerset - hint by http://matheplanet.com/matheplanet/nuke/html/viewtopic.php?topic=136492&post_id=997377
 \DeclareFontFamily{U}{MnSymbolC}{}
 \DeclareSymbolFont{MnSyC}{U}{MnSymbolC}{m}{n}
 \DeclareFontShape{U}{MnSymbolC}{m}{n}{
@@ -805,5 +805,5 @@
 \newcommand{\dingcross}{\ding{55}}
 
 %fix incompatibilities between KOMA and other packages, mainly float.
-%should be loaded at the very - see http://tex.stackexchange.com/a/156256/9075
+%should be loaded at the very end - see http://tex.stackexchange.com/a/156256/9075
 \usepackage{scrhack}
