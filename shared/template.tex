@@ -157,8 +157,6 @@
 
 %see http://tex.stackexchange.com/a/48549/9075
 \usepackage[normalem]{ulem} % use normalem to protect \emph
-\newcommand\hl{\bgroup\markoverwith
-  {\textcolor{yellow}{\rule[-.5ex]{2pt}{2.5ex}}}\ULon}
 
 \usepackage{graphicx}
 
@@ -568,6 +566,7 @@
   %pdfpagelayout=SinglePage, % einseitige Darstellung
 ]{hyperref}
 
+\usepackage{pdfcomment}
 
 % bib stuff
 % Biblatex has to be loaded after hyperref
@@ -795,16 +794,35 @@
 % Gegenstück zu \enquote
 \newcommand{\enbracket}[1]{(#1)\xspace}
 
+%%% Kommentare im PDF
+
+%Kommentare und Aenderungen
+
+%New text:
+%1. Parameter: Comment
+%2. Parameter: New text
+\newcommand{\change}[2]{{\color{red}#2}\pdfcomment{#1}}
+%Disabled variant - for the final PDF
+%\newcommand{\change}[3]{#3}
+
+%Small PDF comment
+%1. Parameter: Comment
+\newcommand{\comment}[1]{\pdfcomment{#1}}
+%Disabled variant - for the final PDF
+%\newcommand{\comment}[2]{}
+
 % Textmarker (Textfarbe rot)
 \newcommand{\textmarker}[1]{{\color{red} #1}\xspace}
 % Modified (Text blau)
 \newcommand{\modified}[1]{{\color{blue!60!black} #1}\xspace}
+
 
 % Symbole Check und Cross
 \usepackage{pifont}
 \newcommand{\dingcheck}{\ding{51}}
 \newcommand{\dingcross}{\ding{55}}
 %for scaling see http://tex.stackexchange.com/a/130236/9075
+
 
 %fix incompatibilities between KOMA and other packages, mainly float.
 %should be loaded at the very end - see http://tex.stackexchange.com/a/156256/9075
