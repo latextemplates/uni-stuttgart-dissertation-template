@@ -3,6 +3,7 @@
 *.alg
 *.aux
 *.bbl
+*.bcf
 *.blg
 *.brf
 *.code
@@ -26,6 +27,7 @@
 *.idx
 *.ilg
 *.ind
+*.run.xml
 *.thm
 *.ps
 *.xref
