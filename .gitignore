@@ -2,6 +2,7 @@
 *.4tc
 *.alg
 *.aux
+*.bak
 *.bbl
 *.bcf
 *.blg
