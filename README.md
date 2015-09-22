@@ -1,6 +1,6 @@
 About
 =====
-Inofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
+Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
 Features
 ========
