@@ -23,6 +23,8 @@
 *.tmp
 *.toc
 *.tpt
+*.upa
+*.upb
 *.lbl
 *.idx
 *.ilg
