@@ -4,6 +4,9 @@
 %Siehe http://www.ctan.org/pkg/dehyph-exptl und http://projekte.dante.de/Trennmuster/WebHome
 %Nur für pdflatex, nicht für lualatex
 \RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
+%Warns about outdated packages and missing caption delcarations
+%See https://www.ctan.org/pkg/nag
+\RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[paper=a5,twoside,fontsize=10pt, DIV=calc, headings=small, bibliography=totoc, listof=totoc]{scrbook}
 \usepackage[utf8]{inputenc}
 
