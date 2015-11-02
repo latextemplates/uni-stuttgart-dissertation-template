@@ -11,4 +11,4 @@ $preview_mode = 0;
 $pdf_mode = 1;
 
 #remove more files than in the default configuration
-@generated_exts = qw(acn acr alg aux bbl code ist fls glg glo gls idx ind lof lot out run.xml thm toc tpt upa upb);
+@generated_exts = qw(acn acr alg aux bbl code ist fls glg glo gls idx ind lof lot out run.xml synctex synctex.gz thm toc tpt upa upb);
