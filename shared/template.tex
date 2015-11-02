@@ -575,24 +575,48 @@
   bibstyle      = alphabetic,
   citestyle     = alphabetic,
   firstinits    = true,
+  useprefix     = true, %print "von, van, etc.", too.
   minnames      = 1,
   minalphanames = 3,
   maxalphanames = 4,
   maxbibnames   = 99,
   maxcitenames  = 3,
-  backref=true]{biblatex}
+  doi           = false, %source: http://tex.stackexchange.com/a/23118/9075
+  isbn          = false, %source: http://tex.stackexchange.com/a/23118/9075
+  backref       = true]{biblatex}
 
 \DefineBibliographyStrings{ngerman}{
   backrefpage  = {Zitiert auf S\adddot},
   backrefpages = {Zitiert auf S\adddot},
-  andothers    = {et\ \addabbrvspace al\adddot}
+  andothers    = {et\ \addabbrvspace al\adddot},
+  %Tipp von http://www.mrunix.de/forums/showthread.php?64665-biblatex-Kann-%DCberschrift-vom-Inhaltsverzeichnis-nicht-%E4ndern&p=293656&viewfull=1#post293656
+  bibliography = {Literaturverzeichnis}
 }
 
 % Reduce size of bib font: http://tex.stackexchange.com/questions/329/how-to-change-font-size-for-bibliography
 \renewcommand{\bibfont}{\normalfont\small}
 
+%enable hyperlinked author names when using \citeauthor
+%source: http://tex.stackexchange.com/a/75916/9075
+\DeclareCiteCommand{\citeauthor}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\printnames{labelname}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
 
-%Cleveref für clevere Refernzierungen mittels \cref bzw. \Cref am Satzanfang.
+%natbib compatibility
+\newcommand{\citep}[1]{\cite{#1}}
+\newcommand{\citet}[1]{\citeauthor{#1} \cite{#1}}
+%Beginning of sentence - analogous to cleveref - important for names such as "zur Muehlen"
+\newcommand{\Citep}[1]{\cite{#1}}
+\newcommand{\Citet}[1]{\Citeauthor{#1} \cite{#1}}
+
+%Cleveref für clevere Referenzierungen mittels \cref bzw. \Cref am Satzanfang.
 %Deutsch
 \usepackage[ngerman,capitalise,nameinlink,noabbrev]{cleveref}
 \crefname{figure}{Abbildung}{Abbildungen}

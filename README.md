@@ -4,16 +4,20 @@ Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany
 
 Features
 ========
-* UTF8 files
+* UTF-8 files
 * output format is A5
 * title page
 * nice chapter headings
 * important LaTeX packages are enabled
-* tex4ht conversion enabled by `make html`
+* [TeX4ht] conversion enabled by `make html`
+* [biblatex]+[biber] instead of plain [bibtex]
+* [latexmk]
 
 Usage
 =====
 * `thesis-example.tex` is the main document
+* `make` or `latexmk` for compilation
+* `make clean` or `latexmk -C` for cleaning up
 
 Using with your git repository
 ==============================
@@ -42,3 +46,9 @@ See also
 ========
 https://github.com/latextemplates/uni-stuttgart-computer-science-template is a LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
 It has some more LaTeX packages included.
+
+ [biber]: https://www.ctan.org/pkg/biber
+ [biblatex]: http://tex.stackexchange.com/tags/biblatex/info
+ [bibtex]: https://www.ctan.org/pkg/bibtex
+ [latexmk]: http://tex.stackexchange.com/tags/latexmk/info
+ [TeX4ht]: https://www.tug.org/tex4ht/
