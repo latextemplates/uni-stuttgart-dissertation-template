@@ -17,7 +17,7 @@ LITERATURE = bibliography.bib
 # Derived file names
 SRC = $(shell basename $(MASTER_TEX) .tex)
 TEX_FILES = $(wildcard preambel/*.tex content/*.tex)
-GFX_FILES = $(wildcard graphics/*)
+GFX_FILES = $(wildcard figures/*)
 
 PDF = $(SRC).pdf
 AUX = $(SRC).aux
