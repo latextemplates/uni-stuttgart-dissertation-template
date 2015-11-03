@@ -4,7 +4,10 @@ $pdflatex = 'pdflatex -shell-escape -file-line-error -synctex=-1 %O %S';
 #Use SumatraPDF instead of the default PDF viewer
 $pdf_previewer = 'start "C:\Program Files (x86)\SumatraPDF\SumatraPDF.exe"';
 
-#SumatraPDF updates automatically
+#On Mac OS X use Skim instead of Preview
+#$pdf_previewer = 'open -a Skim';
+
+#PDF viewer updates automatically
 $preview_mode = 0;
 
 #automatically call pdflatex (instead of latex)
