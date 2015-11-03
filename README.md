@@ -1,9 +1,7 @@
-About
-=====
+# About
 Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
-Features
-========
+# Features
 * UTF-8 files
 * output format is A5
 * title page
@@ -13,17 +11,20 @@ Features
 * [biblatex]+[biber] instead of plain [bibtex]
 * [latexmk]
 
-Usage
-=====
+# Prerequisite
+* Windows: Recent [MiKTeX](http://miktex.org/)
+* Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) - Try `tlmgr update --all` if you encounter issues with biblatex
+* Linux: Recent TeX Live distribution
+
+# Usage
 * `thesis-example.tex` is the main document
 * `make` or `latexmk` for compilation
 * `make clean` or `latexmk -C` for cleaning up
 
-Using with your git repository
-==============================
+# Using with your git repository
 
-Initialization
---------------
+
+## Initialization
 This howto assumes that you have not a git repository for your thesis.
 If you have, just add https://github.com/latextemplates/uni-stuttgart-dissertation-template.git as upstream and merge the branch `template` into your `master` branch.
 
@@ -35,15 +36,13 @@ If you have, just add https://github.com/latextemplates/uni-stuttgart-dissertati
 
 Now, you are on the master branch, where you can write your thesis and push it to your (remote) origin repository, in case you have one.
 
-Merging updates from the template
----------------------------------
+## Merging updates from the template
 If you want to merge updates from github, do the following:
 
 1. `git fetch github`
 1. `git merge github/template`
 
-See also
-========
+# See also
 https://github.com/latextemplates/uni-stuttgart-computer-science-template is a LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
 It has some more LaTeX packages included.
 
