@@ -10,5 +10,8 @@ $preview_mode = 0;
 #automatically call pdflatex (instead of latex)
 $pdf_mode = 1;
 
+#remove bbl files on cleanup
+$bibtex_use = 2;
+
 #remove more files than in the default configuration
-@generated_exts = qw(acn acr alg aux bbl code ist fls glg glo gls idx ind lof lot out run.xml synctex synctex.gz thm toc tpt upa upb);
+@generated_exts = qw(acn acr alg aux code ist fls glg glo gls idx ind lof lot out run.xml synctex synctex.gz thm toc tpt upa upb);
