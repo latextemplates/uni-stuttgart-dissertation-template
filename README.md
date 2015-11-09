@@ -13,7 +13,7 @@ Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany
 
 # Prerequisite
 * Windows: Recent [MiKTeX](http://miktex.org/)
-* Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) - Try `tlmgr update --all` if you encounter issues with biblatex
+* Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) (e.g. through [MacTeX](https://tug.org/mactex/)) - Try `sudo tlmgr update --all` if you encounter issues with biblatex
 * Linux: Recent TeX Live distribution
 
 # Usage
