@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage[paperheight=14.5mm,paperwidth=257mm,margin=0in]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{rotating}
+
+\usepackage{charter}
+\usepackage[charter]{mathdesign}
+\usepackage[scaled=.95]{helvet}
+\usepackage[T1]{fontenc} % T1 Schrift Encoding
+\usepackage{textcomp}	 % Zusatzliche Symbole (Text Companion font extension)
+
+% To show the boxes used in this document define a non-white color here
+\usepackage{xcolor}
+\newcommand{\boxcol}{white}
+
+\begin{document} %
+% Name
+\vspace{-5pt} %
+\noindent\fcolorbox{\boxcol}{white}{%
+\begin{minipage}{\dimexpr0.15\textwidth-2\fboxrule-2\fboxsep\relax}
+\begin{center}
+{\Large Author Name}
+\end{center}
+\end{minipage}}%
+%
+% Title
+\noindent\fcolorbox{\boxcol}{white}{%
+\begin{minipage}{\dimexpr0.75\textwidth-2\fboxrule-2\fboxsep\relax}
+\begin{center}
+\vspace{3pt} % No idea why this is not aligned correctly
+{\Large The Title of Dissertation}
+\end{center}
+\end{minipage}}%
+%
+% Logo
+\noindent\fcolorbox{\boxcol}{white}{%
+\begin{minipage}{\dimexpr0.06\textwidth-2\fboxrule-2\fboxsep\relax}
+\begin{center}
+\includegraphics[height=1cm]{../shared/ustutt-logo-only}
+\end{center}
+\end{minipage}} %
+%
+% Year
+\noindent\fcolorbox{\boxcol}{white}{%
+\begin{minipage}{\dimexpr0.04\textwidth-2\fboxrule-2\fboxsep\relax}
+\rotatebox{90}{{\large 2015}}
+\end{minipage}}
+
+\end{document}
