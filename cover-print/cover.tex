@@ -1,0 +1,106 @@
+\documentclass[
+ flapwidth=0cm,
+ spinewidth=2.06cm,
+ bleedwidth=0.50cm,
+ coverwidth=14.80cm,
+ coverheight=21cm,
+ marklength=0cm,
+%
+%DEBUG: disable for final version
+% marklength=2cm,
+% grid
+]{bookcover}
+
+
+% UTF-8
+\usepackage[utf8]{inputenc}
+
+% Font
+\usepackage{XCharter}
+\usepackage[T1]{fontenc}
+
+% PDF import
+\usepackage{graphics}
+
+% Gradient background
+\usepackage{tikz}
+
+%SOURCE: http://tex.stackexchange.com/a/12712/9075
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}b{#1}}
+
+\begin{document}
+%\definecolor{USTUTTCILightBlue}{HTML}{00BEFF}
+%\definecolor{USTUTTCILighterBlue}{HTML}{FFFFFF}
+
+\setbookcover{bgcolor}{whole without flaps}{color=white}
+%\setbookcover{bgcolor}{whole without flaps}{color=USTUTTCI}
+
+%\setbookcover{bgtikz}{whole}{
+%\shade[
+%	bottom	color=USTUTTCILightBlue,
+%	top		color=USTUTTCILighterBlue
+%]
+%(0cm,0cm) rectangle (32.66cm,22.0cm);}
+
+%DEBUG: disable for final version
+%\setbookcover{bgcolor}{spine}{color=white}
+
+
+%
+% von links nach rechts im ausgegebenen PDF
+%
+
+
+% Rueckseite vom Buch (mit Publisher-Logo)
+\setbookcover{fgfirst}{back}{
+\vfill
+\centering
+%SOURCE: http://tex.stackexchange.com/a/12712/9075
+\begin{tabular}{C{.3\textwidth}C{.3\textwidth}R{.3\textwidth}}
+& \includegraphics{barcode.png} & \includegraphics[scale=.5]{publisher-logo.pdf}\phantom{.....} \\
+\end{tabular}
+\vspace{0.9cm}
+}
+
+% Rueckseite vom Buch (ohne Publisher-Logo)
+%\setbookcover{fgfirst}{back}{
+%\vfill
+%\centering
+%\includegraphics{barcode.png}
+%}
+
+
+% Buchruecken
+\setbookcover{fgfirst}{spine}{
+\vspace{1.0cm}
+%
+\centering
+\rotatebox[origin=c]{90}{%
+Vorname Nachname} \\
+%
+\vspace{2cm}
+%
+\centering
+\rotatebox[origin=c]{90}{%
+Der komplette Titel der Dissertation} \\
+%
+\vfill
+%
+\centering
+2016
+%
+\vspace{1.0cm}
+}
+
+
+% Titelseite
+\setbookcover{fgfirst}{front}{
+%\includegraphics{thesis-titlepage.pdf}
+\includegraphics{../thesis-example.pdf}
+}
+
+
+\makebookcover
+\end{document}
