@@ -21,6 +21,19 @@ Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany
 * `make` or `latexmk` for compilation
 * `make clean` or `latexmk -C` for cleaning up
 
+# Renaming the template
+
+You probably don't want your document to be named `example`. In order to change this,
+replace the term `thesis-example` by e. g. `thesis-musterfrau` in the following locations:
+
+location | occurrence
+---|---
+cover-print/cover.tex | \includegraphics{../thesis-example.pdf}
+.gitignore | thesis-example.pdf
+.gitignore | thesis-example*.png
+Makefile | MASTER_TEX = thesis-example.tex
+
+
 # Using with your git repository
 
 
