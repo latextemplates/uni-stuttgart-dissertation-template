@@ -1,6 +1,8 @@
 # About
 Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
+For a template for master, bachelor and other thesis, please head to the [scientific thesis template](https://github.com/latextemplates/scientific-thesis-template).
+
 # Features
 * UTF-8 files
 * output format is A5
