@@ -62,13 +62,14 @@
       {Vorgelegt von \par}
       {\large \@author \par}
       {aus \@placeofbirth \par}
-      \vspace{20pt}
-      \begin{TBlist}%
-        \item[Hauptberichter:]\@firstexaminer
-        \item[Mitberichter:]\@secondexaminer
-        \item[Tag der m\"undlichen Pr\"ufung:]\@dateofexamination
-      \end{TBlist}%
-      \vspace{20pt}
+      \vspace{30pt}
+      \begin{tabular}{ll}
+      	\textbf{Hauptberichter:} & \@firstexaminer \\ 
+      	\textbf{Mitberichter:} & \@secondexaminer \\  
+      	&\\
+      	\textbf{Tag der m\"undlichen Pr\"ufung:} & \@dateofexamination
+      \end{tabular} 
+      \vspace{30pt}\par
       {\@department \par}
 	  \vspace{10pt}
 	  {2016}
