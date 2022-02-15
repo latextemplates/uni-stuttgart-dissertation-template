@@ -1,3 +1,6 @@
+---
+lang: en-US # tell LTeX to spell check the file using en-US
+---
 # About
 Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
@@ -35,6 +38,71 @@ cover-print/cover.tex | \includegraphics{../thesis-example.pdf}
 .gitignore | thesis-example*.png
 Makefile | MASTER_TEX = thesis-example.tex
 
+
+# VSCode configuration
+
+To use the setup in VSCode, install 
+* [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) to support LaTeX in VSCode and
+* [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) to have a nice spell cheker that also identifies grammar issues
+
+Then, change the setting of LaTeX Workshop to use biber.
+Therefore, update the following lines in the VSCode `settings.json` to contain:
+
+```json
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2 🔃",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "latex-workshop.latex.tools": [
+        ...
+        {
+            "name": "bibtex",
+            "command": "biber", # make sure this is not bibtex!
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        ...
+    ],
+```
+
+The following settings are additionally recommended:
+
+```json
+{
+    "editor.wordWrap": "on",                              # enable soft line breaks
+    "latex-workshop.view.pdf.viewer": "tab",              # display the generaded PDF in a separate tab
+    "latex-workshop.view.pdf.backgroundColor": "#cccccc", # use a darker background in de PDF viewer to 
+                                                            lift of the pages from it
+    "latex-workshop.latex.autoBuild.run": "onSave",       # automatically build on saving .tex files
+    "editor.renderWhitespace": "all",                     # display all whitespaces
+}
+```
+
+Alternatively, just copy and paste the contents of the [vscode.settings.json](./vscode.settings.json) file to your VSCode settings file.
+
+# LTeX tips and tricks
+
+Add a magic comment to your files to tell LTeX which language to use:
+```latex
+% LTeX: language=de-DE
+```
+
+If you want to use different langauges in the text, use the `\foreignlanguage{language}{text}}` command.
+LTeX will detect these elements and automatically switch the spell checker's lanaguge.
+For example:
+
+```latex
+\foreignlanguage{english}{Therefore, our proposed approach is the best in the world.}
+```
 
 # Using with your git repository
 
