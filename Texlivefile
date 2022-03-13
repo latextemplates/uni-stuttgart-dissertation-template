@@ -17,6 +17,7 @@ datetime2-german
 datetime2-english
 dehyph-exptl
 enumitem
+etoolbox
 fgruler
 float
 fncychap
@@ -59,5 +60,6 @@ wrapfig
 xcharter
 xcolor
 xifthen
+xpatch
 xstring
 zref
