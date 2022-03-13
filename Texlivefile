@@ -27,6 +27,7 @@ hyperref
 hyph-utf8
 hyphen-english
 hyphen-german
+ifmtarg
 koma-script
 latexmk
 listings
