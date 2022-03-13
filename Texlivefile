@@ -2,6 +2,7 @@ algorithms
 algorithmicx
 amsmath
 babel
+babel-german
 biber
 biblatex
 booktabs
@@ -14,6 +15,9 @@ fncychap
 footmisc
 graphics
 hyperref
+hyph-utf8
+hyphen-english
+hyphen-german
 koma-script
 latexmk
 listings
