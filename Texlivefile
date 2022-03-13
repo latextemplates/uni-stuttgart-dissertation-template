@@ -1,6 +1,5 @@
 algorithm
 algorithmicx
-algpseudocode
 amsmath
 babel
 biber
@@ -16,7 +15,7 @@ float
 fncychap
 fontenc
 footmisc
-graphicx
+graphics
 helvet
 hypcap
 hyperref
