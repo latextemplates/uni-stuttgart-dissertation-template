@@ -27,13 +27,11 @@ oberdiek
 pdfcomment
 pdflscape
 pdfpages
-pifont
 placeins
+psnfss
 refenums
 setspace
-showidx
 sidecap
-tabularx
 todonotes
 tools
 ulem
