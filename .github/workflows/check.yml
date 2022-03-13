@@ -35,6 +35,7 @@ jobs:
       - run: |
           mkdir /tmp/out
           mkdir /tmp/res
+          ls -la
       - run: docker run -v $(pwd):/work/src -v /tmp/out:/work/out localhost:5000/name/app:latest work "test/check.sh"
       - run: mv /tmp/out/*.pdf /tmp/res
       - uses: actions/upload-artifact@v2
