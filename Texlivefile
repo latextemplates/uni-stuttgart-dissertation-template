@@ -32,6 +32,7 @@ ifmtarg
 koma-script
 latexmk
 listings
+ly1
 marginnote
 mathdesign
 mathtools
