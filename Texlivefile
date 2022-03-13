@@ -5,6 +5,7 @@ babel
 babel-german
 biber
 biblatex
+bigfoot
 bookcover
 booktabs
 carlisle
@@ -35,7 +36,6 @@ oberdiek
 pdfcomment
 pdflscape
 pdfpages
-perpage
 placeins
 psnfss
 refenums
