@@ -38,6 +38,7 @@ psnfss
 refenums
 setspace
 sidecap
+texlogsieve
 todonotes
 tools
 ulem
@@ -47,3 +48,4 @@ wrapfig
 xcharter
 xcolor
 xifthen
+xstring
