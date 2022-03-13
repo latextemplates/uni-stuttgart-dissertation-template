@@ -13,6 +13,8 @@ jobs:
         ports:
           - 5000:5000
     steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
       - run: |
           mkdir /tmp/out
           mkdir /tmp/res
@@ -34,8 +36,6 @@ jobs:
           push: true
           tags: localhost:5000/name/app:latest
           file: test/Dockerfile
-      - name: Set up Git repository
-        uses: actions/checkout@v3
       - run: docker run -v $(pwd):/work/src -v /tmp/out:/work/out localhost:5000/name/app:latest work "test/check.sh"
       - run: mv /tmp/out/*.pdf /tmp/res
       - uses: actions/upload-artifact@v2
