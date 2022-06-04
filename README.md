@@ -8,6 +8,17 @@ lang: en-US # tell LTeX to spell check the file using en-US
 
 For a template for master, bachelor and other thesis, please head to the [scientific thesis template](https://github.com/latextemplates/scientific-thesis-template).
 
+* [Features](#features)
+* [Prerequisites](#prerequisites)
+* [Usage](#usage)
+* [Renaming the template](#renaming-the-template)
+* [VSCode configuration](#vscode-configuration)
+  * [LTeX tips and tricks](#ltex-tips-and-tricks)
+* [Using with your git repository](#using-with-your-git-repository)
+  * [Initialization](#initialization)
+  * [Merging updates from the template](#merging-updates-from-the-template)
+* [See also](#see-also)
+
 ## Features
 
 * UTF-8 files
@@ -43,7 +54,7 @@ cover-print/cover.tex | \includegraphics{../thesis-example.pdf}
 .gitignore | thesis-example*.png
 Makefile | MASTER_TEX = thesis-example.tex
 
-# VSCode configuration
+## VSCode configuration
 
 To use the setup in VSCode, install
 
@@ -117,7 +128,7 @@ For example:
 ### Initialization
 
 This howto assumes that you have not a git repository for your thesis.
-If you have, just add https://github.com/latextemplates/uni-stuttgart-dissertation-template.git as upstream and merge the branch `template` into your `main` branch.
+If you have, just add <https://github.com/latextemplates/uni-stuttgart-dissertation-template.git> as upstream and merge the branch `upstream/main` into your `main` branch.
 
 1. Open command line
 1. `git clone https://github.com/latextemplates/uni-stuttgart-dissertation-template.git`
@@ -132,12 +143,7 @@ Now, you are on the `main` branch, where you can write your thesis and push it t
 If you want to merge updates from github, do the following:
 
 1. `git fetch github`
-1. `git merge github/template`
-
-## See also
-
-<https://github.com/latextemplates/uni-stuttgart-computer-science-template> is a LaTeX template for Master, Bachelor, Diploma, and Student Theses at the University of Stuttgart, Computer Science.
-It has some more LaTeX packages included.
+1. `git merge github/main`
 
 [biber]: https://www.ctan.org/pkg/biber
 [biblatex]: http://tex.stackexchange.com/tags/biblatex/info
