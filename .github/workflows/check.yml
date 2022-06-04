@@ -42,3 +42,10 @@ jobs:
           name: test-result
           path: |
             /tmp/res/*.pdf
+      - name: publish
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/try-def-triplepagestyle'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          enable_jekyll: false
