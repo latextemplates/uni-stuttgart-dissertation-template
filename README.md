@@ -9,6 +9,7 @@ lang: en-US # tell LTeX to spell check the file using en-US
 For a template for master, bachelor and other thesis, please head to the [scientific thesis template](https://github.com/latextemplates/scientific-thesis-template).
 
 * [Features](#features)
+* [Example PDFs](#example-pdfs)
 * [Prerequisites](#prerequisites)
 * [Usage](#usage)
 * [Renaming the template](#renaming-the-template)
@@ -17,7 +18,6 @@ For a template for master, bachelor and other thesis, please head to the [scient
 * [Using with your git repository](#using-with-your-git-repository)
   * [Initialization](#initialization)
   * [Merging updates from the template](#merging-updates-from-the-template)
-* [See also](#see-also)
 
 ## Features
 
@@ -29,6 +29,12 @@ For a template for master, bachelor and other thesis, please head to the [scient
 * [TeX4ht] conversion enabled by `make html`
 * [biblatex]+[biber] instead of plain [bibtex]
 * [latexmk]
+
+## Example PDFs
+
+* Thesis: [thesis-example.pdf](thesis-example.pdf)
+* Book cover: [cover.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/cover.pdf)
+* Spine of the book cover: [spine.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/spine.pdf)
 
 ## Prerequisites
 
