@@ -1,5 +1,7 @@
 on:
   push:
+  schedule:
+    - cron: "5 5 5 * *"
   workflow_dispatch:
 concurrency:
   group: check
@@ -42,3 +44,10 @@ jobs:
           name: test-result
           path: |
             /tmp/res/*.pdf
+      - name: publish
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/res
+          enable_jekyll: false
