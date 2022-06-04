@@ -1,5 +1,7 @@
 on:
   push:
+  schedule:
+    - cron: "5 5 5 * *"
   workflow_dispatch:
 concurrency:
   group: check
