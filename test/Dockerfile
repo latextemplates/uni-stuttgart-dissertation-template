@@ -1,4 +1,4 @@
-FROM reitzig/texlive-base:2021.5
+FROM reitzig/texlive-base:2022.2
 
 RUN tlmgr update --self --repository https://ctan.math.washington.edu/tex-archive/systems/texlive/tlnet/
 
