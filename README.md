@@ -32,7 +32,7 @@ For a template for master, bachelor and other thesis, please head to the [scient
 
 ## Example PDFs
 
-* Thesis: [thesis-example.pdf](thesis-example.pdf)
+* Thesis: [thesis-example.pdf](https://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example.pdf)
 * Book cover: [cover.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/cover.pdf)
 * Spine of the book cover: [spine.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/spine.pdf)
 
