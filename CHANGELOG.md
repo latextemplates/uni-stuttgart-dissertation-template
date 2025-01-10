@@ -10,7 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Added
 
 * Example PDFs are generated using GitHub actions and published on GitHub pages
-* CHANGELOG.md
+* `CHANGELOG.md`
 
 ### Fixed
 
