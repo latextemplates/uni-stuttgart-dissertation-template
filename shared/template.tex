@@ -337,7 +337,7 @@
    bottom,      % Footnotes appear always on bottom. This is necessary
                 % especially when floats are used
    stable,      % Make footnotes stable in section titles
-   perpage,     % Reset on each page
+   %perpage,     % Reset on each page
    %para,       % Place footnotes side by side of in one paragraph.
    %side,       % Place footnotes in the margin
    ragged,      % Use RaggedRight
@@ -346,6 +346,7 @@
    %symbol,     % use symbols instead of numbers
 ]{footmisc}
 
+\counterwithout{footnote}{chapter} % Continuous numbering of footnotes across chapters
 \interfootnotelinepenalty=10000 % Verhindert das Fortsetzen von
                                 % Fussnoten auf der gegenüberligenden Seite
 
