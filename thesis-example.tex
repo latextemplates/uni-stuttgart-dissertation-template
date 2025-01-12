@@ -10,7 +10,876 @@
 \documentclass[paper=a5,twoside,fontsize=10pt, DIV=calc, headings=small, bibliography=totoc, listof=totoc]{scrbook}
 \usepackage[utf8]{inputenc}
 
-\input{shared/template}
+%Sprachsupport - !!bitte einstellen!!
+%\usepackage[ngerman,main=english]{babel}
+%Deutsche Ausarbeitung
+\usepackage[main=ngerman,english]{babel}
+
+%Selectlanguage is reported not to work, therefore use package options
+%\selectlanguage{american}
+%\selectlanguage{ngerman}
+
+\makeatletter
+\@ifpackageloaded{tex4ht}{\def\iftex4ht{\iftrue}}
+                         {\def\iftex4ht{\iffalse}}
+\makeatother
+
+
+% IfThenElse
+\usepackage{ifthen}
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/oberdiek/ifpdf.sty
+% command for testing for pdf-creation
+\usepackage{ifpdf} %\ifpdf \else \fi
+
+%%% Internal Commands: ----------------------------------------------
+\makeatletter
+%
+\providecommand{\IfPackageLoaded}[2]{\@ifpackageloaded{#1}{#2}{}}
+\providecommand{\IfPackageNotLoaded}[2]{\@ifpackageloaded{#1}{}{#2}}
+\providecommand{\IfElsePackageLoaded}[3]{\@ifpackageloaded{#1}{#2}{#3}}
+%
+\newboolean{chapteravailable}%
+\setboolean{chapteravailable}{false}%
+
+\ifcsname chapter\endcsname
+  \setboolean{chapteravailable}{true}%
+\else
+  \setboolean{chapteravailable}{false}%
+\fi
+
+
+\providecommand{\IfChapterDefined}[1]{\ifthenelse{\boolean{chapteravailable}}{#1}{}}%
+\providecommand{\IfElseChapterDefined}[2]{\ifthenelse{\boolean{chapteravailable}}{#1}{#2}}%
+
+\providecommand{\IfDefined}[2]{%
+\ifcsname #1\endcsname
+   #2 %
+\else
+     % do nothing
+\fi
+}
+
+\providecommand{\IfElseDefined}[3]{%
+\ifcsname #1\endcsname
+   #2 %
+\else
+   #3 %
+\fi
+}
+
+\providecommand{\IfElseUnDefined}[3]{%
+\ifcsname #1\endcsname
+   #3 %
+\else
+   #2 %
+\fi
+}
+
+
+%
+% Check for 'draft' mode - commands.
+\newcommand{\IfNotDraft}[1]{\ifx\@draft\@undefined #1 \fi}
+\newcommand{\IfNotDraftElse}[2]{\ifx\@draft\@undefined #1 \else #2 \fi}
+\newcommand{\IfDraft}[1]{\ifx\@draft\@undefined \else #1 \fi}
+%
+
+% Definde frontmatter, mainmatter and backmatter if not defined
+\@ifundefined{frontmatter}{%
+   \newcommand{\frontmatter}{%
+      %In Roemischen Buchstaben nummerieren (i, ii, iii)
+      \pagenumbering{roman}
+   }
+}{}
+\@ifundefined{mainmatter}{%
+   % scrpage2 benoetigt den folgenden switch
+   % wenn \mainmatter definiert ist.
+   \newif\if@mainmatter\@mainmattertrue
+   \newcommand{\mainmatter}{%
+      % -- Seitennummerierung auf Arabische Zahlen zuruecksetzen (1,2,3)
+      \pagenumbering{arabic}%
+      \setcounter{page}{1}%
+   }
+}{}
+\@ifundefined{backmatter}{%
+   \newcommand{\backmatter}{
+      %In Roemischen Buchstaben nummerieren (i, ii, iii)
+      \pagenumbering{roman}
+   }
+}{}
+
+% Pakete speichern die spaeter geladen werden sollen
+\newcommand{\LoadPackagesNow}{}
+\newcommand{\LoadPackageLater}[1]{%
+   \g@addto@macro{\LoadPackagesNow}{%
+      \usepackage{#1}%
+   }%
+}
+
+\usepackage{fncychap}
+% Code for my fancy chapters.
+\makeatletter
+  \ChNameVar{\normalfont\Large\scshape} % sets the style for name
+  \ChNumVar{\fontsize{85}{100}\selectfont\sffamily\color{white}}
+  \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
+  \renewcommand{\DOCH}{%
+    \setlength{\fboxrule}{\RW}
+    \makebox[12.34cm][r]{
+      \rotatebox{90}{
+        \makebox[2cm]{
+          \resizebox{2.5cm}{!}{ %\fboxsep=6pt
+            \CNV\FmN{\space\@chapapp}
+          }
+        }
+      }
+      \resizebox{!}{2.5cm}{ \fboxsep=6pt
+        \CNoV\colorbox{black!40}{\thechapter}
+      }
+    }\par\nobreak
+    \vskip 0\p@}
+  \renewcommand{\DOTI}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@}
+  \renewcommand{\DOTIS}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@}
+\makeatother
+
+
+
+\makeatother
+%%% ----------------------------------------------------------------
+
+%% colors
+\usepackage[dvipsnames, table]{xcolor}
+%Für die finale Fassung empfohlen:
+%\usepackage[dvipsnames, table, gray]{xcolor}
+
+
+% Farben fuer die Links im PDF
+\definecolor{pdfurlcolor}{rgb}{0,0,0.6}
+\definecolor{pdffilecolor}{rgb}{0.7,0,0}
+\definecolor{pdflinkcolor}{rgb}{0,0,0.6}
+\definecolor{pdfcitecolor}{rgb}{0,0,0.6}
+
+
+\usepackage{calc}
+
+%see http://tex.stackexchange.com/a/48549/9075
+\usepackage[normalem]{ulem} % use normalem to protect \emph
+
+\usepackage{graphicx}
+
+% Base folder, so there is no need to repeat this over and over again.
+\graphicspath{ {figures/} }
+
+%use TODO with \todo{}
+\usepackage[color=gray!17]{todonotes}
+\let\xtodo\todo
+\renewcommand{\todo}[1]{\xtodo[inline,color=black!5]{#1}}
+\newcommand{\todofix}[1]{\xtodo[color=red!40]{#1}}
+
+%% fonts
+\usepackage[charter, expert]{mathdesign}
+\usepackage{XCharter}
+\usepackage[scaled=.95]{helvet}
+\usepackage[T1]{fontenc} % T1 Schrift Encoding
+\usepackage{textcomp}	 % Zusatzliche Symbole (Text Companion font extension)
+
+%math stuff
+\usepackage[
+   centertags, % (default) center tags vertically
+   %tbtags,    % 'Top-or-bottom tags': For a split equation, place equation numbers level
+               % with the last (resp. first) line, if numbers are on the right (resp. left).
+   sumlimits,  %(default) Place the subscripts and superscripts of summation
+               % symbols above and below
+   %nosumlimits, % Always place the subscripts and superscripts of summation-type
+               % symbols to the side, even in displayed equations.
+   intlimits,  % Like sumlimits, but for integral symbols.
+   %nointlimits, % (default) Opposite of intlimits.
+   namelimits, % (default) Like sumlimits, but for certain 'operator names' such as
+               % det, inf, lim, max, min, that traditionally have subscripts placed underneath
+               % when they occur in a displayed equation.
+   %nonamelimits, % Opposite of namelimits.
+   %leqno,     % Place equation numbers on the left.
+   %reqno,     % Place equation numbers on the right.
+   fleqn,     % Position equations at a fixed indent from the left margin
+   			  % rather than centered in the text column.
+]{amsmath} %
+\SetMathAlphabet{\mathcal}{normal}{OMS}{amsa}{m}{n} %% AMS font for mathcal
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/mh/doc/mathtools.pdf
+% Erweitert amsmath und behebt einige Bugs
+\usepackage[fixamsmath,disallowspaces]{mathtools}
+
+%%% Doc: http://www.ctan.org/info?id=fixmath
+% LaTeX's default style of typesetting mathematics does not comply
+% with the International Standards ISO31-0:1992 to ISO31-13:1992
+% which indicate that uppercase Greek letters always be typset
+% upright, as opposed to italic (even though they usually
+% represent variables) and allow for typsetting of variables in a
+% boldface italic style (even though the required fonts are
+% available). This package ensures that uppercase Greek be typeset
+% in italic style, that upright $\Delta$ and $\Omega$ symbols are
+% available through the commands \upDelta and \upOmega; and
+% provides a new math alphabet \mathbold for boldface
+% italic letters, including Greek.
+\usepackage{fixmath}
+
+%for theorems, replacement for amsthm
+\usepackage[amsmath,hyperref]{ntheorem}
+\theorempreskipamount 2ex plus1ex minus0.5ex
+\theorempostskipamount 2ex plus1ex minus0.5ex
+\theoremstyle{break}
+\newtheorem{definition}{Definition}[chapter]
+%
+
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/onlyamsmath/onlyamsmath.dvi
+% Warnt bei Benutzung von Befehlen die mit amsmath inkompatibel sind.
+
+% TODO: DM --> den shit brauchmer net
+% \usepackage[
+% 	all,
+% 	warning
+% ]{onlyamsmath}
+
+%% Tables
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Tables (Tabular)
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% Basispaket fuer alle Tabellenfunktionen
+% -> wird automatisch durch andere Pakete geladen
+% \usepackage{array}
+%
+% bessere Abstaende innerhalb der Tabelle (Layout))
+% -------------------------------------------------
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/booktabs/booktabs.pdf
+\usepackage{booktabs}
+%
+% Farbige Tabellen
+% ----------------
+% Das Paket colortbl wird inzwischen automatisch durch xcolor geladen
+%
+% Erweiterte Funktionen innerhalb von Tabellen
+% --------------------------------------------
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/multirow/multirow.sty
+\usepackage{multirow} % Mehrfachspalten
+%
+%%% Doc: Documentation inside dtx Package
+\usepackage{dcolumn}  % Ausrichtung an Komma oder Punkt
+
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/supertabular/supertabular.pdf
+%\usepackage{supertabular}
+
+
+%% page setup
+\usepackage{setspace}
+\setstretch{1.2}
+\setkomafont{sectioning}{\normalfont\normalcolor\rmfamily\mdseries}
+\setkomafont{descriptionlabel}{\bfseries}
+\typearea[current]{last}
+
+%% headers
+\usepackage{scrlayer-scrpage}
+
+\IfElseChapterDefined{%
+   \pagestyle{scrheadings} % Seite mit Headern
+}{
+   \pagestyle{scrplain} % Seiten ohne Header
+}
+%\pagestyle{empty} % Seiten ohne Header
+%
+% loescht voreingestellte Stile
+\clearscrheadings
+\clearscrplain
+%\clearscrheadfoot
+
+\newcommand{\setchapterfooter}[1]{%
+	\def\mydummy{#1}
+	\renewcommand{\chaptermark}[1]{%
+		\markright{\textbf{\thechapter}~|~\mydummy}{}}
+}
+
+\newcommand{\resetchapterfooter}{%
+ 	\renewcommand{\chaptermark}[1]{%
+ 		\markright{\textbf{\thechapter}~|~##1}{}}
+}
+
+\renewcommand{\chaptermark}[1]{%
+\markright{\textbf{\thechapter}~|~#1}{}}
+
+\renewcommand{\sectionmark}[1]{%
+\markleft{\textbf{\thesection}~|~#1}{}}
+
+
+%
+% Was steht wo...
+\IfElseChapterDefined{
+    \ofoot[\pagemark]{\pagemark}
+    \refoot{\rightmark}
+    %\refoot{\chaptermark -- \thechapter}
+    \lofoot{\leftmark}
+}{
+   \cfoot[\pagemark]{\pagemark} % Mitte unten: Seitenzahlen bei plain
+}
+
+
+% daniels stil für abstract (zusammenfassung / abstract)
+\deftriplepagestyle{justpagenums}{}{}{}{}{}{\textbf{\thepage}}
+
+
+% TODO: modified by DM
+\setkomafont{pageheadfoot}{\small\sffamily}
+\setkomafont{pagenumber}{\small\sffamily\bfseries}
+
+% Define commands that don't eat spaces.
+\usepackage{xspace}
+
+\usepackage{url} % Setzen von URLs. In Verbindung mit hyperref sind diese auch aktive Links.
+
+%%% Fussnoten/Endnoten ===================================================
+%
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/footmisc/footmisc.pdf
+%
+\usepackage[
+   bottom,      % Footnotes appear always on bottom. This is necessary
+                % especially when floats are used
+   stable,      % Make footnotes stable in section titles
+   perpage,     % Reset on each page
+   %para,       % Place footnotes side by side of in one paragraph.
+   %side,       % Place footnotes in the margin
+   ragged,      % Use RaggedRight
+   %norule,     % suppress rule above footnotes
+   multiple,    % rearrange multiple footnotes intelligent in the text.
+   %symbol,     % use symbols instead of numbers
+]{footmisc}
+
+\interfootnotelinepenalty=10000 % Verhindert das Fortsetzen von
+                                % Fussnoten auf der gegenüberligenden Seite
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Pakete zum Zitieren
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% Quotes =================================================================
+%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/csquotes/csquotes.pdf
+% Advanced features for clever quotations
+\usepackage[%
+   babel,            % the style of all quotation marks will be adapted
+                     % to the document language as chosen by 'babel'
+   german=quotes,		% Styles of quotes in each language
+   english=british,
+   french=guillemets
+]{csquotes}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figures and placement
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%% Bilder und Graphiken ==================================================
+
+%%% Doc: float.div
+%floatrow is the successor of float
+%\usepackage{floatrow}             % Offers option [H] for float positioning
+%!! DOES NOT WORK WITH tex4ht !!
+%!! in seldom cases, floatrow causes trouble with biblatex's \citeauthor !!
+%--> use predecessor float
+\usepackage{float}
+
+%%% Doc: No Documentation
+%\usepackage{flafter}          % Floats immer erst nach der Referenz setzen
+
+% Defines a \FloatBarrier command, beyond which floats may not
+% pass; useful, for example, to ensure all floats for a section
+% appear before the next \section command.
+\usepackage[
+	section		% "\section" command will be redefined with "\FloatBarrier"
+]{placeins}
+%
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/subfig/subfig.pdf
+% Incompatible: loads package capt-of. Loading of 'capt-of' afterwards will fail therefor
+%\usepackage{subfig} % Layout wird weiter unten festgelegt !
+
+%%% Bilder von Text Umfliessen lassen : (empfehle wrapfig)
+%
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/wrapfig/wrapfig.sty
+\usepackage{wrapfig}	        % defines wrapfigure and wrapfloat
+%\setlength{\wrapoverhang}{\marginparwidth} % aeerlapp des Bildes ...
+%\addtolength{\wrapoverhang}{\marginparsep} % ... in den margin
+\setlength{\intextsep}{0.5\baselineskip} % Platz ober- und unterhalb des Bildes
+% \intextsep ignoiert bei draft ???
+%\setlength{\columnsep}{1em} % Abstand zum Text
+
+%%% Doc: Documentation inside dtx Package
+%\usepackage{floatflt}   	  % LaTeX2e Paket von 1996
+                             % [rflt] - Standard float auf der rechten Seite
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex209/contrib/picins/picins.doc
+%\usepackage{picins}          % LaTeX 2.09 Paket von 1992. aber Layout kombatibel
+%Olly prefers picins over wrapfig
+
+% Make float placement easier
+% See also http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#figplacement
+\renewcommand{\floatpagefraction}{.75} % vorher: .5
+\renewcommand{\textfraction}{.1}       % vorher: .2
+\renewcommand{\topfraction}{.8}        % vorher: .7
+\renewcommand{\bottomfraction}{.5}     % vorher: .3
+\setcounter{topnumber}{3}              % vorher: 2
+\setcounter{bottomnumber}{2}           % vorher: 1
+\setcounter{totalnumber}{5}            % vorher: 3
+
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/psfrag/pfgguide.pdf
+% \usepackage{psfrag}	% Ersetzen von Zeichen in eps Bildern
+
+
+%%% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf
+\usepackage[%
+%	outercaption,%	(default) caption is placed always on the outside side
+%	innercaption,% caption placed on the inner side
+%	leftcaption,%  caption placed on the left side
+	rightcaption,% caption placed on the right side
+%	wide,%			caption of float my extend into the margin if necessary
+%	margincaption,% caption set into margin
+	ragged,% caption is set ragged
+]{sidecap}
+
+\renewcommand\sidecaptionsep{2em}
+%\renewcommand\sidecaptionrelwidth{20}
+\sidecaptionvpos{table}{c}
+\sidecaptionvpos{figure}{c}
+
+%% Index
+\usepackage{makeidx}		% Index
+\IfDraft{
+  \usepackage{showidx}    % Indizierte Begriffe am Rand (Korrekturlesen)
+}
+
+% Listings Paket ------------------------------------------------------
+%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/listings/listings-1.3.pdf
+\usepackage{listings}
+\lstset{language=XML,
+        captionpos=b,
+        basicstyle=\small\ttfamily, % Standardschrift
+        numbers=left,               % Ort der Zeilennummern
+        numberstyle=\tiny,          % Stil der Zeilennummern
+        stepnumber=2,               % Abstand zwischen den Zeilennummern
+        numbersep=5pt,              % Abstand der Nummern zum Text
+        tabsize=2,                  % Groesse von Tabs
+        extendedchars=true,         %
+        breaklines=true,            % Zeilen werden umbrochen
+%        keywordstyle=[1]\textbf,    % Stil der Keywords
+%        keywordstyle=[2]\textbf,    %
+%        keywordstyle=[3]\textbf,    %
+%        keywordstyle=[4]\textbf,    %
+%        stringstyle=\color{stringcolor}, % Farbe der Strings, stringcolor derzeit undefiniert
+        showspaces=false,           % Leerzeichen anzeigen ?
+        showtabs=false,             % Tabs anzeigen ?
+        showstringspaces=false      % Leerzeichen in Strings anzeigen ?
+}
+\lstloadlanguages{% Check Dokumentation for further languages ...
+        %[Visual]Basic
+        %Pascal
+        %C
+        %C++
+        %XML
+        %HTML
+}
+
+% Moderner als Listings: minted / pygmentize library
+% See https://github.com/gpoore/minted
+%
+%Derzeit deaktiviert, da
+%  1. -shell-esacpe auf jeden Fall benötigt wird
+%  2. \setminted Version 2.0 erfordert, die noch nicht in MiKTeX enthalten ist
+\iffalse
+%\usepackage[cache]{minted}
+\usepackage{minted}
+
+%\usemintedstyle{autumn}
+%\usemintedstyle{rrt}
+%\usemintedstyle{borland}
+\usemintedstyle{friendly}
+%http://www.jevon.org/wiki/Eclipse_Pygments_Style
+%\usemintedstyle{eclipse}
+
+%Zeilennummern innerhalb vom Rand:
+\setminted{numbersep=5pt, xleftmargin=12pt}
+\fi
+
+%% Inhaltsverzeichnis (Schrift, Aussehen) sowie weitere Verzeichnisse ====
+\setcounter{secnumdepth}{3}    % Abbildungsnummerierung mit groesserer Tiefe
+\setcounter{tocdepth}{2}       % Inhaltsverzeichnis mit groesserer Tiefe
+%
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/microtype/microtype.pdf
+% Optischer Randausgleich mit pdfTeX
+\ifpdf
+\usepackage[%
+	expansion=true, % better typography, but with much larger PDF file.
+	protrusion=true,
+	babel=true % use current language when doing microtyping
+]{microtype}
+\fi
+
+\newcommand\bhrule{\typeout{------------------------------------------------------------------------------}}
+\newcommand\btypeout[1]{\bhrule\typeout{\space #1}\bhrule}
+
+%See http://tex.stackexchange.com/a/83051/9075
+%Normally, doesn't work with hyperref, but cleveref fixes that
+%Deutsch
+\usepackage[ngerman]{varioref}
+%Englisch
+%\usepackage{varioref}
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf
+\usepackage[
+  % Farben fuer die Links
+  colorlinks=true,         % Links erhalten Farben statt Kaeten
+  urlcolor=pdfurlcolor,    % \href{...}{...} external (URL)
+  filecolor=pdffilecolor,  % \href{...} local file
+  linkcolor=pdflinkcolor,  %\ref{...} and \pageref{...}
+  citecolor=pdfcitecolor,  %
+  % Links
+  raiselinks=true,			 % calculate real height of the link
+  breaklinks,              % Links ueberstehen Zeilenumbruch
+  %backref=none,            % Backlinks im Literaturverzeichnis (section, slide, page, none)
+  %pagebackref=true,        % Backlinks im Literaturverzeichnis mit Seitenangabe. Jetzt mit biblatex
+  hypertexnames=false,     %http://tex.stackexchange.com/a/156404/9075
+  verbose,
+  hyperindex=true,         % backlinkex index
+  linktocpage=false,       % Inhaltsverzeichnis verlinkt komplette Ueberschrift
+  hyperfootnotes=true,     % Links auf Fussnoten
+  % Bookmarks
+  bookmarks=true,          % Erzeugung von Bookmarks fuer PDF-Viewer
+  bookmarksopenlevel=1,    % Gliederungstiefe der Bookmarks
+  bookmarksopen=true,      % Expandierte Untermenues in Bookmarks
+  bookmarksnumbered=true,  % Nummerierung der Bookmarks
+  bookmarkstype=toc,       % Art der Verzeichnisses
+  % Anchors
+  plainpages=false,        % Anchors even on plain pages ?
+  pageanchor=true,         % Pages are linkable
+  % PDF Informationen
+  pdftitle={},             % Titel
+  pdfauthor={},            % Autor
+  pdfcreator={LaTeX, hyperref, KOMA-Script}, % Ersteller
+  %pdfproducer={pdfeTeX 1.10b-2.1} %Produzent
+  pdfdisplaydoctitle=true, % Dokumententitel statt Dateiname im Fenstertitel
+  pdfstartview=FitH,       % Dokument wird Fit Width geaefnet
+  pdfpagemode=UseOutlines, % Bookmarks im Viewer anzeigen
+  pdfpagelabels=true,           % set PDF page labels
+  pdfpagelayout=TwoPageRight, % zweiseitige Darstellung: ungerade Seiten
+  									 % rechts im PDF-Viewer
+  %pdfpagelayout=SinglePage, % einseitige Darstellung
+]{hyperref}
+
+\usepackage{pdfcomment}
+
+% bib stuff
+% Biblatex has to be loaded after hyperref
+\usepackage[
+  backend       = biber, %biber does not work with 64x versions alternative: bibtex8
+						 %minalphanames only works with biber backend
+  sortcites     = true,
+  bibstyle      = alphabetic,
+  citestyle     = alphabetic,
+  giveninits    = true,
+  useprefix     = false, %"von, van, etc." will be printed, too. See below.
+  minnames      = 1,
+  minalphanames = 3,
+  maxalphanames = 4,
+  maxbibnames   = 99,
+  maxcitenames  = 3,
+	natbib        = true,
+	eprint        = true,
+	url           = true,
+  doi           = false, %source: http://tex.stackexchange.com/a/23118/9075
+  isbn          = false, %source: http://tex.stackexchange.com/a/23118/9075
+  backref       = true]{biblatex}
+
+%Do not put "vd" in the label, but put it at "\citeauthor"
+%Source: http://tex.stackexchange.com/a/30277/9075
+\makeatletter
+\AtBeginDocument{\toggletrue{blx@useprefix}}
+\AtBeginBibliography{\togglefalse{blx@useprefix}}
+\makeatother
+
+%Thin spaces between initials
+%http://tex.stackexchange.com/a/11083/9075
+\renewrobustcmd*{\bibinitdelim}{\,}
+
+%Keep first and last name together in the bibliography
+%http://tex.stackexchange.com/a/196192/9075
+\renewcommand*\bibnamedelimc{\addnbspace}
+\renewcommand*\bibnamedelimd{\addnbspace}
+
+%Replace last "and" by comma in bibliography
+%See http://tex.stackexchange.com/a/41532/9075
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{\addcomma\space}%
+}
+
+\DefineBibliographyStrings{ngerman}{
+  backrefpage  = {Zitiert auf S\adddot},
+  backrefpages = {Zitiert auf S\adddot},
+  andothers    = {et\ \addabbrvspace al\adddot},
+  %Tipp von http://www.mrunix.de/forums/showthread.php?64665-biblatex-Kann-%DCberschrift-vom-Inhaltsverzeichnis-nicht-%E4ndern&p=293656&viewfull=1#post293656
+  bibliography = {Literaturverzeichnis}
+}
+
+% Reduce size of bib font: http://tex.stackexchange.com/questions/329/how-to-change-font-size-for-bibliography
+\renewcommand{\bibfont}{\normalfont\small}
+
+%enable hyperlinked author names when using \citeauthor
+%source: http://tex.stackexchange.com/a/75916/9075
+\DeclareCiteCommand{\citeauthor}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\printnames{labelname}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+%Cleveref für clevere Referenzierungen mittels \cref bzw. \Cref am Satzanfang.
+%Deutsch
+\usepackage[ngerman,capitalise,nameinlink,noabbrev]{cleveref}
+\crefname{figure}{Abbildung}{Abbildungen}
+\Crefname{figure}{Abbildung}{Abbildungen}
+%Englisch
+%\usepackage[capitalise,nameinlink,noabbrev]{cleveref}
+
+
+%%%
+% Ermoeglicht es, Abbildungen um 90 Grad zu drehen
+% Alternatives Paket: rotating Allerdings wird hier nur das Bild gedreht, während bei lscape auch die PDF-Seite gedreht wird.
+%Das Paket lscape dreht die Seite auch nicht
+\usepackage{pdflscape}
+%
+%%%
+
+%For making subfigures
+%Part of the caption package. See http://www.ctan.org/pkg/caption
+%
+%subfigure is outdated. subfig is maintained, but subcaption is better.
+%See: http://tex.stackexchange.com/questions/13625/subcaption-vs-subfig-best-package-for-referencing-a-subfigure
+%\usepackage{subcaption}
+
+\usepackage[chapter]{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algorithmus}
+\renewcommand{\listalgorithmname}{Algorithmenverzeichnis}
+\usepackage{algorithmicx}
+
+\floatstyle{ruled} %%???
+
+\usepackage{layout} % use with \layout, print page dimensions
+\usepackage{blindtext}
+
+%% PDF stuff
+
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf
+% Links auf Gleitumgebungen springen nicht zur Beschriftung,
+% sondern zum Anfang der Gleitumgebung
+\IfPackageLoaded{hyperref}{%
+	\usepackage[figure,table]{hypcap}
+}
+
+
+
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/pdfpages/pdfpages.pdf
+\usepackage{pdfpages} % Include pages from external PDF documents in LaTeX documents
+
+%%% Neue Tabellen-Umgebungen:
+% ---------------------------
+% Spalten automatischer Breite:
+%%% Doc: Documentation inside dtx Package
+\usepackage{tabularx}
+% -> nach hyperref Laden
+% -> wird von ltxtable geladen
+
+
+% Tabellen ueber mehere Seiten
+% ----------------------------
+%%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/carlisle/ltxtable.pdf
+\usepackage{ltxtable} % Longtable + tabularx
+                        % (multi-page tables) + (auto-sized columns in a fixed width table)
+% -> nach hyperref laden
+
+\raggedbottom     % Variable Seitenhoehen zulassen
+
+
+% DM: line-breaking-description env vom daniel w.
+
+% credit goes to daniel w. :-)
+%% --- Descriptions with line breaks in labels ---------------------------------
+\usepackage{calc}
+
+\newcommand*\Descriptionlabel[1]
+{\raisebox{0pt}[1ex][0pt]
+  {\makebox[\labelwidth][1]
+    {\parbox[t]{\labelwidth}
+      {\hspace{0pt}\textbf{#1:}}}}}
+
+\newcommand*\Descriptionlabelx[1]
+{\parbox[t]{\textwidth}
+  {\textbf{#1}\\\mbox{}}
+}
+
+\newenvironment{Description}
+{\begin{list}{}{\let\makelabel\Descriptionlabelx
+    \setlength\labelwidth{1em}
+    \setlength\leftmargin{\labelwidth+\labelsep}}}
+{\end{list}}
+
+
+% globally change line spacing of lists
+% paralist has suspended development since 10 years.
+% enumitem has been updated 2011-09-28
+\usepackage[inline]{enumitem}
+\setlist{partopsep=0pt,itemsep=1pt}
+
+%------------------------------------------------------------------------
+% fquote Fancy Quotation environment
+% supports empty/optional author
+
+% Use \sloppy to make right-margin easier?
+% Set picture units to be relative to font size (em)?
+% Use begingroup to rest units afterwards?
+
+\usepackage{xifthen}% provides \isempty test
+\definecolor{quotemark}{gray}{0.7}
+
+%fquote environment with author as optional parameter
+%usage: \begin{fquote}quote\end{fquote} or \begin{fquote}[Author]quote\end{fquote}
+\newenvironment{fquote}[1][]{%
+  \newcommand{\fqauthor}{\relax}
+  \ifthenelse{\isempty{#1}}
+  	{}% do nothing
+  	{\renewcommand{\fqauthor}{\hfill\textsc{--- #1}}}
+  \vspace{1em}
+  \begin{list}{}{%
+      \setlength{\leftmargin}{0.2\textwidth}
+      \setlength{\rightmargin}{0.2\textwidth}
+    }
+    \item[]%
+    \begin{picture}(0,0)(0,0)
+      \put(-15,-5){\makebox(0,0){%
+	  \scalebox{4.5}{\textcolor{quotemark}{\bfseries``}}}%
+      }
+    \end{picture}\em\ignorespaces%
+}{%
+  \newline%
+  \makebox[0pt][l]{\hspace{0.6\textwidth}%
+  \begin{picture}(0,0)(0,0)
+    \put(15,10){\makebox(0,0){%
+	\scalebox{4.5}{\textcolor{quotemark}{\rmfamily\bfseries''}}}%
+    }
+  \end{picture}}%
+  \fqauthor
+  \end{list}
+}
+
+%German fquote
+%  1 parameter for the author's name, may be empty ("{}")
+%  guaranteed German quotes (works with lualatex and babel package)
+%  usage: \begin{gfquote}{Author}quote\end{gfquote}
+\newenvironment{gfquote}[1]{%
+  \newcommand{\fqauthor}{\relax}
+  \ifthenelse{\isempty{#1}}
+   {}% do nothing
+   {\renewcommand{\fqauthor}{\hfill\textsc{\textemdash #1}}}
+  \vspace{1em}
+  \begin{list}{}{%
+      \setlength{\leftmargin}{0.2\textwidth}
+      \setlength{\rightmargin}{0.2\textwidth}
+    }
+    \item[]%
+    \begin{picture}(0,0)(0,0)
+      \put(-15,-5){\makebox(0,0){%
+   \scalebox{4.5}{\textcolor{quotemark}{\bfseries \glqq}}}%
+      }
+    \end{picture}\em\ignorespaces%
+}{%
+  \newline%
+  \makebox[0pt][l]{\hspace{0.6\textwidth}%
+  \begin{picture}(0,0)(0,0)
+    \put(15,10){\makebox(0,0){%
+ \scalebox{4.5}{\textcolor{quotemark}{\rmfamily\bfseries \grqq}}}%
+    }
+  \end{picture}}%
+  \fqauthor
+  \end{list}
+}
+
+% Fixes wrong spacing in the TOC
+\usepackage[tocgraduated]{tocstyle}
+\usetocstyle{standard}
+
+% Enables named references, where the name is typeset
+% Available on ctan at http://www.ctan.org/pkg/refenums and in latest MiKTeX and TeXLive
+\usepackage{refenums}
+
+%introduce \powerset - hint by http://matheplanet.com/matheplanet/nuke/html/viewtopic.php?topic=136492&post_id=997377
+\DeclareFontFamily{U}{MnSymbolC}{}
+\DeclareSymbolFont{MnSyC}{U}{MnSymbolC}{m}{n}
+\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+    <-6>  MnSymbolC5
+   <6-7>  MnSymbolC6
+   <7-8>  MnSymbolC7
+   <8-9>  MnSymbolC8
+   <9-10> MnSymbolC9
+  <10-12> MnSymbolC10
+  <12->   MnSymbolC12%
+}{}
+\DeclareMathSymbol{\powerset}{\mathord}{MnSyC}{180}
+
+
+%useful commands
+
+% Gegenstück zu \enquote
+\newcommand{\enbracket}[1]{(#1)\xspace}
+
+%%% Kommentare im PDF
+
+%Kommentare und Aenderungen
+
+%New text:
+%1. Parameter: Comment
+%2. Parameter: New text
+\newcommand{\change}[2]{{\color{red}#2}\pdfcomment[color={0.234 0.867 0.211},voffset=8pt,opacity=0.5]{#1}}
+%Disabled variant - for the final PDF
+%\newcommand{\change}[2]{#2}
+
+%Small PDF comment
+%1. Parameter: Comment
+\newcommand{\comment}[1]{\pdfcomment[color={0.045 0.278 0.643},voffset=4pt,icon=Note]{#1}}
+%Disabled variant - for the final PDF
+%\newcommand{\comment}[2]{}
+
+% Textmarker (Textfarbe rot)
+\newcommand{\textmarker}[1]{{\color{red} #1}\xspace}
+% Modified (Text blau)
+\newcommand{\modified}[1]{{\color{blue!60!black} #1}\xspace}
+
+
+% Symbole Check und Cross
+\usepackage{pifont}
+\newcommand{\dingcheck}{\ding{51}}
+\newcommand{\dingcross}{\ding{55}}
+%for scaling see http://tex.stackexchange.com/a/130236/9075
+
+%fix incompatibilities between KOMA and other packages, mainly float.
+%should be loaded at the very end - see http://tex.stackexchange.com/a/156256/9075
+\usepackage{scrhack}
+
 \usepackage{shared/titlepage}
 
 % binding correction
