@@ -16,7 +16,11 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Added
 
 * Example PDFs are generated using GitHub actions and published on GitHub pages
-* CHANGELOG.md
+* `CHANGELOG.md`
+
+### Changed
+
+- Footnotes are now continous throughout the document. [#24](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/24)
 
 ### Fixed
 
