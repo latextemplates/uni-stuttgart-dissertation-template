@@ -1,5 +1,7 @@
-thesis-example.pdf
-thesis-example-*.pdf
+Dockerfile
+
+main.pdf
+main-*.pdf
 graphics/*.pdf_tex
 democode.tex
 
