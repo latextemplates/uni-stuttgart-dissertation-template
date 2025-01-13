@@ -45,7 +45,7 @@ jobs:
            --bibtextool=bibtex\
            --overleaf=true\
            --texlive=2024\
-           --lang=${{ matrix.lang }}\\
+           --lang=${{ matrix.lang }}\
            --listings=${{ matrix.listings }}\
            --cleveref=true\
            --enquotes=csquotes\
