@@ -56,6 +56,7 @@ jobs:
         env:
           yeoman_test: false
       - name: Prepare files
+        working-directory: /tmp/ltg
         run: |
           if [ "${{ matrix.listings }}" == "listings" ]; then
             if [ "${{ matrix.lang }}" == "en" ]; then
