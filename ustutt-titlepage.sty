@@ -1,0 +1,97 @@
+% -*- coding:utf-8 mod:LaTeX -*-
+% Title page for Ph.D. thesis at the University of Stuttgart.
+
+\newcommand{\TBlabel}[1]{\textbf{#1}\hfil}
+\newenvironment{TBlist}{%
+  \list{}{\labelwidth 35mm \leftmargin 51mm % alt: 35/60 mm
+          \rightmargin 10mm \let\makelabel\TBlabel}%
+}{\endlist}
+
+\newcommand*{\firstexaminer}[1]{\def\@firstexaminer{#1\xspace}}
+\def\@firstexaminer{
+	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\firstexaminer given}}
+\newcommand*{\secondexaminer}[1]{\def\@secondexaminer{#1\xspace}}
+\def\@secondexaminer{
+	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\secondexaminer given}}
+\newcommand*{\dateofexamination}[1]{\def\@dateofexamination{#1\xspace}}
+\def\@dateofexamination{
+	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\dateofexamination given}}
+\newcommand*{\placeofbirth}[1]{\def\@placeofbirth{#1\xspace}}
+\def\@placeofbirth{
+	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\placeofbirth given}}
+%
+\newcommand*{\faculty}[1]{\def\@faculty{#1\xspace}}
+% Liste der Fakultäten: http://www.uni-stuttgart.de/ueberblick/organisation/fakultaeten/
+\def\@faculty{
+	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\faculty given}}
+%
+% Degree
+% Akademischer Grad gemäß § 1 Abs. 1
+\newcommand*{\degree}[1]{\def\@degree{#1\xspace}}
+\def\@degree{Doktors der Naturwissenschaften (Dr.~rer.~nat.)\xspace}
+%
+\newcommand*{\department}[1]{\def\@department{#1\xspace}}
+\def\@department{
+	\@latex@warning@no@line{Package `ustutt-titlepage': No \noexpand\department given}}
+%
+\newcommand*{\university}[1]{\def\@university{#1\xspace}}
+\def\@university{Universit\"at Stuttgart\xspace}
+%
+\newcommand*{\keywords}[1]{\def\@keywords{#1}}
+\def\@keywords{}
+
+\renewcommand\maketitle{
+  \typeout{ustutt-titlepage used for \textbackslash{}maketitle}
+  %\hypersetup{pdftitle={\@title}}
+  %\hypersetup{pdfauthor=\@author}
+  %hypersetup{pdfkeywords=\@keywords}
+  \thispagestyle{empty}
+  \begin{titlepage}
+    \begin{spacing}{1.3}
+    \setcounter{footnote}{0}
+    %\null\vfil
+    %\vskip 60\p@
+    \begin{center}
+      \setlength{\parskip}{0pt}
+      \includegraphics[width=6cm]{ustutt-logo.pdf}\\
+      \vspace{18pt}
+      {\LARGE \textbf \@title \par}
+      \vspace{30pt}
+      {Von der \@faculty der \@university
+       zur Erlangung der W\"urde eines
+       \@degree
+       genehmigte Abhandlung \par}
+      %\bigskip
+      \vspace{25pt}
+      {Vorgelegt von \par}
+      \vspace{.8ex}
+      {\large \@author \par}
+      \vspace{.8ex}
+      {aus \@placeofbirth \par}
+      \vspace{30pt}
+      \begin{tabular}{ll}
+      	\textbf{Hauptberichter:} & \@firstexaminer \\
+      	\textbf{Mitberichter:} & \@secondexaminer \\
+      	&\\
+      	\textbf{Tag der m\"undlichen Pr\"ufung:} & \@dateofexamination
+      \end{tabular}
+      \vspace{30pt}\par\vfill
+      {\@department \par}
+	  \vspace{10pt}
+	  {2016}
+    \end{center}
+    \end{spacing}
+  \end{titlepage}
+  \setcounter{footnote}{0}
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  %\global\let\@author\@empty
+  %\global\let\@date\@empty
+  %\global\let\@title\@empty
+  %\global\let\title\relax
+  %\global\let\author\relax
+  %\global\let\date\relax
+  %\global\let\and\relax
+  \cleardoublepage
+}
