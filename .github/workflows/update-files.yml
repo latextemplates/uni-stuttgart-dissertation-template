@@ -106,6 +106,7 @@ jobs:
           git pull
           # use latexmkrc (which is disabled due to easy overleaf usage)
           cp _latexmkrc latexmkrc
+          head latexmkrc
       - name: Install TeX Live
         uses: zauguin/install-texlive@v3
         with:
