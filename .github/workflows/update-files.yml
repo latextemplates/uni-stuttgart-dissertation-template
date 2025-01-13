@@ -39,6 +39,7 @@ jobs:
         run: |
           yo $GITHUB_WORKSPACE/generator-latex-template/generators/app/index.js \
            --githubpublish\
+           --docker=no\
            --documentclass=ustutt\
            --latexcompiler=both\
            --bibtextool=bibtex\
