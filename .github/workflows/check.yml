@@ -1,53 +1,28 @@
+name: latexmk thesis-example
 on:
   push:
-  schedule:
-    - cron: "5 5 5 * *"
   workflow_dispatch:
 concurrency:
-  group: check
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
   cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
-    services:
-      registry:
-        image: registry:2
-        ports:
-          - 5000:5000
     steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-        with:
-          driver-opts: network=host
-      - name: Cache Docker layers
-        uses: actions/cache@v2
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx
-      - name: Build Docker image
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: localhost:5000/name/app:latest
-          file: test/Dockerfile
       - name: Set up Git repository
-        uses: actions/checkout@v3
-      - run: |
-          mkdir /tmp/out
-          mkdir /tmp/res
-      - run: docker run -v $(pwd):/work/src -v /tmp/out:/work/out localhost:5000/name/app:latest work "test/check.sh"
-      - run: mv /tmp/out/*.pdf /tmp/res
-      - uses: actions/upload-artifact@v2
+        uses: actions/checkout@v4
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v3
+        with:
+          package_file: '${{ github.workspace }}/Texlivefile'
+      - name: Prepare latexmk
+        run: |
+          updmap -sys
+          texhash
+          tlmgr generate language --rebuild-sys
+      - run: latexmk thesis-example
+      - uses: actions/upload-artifact@v4
         with:
           name: test-result
           path: |
-            /tmp/res/*.pdf
-      - name: publish
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /tmp/res
-          enable_jekyll: false
+            thesis-example.pdf
