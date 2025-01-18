@@ -1,4 +1,7 @@
-# LaTeX Document
+# University of Stuttgart PhD Thesis Template
+
+> Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
+
 
 To build the whole document, execute following command.
 Note that this requires a working perl installation.
@@ -25,6 +28,8 @@ Following features are enabled in this template:
 - [microtypographic extensions](https://www.ctan.org/pkg/microtype) for a better look of the paper.
 - Modern packages such as [microtype], [cleveref], [csquotes], [paralist], [hyperref], [hypcap], [upquote], [booktabs].
 - (Optional) LaTeX compilation using the modern lualatex compiler.
+- [biblatex]+[biber] instead of plain [bibtex] to have a more intuitive `.bib` file.
+- [latexmk] for easy compilation of the LaTeX document.
 - Ready-to-go configuration for [latexindent].
 - Proper hyphenation and microtype for English texts.
 - Hints on writing an abstract and thesis by Dirk Fahland.
@@ -126,12 +131,16 @@ If you don't do this, `latexmk` tries to execute `latex`, which tries to produce
 
 - Other templates: <https://latextemplates.github.io/>
 
+[biber]: https://www.ctan.org/pkg/biber
+[biblatex]: http://tex.stackexchange.com/tags/biblatex/info
+[bibtex]: https://www.ctan.org/pkg/bibtex
 [booktabs]: https://ctan.org/pkg/booktabs
 [cleveref]: https://ctan.org/pkg/cleveref
 [csquotes]: https://www.ctan.org/pkg/csquotes
 [hypcap]: https://www.ctan.org/pkg/hypcap
 [hyperref]: https://ctan.org/pkg/hyperref
 [latexindent]: https://ctan.org/pkg/latexindent
+[latexmk]: http://tex.stackexchange.com/tags/latexmk/info
 [microtype]: https://ctan.org/pkg/microtype
 [minted]: https://ctan.org/pkg/minted
 [natbib]: https://ctan.org/pkg/natbib

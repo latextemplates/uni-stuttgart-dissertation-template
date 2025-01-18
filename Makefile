@@ -88,7 +88,7 @@ edit:
 aspell:
 	for tex in $(TEX_FILES);	\
 		do	\
-			aspell -t -l de_DE -d german -T utf-8 -c $$tex --encoding=utf-8;	\
+			aspell --mode=tex -l en_US --encoding=utf-8 -c $$tex; \
 		done
 
 showundef:
