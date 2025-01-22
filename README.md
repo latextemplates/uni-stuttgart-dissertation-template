@@ -60,7 +60,6 @@ You can run the [latex template generator] to enable the features.
 
 Congratulations. You chose to use all available features.
 
-
 ## Tool hints
 
 ### Prerequisites
