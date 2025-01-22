@@ -1,6 +1,8 @@
 name: Check
 on:
   push:
+  schedule:
+    - cron: "5 6 * * 1"
   workflow_dispatch:
 concurrency:
   group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
