@@ -10,7 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Changed
 
 - Major restructuring to support the [LaTeX Template Generator](https://github.com/latextemplates/generator-latex-template).
-- Includes `shared/template.tex` in `thesis-example.tex`.
+- Moved contents of `shared/template.tex` into `thesis-example.tex` for having a single `.tex` file.
 
 ## 2022-06-04
 
