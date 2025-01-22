@@ -50,6 +50,7 @@ Following features are enabled in this template:
 - Support todos as pdf annotations. This is enabled by the [pdfcomment] package.
 - [microtypographic extensions](https://www.ctan.org/pkg/microtype) for a better look of the paper.
 - Modern packages such as [microtype], [cleveref], [csquotes], [paralist], [hyperref], [hypcap], [upquote], [booktabs].
+- LaTeX compilation using the modern lualatex compiler.
 - [biblatex]+[biber] instead of plain [bibtex] to have a more intuitive `.bib` file.
 - [latexmk] for easy compilation of the LaTeX document.
 - Ready-to-go configuration for [latexindent].
