@@ -70,24 +70,18 @@
 
 %math stuff
 \usepackage[
-   centertags, % (default) center tags vertically
-   %tbtags,    % 'Top-or-bottom tags': For a split equation, place equation numbers level
-               % with the last (resp. first) line, if numbers are on the right (resp. left).
-   sumlimits,  %(default) Place the subscripts and superscripts of summation
-               % symbols above and below
-   %nosumlimits, % Always place the subscripts and superscripts of summation-type
-               % symbols to the side, even in displayed equations.
-   intlimits,  % Like sumlimits, but for integral symbols.
-   %nointlimits, % (default) Opposite of intlimits.
-   namelimits, % (default) Like sumlimits, but for certain 'operator names' such as
-               % det, inf, lim, max, min, that traditionally have subscripts placed underneath
-               % when they occur in a displayed equation.
-   %nonamelimits, % Opposite of namelimits.
-   %leqno,     % Place equation numbers on the left.
-   %reqno,     % Place equation numbers on the right.
-   fleqn,     % Position equations at a fixed indent from the left margin
-   			  % rather than centered in the text column.
-]{amsmath} %
+  centertags,    % (default) center tags vertically
+  % tbtags,        % 'Top-or-bottom tags': For a split equation, place equation numbers level with the last (resp. first) line, if numbers are on the right (resp. left).
+  sumlimits,    % (default) Place the subscripts and superscripts of summation symbols above and below
+  % nosumlimits,   % Always place the subscripts and superscripts of summation-type symbols to the side, even in displayed equations.
+  intlimits,     % Like sumlimits, but for integral symbols.
+  % nointlimits,   % (default) Opposite of intlimits.
+  namelimits,    % (default) Like sumlimits, but for certain 'operator names' such as det, inf, lim, max, min, that traditionally have subscripts placed underneath when they occur in a displayed equation.
+  % nonamelimits,  % Opposite of namelimits.
+  % leqno,         % Place equation numbers on the left.
+  % reqno,         % Place equation numbers on the right.
+  fleqn,         % Position equations at a fixed indent from the left margin rather than centered in the text column.
+]{amsmath}
 \SetMathAlphabet{\mathcal}{normal}{OMS}{amsa}{m}{n} %% AMS font for mathcal
 
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/mh/doc/mathtools.pdf
@@ -168,22 +162,22 @@
 \ifluatex
   \usepackage[no-math]{fontspec}
   \usepackage{unicode-math}
-  \makeatletter
+
   \usepackage{ifplatform}
   \ifwindows
     \setmainfont{XCharter}
     \setsansfont[Ligatures=TeX]{Arial}
   \else
-  \usepackage{helvet} % source: comment to https://tex.stackexchange.com/q/212357/9075
-  \setmainfont{XCharter}
+    \usepackage{helvet} % source: comment to https://tex.stackexchange.com/q/212357/9075
+    \setmainfont{XCharter}
   \fi
+
   % Use Inconsolata font (https://ctan.org/pkg/inconsolata)
   % See https://tex.stackexchange.com/q/2241/9075 for a list of other alternative mono-spaced fonts
   % No [Ligatures=TeX], because we want " rendered as upquotes, not as typographic correct ones
   % shapely l, upright quotes
   % If it is too large, add ",Scale=.9"
   \setmonofont[StylisticSet={1,3}]{Inconsolatazi4}
-  \makeatother
 
   % Enable proper ligatures
   % For more information see https://ctan.org/pkg/selnolig
@@ -296,21 +290,21 @@
 \clearmainofpairofpagestyles
 
 \newcommand{\setchapterfooter}[1]{%
-	\def\mydummy{#1}
-	\renewcommand{\chaptermark}[1]{%
-		\markright{\textbf{\thechapter}~|~\mydummy}{}}
+  \def\mydummy{#1}
+  \renewcommand{\chaptermark}[1]{%
+    \markright{\textbf{\thechapter}~|~\mydummy}{}}
 }
 
 \newcommand{\resetchapterfooter}{%
- 	\renewcommand{\chaptermark}[1]{%
- 		\markright{\textbf{\thechapter}~|~##1}{}}
+  \renewcommand{\chaptermark}[1]{%
+    \markright{\textbf{\thechapter}~|~##1}{}}
 }
 
 \renewcommand{\chaptermark}[1]{%
-\markright{\textbf{\thechapter}~|~#1}{}}
+  \markright{\textbf{\thechapter}~|~#1}{}}
 
 \renewcommand{\sectionmark}[1]{%
-\markleft{\textbf{\thesection}~|~#1}{}}
+  \markleft{\textbf{\thesection}~|~#1}{}}
 
 \ofoot[\pagemark]{\pagemark}
 \refoot{\rightmark}
@@ -323,30 +317,30 @@
 \usepackage{fncychap}
 % Code for my fancy chapters.
 \makeatletter
-  \ChNameVar{\normalfont\Large\scshape} % sets the style for name
-  \ChNumVar{\fontsize{85}{100}\selectfont\sffamily\color{white}}
-  \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
-  \renewcommand{\DOCH}{%
-    \setlength{\fboxrule}{\RW}
-    \makebox[12.34cm][r]{
-      \rotatebox{90}{
-        \makebox[2cm]{
-          \resizebox{2.5cm}{!}{ %\fboxsep=6pt
-            \CNV\FmN{\space\@chapapp}
-          }
+\ChNameVar{\normalfont\Large\scshape} % sets the style for name
+\ChNumVar{\fontsize{85}{100}\selectfont\sffamily\color{white}}
+\ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
+\renewcommand{\DOCH}{%
+  \setlength{\fboxrule}{\RW}
+  \makebox[12.34cm][r]{
+    \rotatebox{90}{
+      \makebox[2cm]{
+        \resizebox{2.5cm}{!}{ %\fboxsep=6pt
+          \CNV\FmN{\space\@chapapp}
         }
       }
-      \resizebox{!}{2.5cm}{ \fboxsep=6pt
-        \CNoV\colorbox{black!40}{\thechapter}
-      }
-    }\par\nobreak
-    \vskip 0\p@}
-  \renewcommand{\DOTI}[1]{%
-    \CTV\FmTi{#1}\par\nobreak
-    \vskip 40\p@}
-  \renewcommand{\DOTIS}[1]{%
-    \CTV\FmTi{#1}\par\nobreak
-    \vskip 40\p@}
+    }
+    \resizebox{!}{2.5cm}{ \fboxsep=6pt
+      \CNoV\colorbox{black!40}{\thechapter}
+    }
+  }\par\nobreak
+  \vskip 0\p@}
+\renewcommand{\DOTI}[1]{%
+  \CTV\FmTi{#1}\par\nobreak
+  \vskip 40\p@}
+\renewcommand{\DOTIS}[1]{%
+  \CTV\FmTi{#1}\par\nobreak
+  \vskip 40\p@}
 \makeatother
 
 \usepackage{graphicx}
@@ -442,8 +436,7 @@
 % Extended enumerate, such as \begin{compactenum}
 \usepackage{paralist}
 \usepackage[
-  backend       = biber, %biber does not work with 64x versions alternative: bibtex8
-%minalphanames only works with biber backend
+  backend       = biber, %biber does not work with 64x versions alternative: bibtex8; minalphanames only works with biber backend
   sortcites     = true,
   bibstyle      = alphabetic,
   citestyle     = alphabetic,
@@ -493,16 +486,19 @@
 % enable hyperlinked author names when using \citeauthor
 % source: http://tex.stackexchange.com/a/75916/9075
 \DeclareCiteCommand{\citeauthor}
-{\boolfalse{citetracker}%
-\boolfalse{pagetracker}%
-\usebibmacro{prenote}}
-{\ifciteindex
-{\indexnames{labelname}}
-{}%
-\printtext[bibhyperref]{\printnames{labelname}}}
+{
+  \boolfalse{citetracker}%
+  \boolfalse{pagetracker}%
+  \usebibmacro{prenote}
+}
+{
+  \ifciteindex
+  {\indexnames{labelname}}
+  {}%
+  \printtext[bibhyperref]{\printnames{labelname}}
+}
 {\multicitedelim}
 {\usebibmacro{postnote}}
-
 
 % Reduce size of bib font: http://tex.stackexchange.com/questions/329/how-to-change-font-size-for-bibliography
 \renewcommand{\bibfont}{\normalfont\small}
@@ -522,7 +518,6 @@
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/supertabular/supertabular.pdf
 %\usepackage{supertabular}
 
-
 %%% Neue Tabellen-Umgebungen:
 % ---------------------------
 % Spalten automatischer Breite:
@@ -534,8 +529,7 @@
 % Tabellen ueber mehere Seiten
 % ----------------------------
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/carlisle/ltxtable.pdf
-% \usepackage{ltxtable} % Longtable + tabularx
-                        % (multi-page tables) + (auto-sized columns in a fixed width table)
+% \usepackage{ltxtable} % Longtable + tabularx (multi-page tables) + (auto-sized columns in a fixed width table)
 % -> nach hyperref laden
 
 %%% Fussnoten/Endnoten ===================================================
@@ -543,16 +537,15 @@
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/footmisc/footmisc.pdf
 %
 \usepackage[
-   bottom,      % Footnotes appear always on bottom. This is necessary
-                % Especially when floats are used
-   stable,      % Make footnotes stable in section titles
-   % perpage,     % Reset on each page
-   % para,        % Place footnotes side by side of in one paragraph.
-   % side,        % Place footnotes in the margin
-   ragged,      % Use RaggedRight
-   %n orule,     % Suppress rule above footnotes
-   multiple,    % Rearrange multiple footnotes intelligent in the text.
-   % symbol,      % Use symbols instead of numbers
+  bottom,      % Footnotes appear always on bottom. This is necessary specially when floats are used
+  stable,      % Make footnotes stable in section titles
+  % perpage,     % Reset on each page
+  % para,        % Place footnotes side by side of in one paragraph.
+  % side,        % Place footnotes in the margin
+  ragged,      % Use RaggedRight
+  % norule,      % Suppress rule above footnotes
+  multiple,    % Rearrange multiple footnotes intelligent in the text.
+  % symbol,      % Use symbols instead of numbers
 ]{footmisc}
 
 \counterwithout{footnote}{chapter} % Continuous numbering of footnotes across chapters
@@ -677,8 +670,7 @@
   pdfdisplaydoctitle=true, % Dokumententitel statt Dateiname im Fenstertitel
   pdfpagemode=UseOutlines, % Bookmarks im Viewer anzeigen
   pdfpagelabels=true,      % set PDF page labels
-  pdfpagelayout=TwoPageRight, % zweiseitige Darstellung: ungerade Seiten
-  									 % rechts im PDF-Viewer
+  pdfpagelayout=TwoPageRight, % zweiseitige Darstellung: ungerade Seiten rechts im PDF-Viewer
   %pdfpagelayout=SinglePage, % einseitige Darstellung
   colorlinks=true,       % Links erhalten Farben statt Kaeten
   raiselinks=true,       % calculate real height of the link
@@ -713,7 +705,7 @@
 % pass; useful, for example, to ensure all floats for a section
 % appear before the next \section command.
 \usepackage[
-	section		% "\section" command will be redefined with "\FloatBarrier"
+  section % "\section" command will be redefined with "\FloatBarrier"
 ]{placeins}
 %
 
@@ -736,13 +728,13 @@
 
 %%% Doc: http://www.ctan.org/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf
 \usepackage[%
-%	outercaption,%	(default) caption is placed always on the outside side
-%	innercaption,% caption placed on the inner side
-%	leftcaption,%  caption placed on the left side
-	rightcaption,% caption placed on the right side
-%	wide,%			caption of float my extend into the margin if necessary
-%	margincaption,% caption set into margin
-	ragged,% caption is set ragged
+  %	outercaption,    % (default) caption is placed always on the outside side
+  %	innercaption,    % caption placed on the inner side
+  %	leftcaption,     % caption placed on the left side
+  rightcaption,    % caption placed on the right side
+  %	wide,            % caption of float my extend into the margin if necessary
+  %	margincaption,   % caption set into margin
+  ragged,          % caption is set ragged
 ]{sidecap}
 
 \renewcommand\sidecaptionsep{2em}
@@ -919,23 +911,28 @@
 %% --- Descriptions with line breaks in labels ---------------------------------
 \usepackage{calc}
 
-\newcommand*\Descriptionlabel[1]
-{\raisebox{0pt}[1ex][0pt]
-  {\makebox[\labelwidth][1]
-    {\parbox[t]{\labelwidth}
-      {\hspace{0pt}\textbf{#1:}}}}}
-
-\newcommand*\Descriptionlabelx[1]
-{\parbox[t]{\textwidth}
-  {\textbf{#1}\\\mbox{}}
+\newcommand*\Descriptionlabel[1]{%
+  \raisebox{0pt}[1ex][0pt]{
+    \makebox[\labelwidth][1]{
+      \parbox[t]{\labelwidth}{
+        \hspace{0pt}\textbf{#1:}}}}
 }
 
-\newenvironment{Description}
-{\begin{list}{}{\let\makelabel\Descriptionlabelx
-    \setlength\labelwidth{1em}
-    \setlength\leftmargin{\labelwidth+\labelsep}}}
-{\end{list}}
+\newcommand*\Descriptionlabelx[1]{%
+  \parbox[t]{\textwidth}{
+    \textbf{#1}\\\mbox{}}
+}
 
+\newenvironment{Description}{
+  \begin{list}{}{
+      \let\makelabel\Descriptionlabelx
+      \setlength\labelwidth{1em}
+      \setlength\leftmargin{\labelwidth+\labelsep}
+    }
+    }
+    {
+  \end{list}
+}
 
 % globally change line spacing of lists
 % paralist has suspended development since 10 years.
@@ -959,28 +956,28 @@
 \newenvironment{fquote}[1][]{%
   \newcommand{\fqauthor}{\relax}
   \ifthenelse{\isempty{#1}}
-  	{}% do nothing
-  	{\renewcommand{\fqauthor}{\hfill\textsc{--- #1}}}
+  {}% do nothing
+  {\renewcommand{\fqauthor}{\hfill\textsc{--- #1}}}
   \vspace{1em}
   \begin{list}{}{%
       \setlength{\leftmargin}{0.2\textwidth}
       \setlength{\rightmargin}{0.2\textwidth}
     }
     \item[]%
-    \begin{picture}(0,0)(0,0)
-      \put(-15,-5){\makebox(0,0){%
-	  \scalebox{4.5}{\textcolor{quotemark}{\bfseries``}}}%
-      }
-    \end{picture}\em\ignorespaces%
-}{%
-  \newline%
-  \makebox[0pt][l]{\hspace{0.6\textwidth}%
-  \begin{picture}(0,0)(0,0)
-    \put(15,10){\makebox(0,0){%
-	\scalebox{4.5}{\textcolor{quotemark}{\rmfamily\bfseries''}}}%
-    }
-  \end{picture}}%
-  \fqauthor
+          \begin{picture}(0,0)(0,0)
+            \put(-15,-5){\makebox(0,0){%
+                \scalebox{4.5}{\textcolor{quotemark}{\bfseries``}}}%
+            }
+          \end{picture}\em\ignorespaces%
+          }{%
+          \newline%
+          \makebox[0pt][l]{\hspace{0.6\textwidth}%
+            \begin{picture}(0,0)(0,0)
+              \put(15,10){\makebox(0,0){%
+                  \scalebox{4.5}{\textcolor{quotemark}{\rmfamily\bfseries''}}}%
+              }
+            \end{picture}}%
+          \fqauthor
   \end{list}
 }
 
@@ -991,28 +988,28 @@
 \newenvironment{gfquote}[1]{%
   \newcommand{\fqauthor}{\relax}
   \ifthenelse{\isempty{#1}}
-   {}% do nothing
-   {\renewcommand{\fqauthor}{\hfill\textsc{\textemdash #1}}}
+  {}% do nothing
+  {\renewcommand{\fqauthor}{\hfill\textsc{\textemdash #1}}}
   \vspace{1em}
   \begin{list}{}{%
       \setlength{\leftmargin}{0.2\textwidth}
       \setlength{\rightmargin}{0.2\textwidth}
     }
     \item[]%
-    \begin{picture}(0,0)(0,0)
-      \put(-15,-5){\makebox(0,0){%
-   \scalebox{4.5}{\textcolor{quotemark}{\bfseries \glqq}}}%
-      }
-    \end{picture}\em\ignorespaces%
-}{%
-  \newline%
-  \makebox[0pt][l]{\hspace{0.6\textwidth}%
-  \begin{picture}(0,0)(0,0)
-    \put(15,10){\makebox(0,0){%
- \scalebox{4.5}{\textcolor{quotemark}{\rmfamily\bfseries \grqq}}}%
-    }
-  \end{picture}}%
-  \fqauthor
+          \begin{picture}(0,0)(0,0)
+            \put(-15,-5){\makebox(0,0){%
+                \scalebox{4.5}{\textcolor{quotemark}{\bfseries \glqq}}}%
+            }
+          \end{picture}\em\ignorespaces%
+          }{%
+          \newline%
+          \makebox[0pt][l]{\hspace{0.6\textwidth}%
+            \begin{picture}(0,0)(0,0)
+              \put(15,10){\makebox(0,0){%
+                  \scalebox{4.5}{\textcolor{quotemark}{\rmfamily\bfseries \grqq}}}%
+              }
+            \end{picture}}%
+          \fqauthor
   \end{list}
 }
 
@@ -1052,15 +1049,13 @@
 %% --- Zusammenfassung/Kurzfassung -------------------------------
 \chapter*{Kurzfassung}
 \begin{otherlanguage}{ngerman}
-%Silbentrennung Deutsch
-Kurzfassung der Arbeit.
+  %Silbentrennung Deutsch
+  Kurzfassung der Arbeit.
 \end{otherlanguage}
 \clearpage
 
 %% --- Abstract Page---------------------------------------------
 \chapter*{Abstract}
-\begin{otherlanguage}{american}
-% Silbentrennung auf Englisch
 \emph{Write an abstract for your work.
   Replace each of the points below with one sentence (two if you must) and you have your abstract.
   Write it when you finished your entire report.
@@ -1114,12 +1109,12 @@ What can they do with your research.
 
 %\pagestyle{justpagenums}
 \pagestyle{scrheadings}
-\end{otherlanguage}
 \clearpage
 
 %% --- Acknowledgements page------------------------------------
 \chapter*{Danksagungen}
-I would like to thank the little green men from Mars. Without their anal probing equipment, the medical experiments on the monkeys described in this thesis would have been considerably more unpleasant for all parties involved.
+I would like to thank the little green men from Mars.
+Without their probing equipment, the medical experiments on the monkeys described in this thesis would have been considerably more unpleasant for all parties involved.
 \clearpage
 
 
@@ -1891,7 +1886,8 @@ Varioref demonstration: Vref at beginning of sentence, vref in all other cases.
 Referencetest: \Cref{ssec:example}, \cref{fig:Abbildung} und \cref{alg:example}.
 
 \begin{ltgexample}
-Checkmark: \dingcheck. Crossmark: \dingcross.
+Checkmark: \dingcheck.
+Crossmark: \dingcross.
 \end{ltgexample}
 
 \begin{figure}
@@ -1920,12 +1916,12 @@ Checkmark: \dingcheck. Crossmark: \dingcross.
 \end{algorithm}
 
 \begin{algorithm}
-\caption{Algorithmus 2}
-\label{alg:example2}
-\begin{algorithmic}[1]
-\State $a \gets 0$
-\State State 2\label{alg2:state2}
-\end{algorithmic}
+  \caption{Algorithmus 2}
+  \label{alg:example2}
+  \begin{algorithmic}[1]
+    \State $a \gets 0$
+    \State State 2\label{alg2:state2}
+  \end{algorithmic}
 \end{algorithm}
 
 \Cref{alg:example} hat bereits einen Algorithmus gezeigt.
@@ -1933,8 +1929,8 @@ Test der Zeilenreferenzierung: Zeile~\ref{alg1:state2} (\cref{alg:example}) und 
 
 \subsection{Definitionen}
 \begin{definition}[Title]
-\label{def:def1}
-Definition Text
+  \label{def:def1}
+  Definition Text
 \end{definition}
 
 \Cref{def:def1} zeigt \ldots
@@ -1942,80 +1938,81 @@ Definition Text
 \subsection{Aufzählungen}
 
 \begin{enumerate}[label=\alph*)]
-\item a
-\item b
-\item c
-\item d
+  \item a
+  \item b
+  \item c
+  \item d
 \end{enumerate}
 
 Equivalent to paralist's inparaenum:
 \begin{enumerate*}[label=\alph*)]
-\item a
-\item b
-\item c
-\item d
+  \item a
+  \item b
+  \item c
+  \item d
 \end{enumerate*}
 
 \begin{description}
-\item[first] Erstens
-\item[second] Zweitens
-\item[third] Drittens
+  \item[first] Erstens
+  \item[second] Zweitens
+  \item[third] Drittens
 \end{description}
 
 \begin{description}
-\item[\texttt{first}] Erstens
-\item[\texttt{second}] Zweitens
-\item[\texttt{third}] Drittens
+  \item[\texttt{first}] Erstens
+  \item[\texttt{second}] Zweitens
+  \item[\texttt{third}] Drittens
 \end{description}
 
 %works only if package enumitem is loaded
 \begin{description}[font=\ttfamily]
-\item[first] Erstens
-\item[second] Zweitens
-\item[third] Drittens
+  \item[first] Erstens
+  \item[second] Zweitens
+  \item[third] Drittens
 \end{description}
 
 \begin{description}[style=unboxed]
-\item[first label with a long description text breaking over one line. Enabled by enumitem package] Erstens
-\item[second] Zweitens
-\item[third] Drittens
+  \item[first label with a long description text breaking over one line. Enabled by enumitem package] Erstens
+  \item[second] Zweitens
+  \item[third] Drittens
 \end{description}
 
 \begin{Description}
-\item[first label with a long description text breaking over one line. Defined in template.tex] Erstens
-\item[second] Zweitens
-\item[third] Drittens
+  \item[first label with a long description text breaking over one line. Defined in template.tex] Erstens
+  \item[second] Zweitens
+  \item[third] Drittens
 \end{Description}
 
 \begin{itemize}
-\item Erstens
-\item Zweitens
-\item Drittens
+  \item Erstens
+  \item Zweitens
+  \item Drittens
 \end{itemize}
 
-Optionaler Parameter ändert den Marker, der vorangestellt ist. Siehe \url{http://www.weinelt.de/latex/item.html}.
+Optionaler Parameter ändert den Marker, der vorangestellt ist.
+Siehe \url{http://www.weinelt.de/latex/item.html}.
 \begin{itemize}
-\item[A] Erstens
-\item[B] Zweitens
-\item[C] Drittens
+  \item[A] Erstens
+  \item[B] Zweitens
+  \item[C] Drittens
 \end{itemize}
 
 Falsche Benutzung des optionalen Parameters wie folgt:
 \begin{itemize}
-\item[first] Erstens
-\item[second] Zweitens
-\item[third] Drittens
+  \item[first] Erstens
+  \item[second] Zweitens
+  \item[third] Drittens
 \end{itemize}
 Dabei ist zu beachten, dass es sich bei Einbindung von \texttt{enumitem} anders verhält als bei \texttt{paralist}.
 
 \subsection{fquote}
 
 \begin{fquote}[T.\ Informatiker]
-Bis nächsten Freitag ist das Programm fertig.
+  Bis nächsten Freitag ist das Programm fertig.
 \end{fquote}
 
 \begin{gfquote}{T.\ Informatiker}
-Bis nächsten Freitag ist das Programm fertig.
+  Bis nächsten Freitag ist das Programm fertig.
 \end{gfquote}
 
 
