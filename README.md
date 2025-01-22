@@ -2,6 +2,25 @@
 
 > Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
+## Example PDFs
+
+- Thesis: [thesis-example.pdf](thesis-example.pdf)
+- Book cover: [cover.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/cover.pdf)
+- Spine of the book cover: [spine.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/spine.pdf)
+
+## Prerequisites
+
+- Windows: Recent [MiKTeX](http://miktex.org/)
+- Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) (e.g. through [MacTeX](https://tug.org/mactex/)) - Try `sudo tlmgr update --all` if you encounter issues with biblatex
+- Linux: Recent TeX Live distribution
+
+## Usage
+
+- `thesis-example.tex` is the main document
+- `make` or `latexmk` for compilation
+- `make clean` or `latexmk -C` for cleaning up
+- `make aspell` for interactive spell checking
+
 
 To build the whole document, execute following command.
 Note that this requires a working perl installation.
@@ -18,16 +37,19 @@ In case something goes wrong, you can instruct the LaTeX compiler to stop at the
 
 Following features are enabled in this template:
 
+- Output format is A5
+- Title page
+- Nice chapter headings
+- Important LaTeX packages are enabled
 - (Optional) Typesetting of listings using advanced highlighting powered by the [minted] package.
 - Generated PDF allows for copy and paste of text without getting words with ligatures such as "workflow" destroyed.
   This is enabled by `glyphtounicode`, which encodes ligatures (such as fl) using unicode characters.
 - Support of hyperlinked references without extra color thanx to [hyperref].
 - Better breaking of long URLs.
 - Support for `\powerset` command.
-- (Optional) Support todos as pdf annotations. This is enabled by the [pdfcomment] package.
+- Support todos as pdf annotations. This is enabled by the [pdfcomment] package.
 - [microtypographic extensions](https://www.ctan.org/pkg/microtype) for a better look of the paper.
 - Modern packages such as [microtype], [cleveref], [csquotes], [paralist], [hyperref], [hypcap], [upquote], [booktabs].
-- (Optional) LaTeX compilation using the modern lualatex compiler.
 - [biblatex]+[biber] instead of plain [bibtex] to have a more intuitive `.bib` file.
 - [latexmk] for easy compilation of the LaTeX document.
 - Ready-to-go configuration for [latexindent].
@@ -69,6 +91,18 @@ Following one-time setup is required:
     docker build -t ltg .
 
 ## FAQs
+
+### Q: How to rename `thesis-example.tex`?
+
+You probably don't want your document to be named `example`. In order to change this,
+replace the term `thesis-example` by e.g., `thesis-topic-name` in the following locations:
+
+| location                | occurrence                                |
+|-------------------------|-------------------------------------------|
+| `cover-print/cover.tex` | `\includegraphics{../thesis-example.pdf}` |
+| `.gitignore`            | `thesis-example.pdf`                      |
+| `.gitignore`            | `thesis-example*.png`                     |
+| `Makefile`              | `MASTER_TEX = thesis-example.tex`         |
 
 ### Q: I get the error `Reload initiated (formats: otf,ttf,ttc); reason: Font "Inconsolatazi4" not found.`
 
