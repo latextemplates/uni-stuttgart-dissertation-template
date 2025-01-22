@@ -58,8 +58,8 @@ jobs:
         run: |
           # remove files which should not be overwritten
 
-          if [ "${{ matrix.listings }}" != "listings" || [ "${{ matrix.lang }}" != "de" ]; then
-            mv thesis-example.tex thesis-example-"${{ matrix.listings }}-${{ matrix.lang }}.tex
+          if [ "${{ matrix.listings }}" != "listings" ] || [ "${{ matrix.lang }}" != "de" ]; then
+            mv thesis-example.tex thesis-example-${{ matrix.listings }}-${{ matrix.lang }}.tex
             rm abbreviations.tex
           fi
           # thesis-example.tex is the German thesis with listings package
