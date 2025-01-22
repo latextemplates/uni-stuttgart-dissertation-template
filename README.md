@@ -4,15 +4,12 @@
 
 ## Example PDFs
 
-- Thesis: [thesis-example.pdf](thesis-example.pdf)
+- Thesis 🇩🇪: [thesis-example.pdf](thesis-example.pdf)
+- Thesis 🇺🇸: [thesis-example-listings-en.pdf](thesis-example-listings-en.pdf)
+- Thesis (minted) 🇩🇪: [thesis-example-minted-de.pdf](thesis-example-minted-de.pdf)
+- Thesis (minted) 🇺🇸: [thesis-example-example-minted-en.pdf](thesis-example-example-minted-en.pdf)
 - Book cover: [cover.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/cover.pdf)
 - Spine of the book cover: [spine.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/spine.pdf)
-
-## Prerequisites
-
-- Windows: Recent [MiKTeX](http://miktex.org/)
-- Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) (e.g. through [MacTeX](https://tug.org/mactex/)) - Try `sudo tlmgr update --all` if you encounter issues with biblatex
-- Linux: Recent TeX Live distribution
 
 ## Usage
 
@@ -20,7 +17,6 @@
 - `make` or `latexmk` for compilation
 - `make clean` or `latexmk -C` for cleaning up
 - `make aspell` for interactive spell checking
-
 
 To build the whole document, execute following command.
 Note that this requires a working perl installation.
@@ -64,15 +60,16 @@ You can run the [latex template generator] to enable the features.
 
 Congratulations. You chose to use all available features.
 
+
 ## Tool hints
 
-MiKTeX installation hints are given at <http://latextemplates.github.io/scientific-thesis-template/#installation-hints-for-windows>.
+### Prerequisites
 
-- Grammar and spell checking is available at [TeXstudio].
-  Please download [LanguageTool] (Windows: `choco install languagetool`) and [configure TeXstudio to use it](http://wiki.languagetool.org/checking-la-tex-with-languagetool#toc4).
-  Note that it is enough to point to `languagetool.jar`.
-  **If TeXstudio doesn't fit your need, check [the list of all available LaTeX Editors](http://tex.stackexchange.com/questions/339/latex-editors-ides).**
-- Use [JabRef] to manage your bibliography (Windows: `choco install jabref`).
+- Windows: Recent [MiKTeX](http://miktex.org/). MiKTeX installation hints are given at <http://latextemplates.github.io/scientific-thesis-template/#installation-hints-for-windows>.
+- Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) (e.g. through [MacTeX](https://tug.org/mactex/)) - Try `sudo tlmgr update --all` if you encounter issues with biblatex
+- Linux: Recent TeX Live distribution
+
+### Usage of `minted`
 
 To have minted running properly, you have to do following steps on Windows:
 
@@ -80,6 +77,14 @@ To have minted running properly, you have to do following steps on Windows:
 2. Install [pygments]: `pip instal pygments` - that uses the Pyhton package manager to install the pygments library
 3. When latexing, use `-shell-escape`: `pdflatex -shell-escape thesis-example`.
    You can also just execute `latexmk thesis-example`.
+
+### Other hints
+
+- Grammar and spell checking is available at [TeXstudio].
+  Please download [LanguageTool] (Windows: `choco install languagetool`) and [configure TeXstudio to use it](http://wiki.languagetool.org/checking-la-tex-with-languagetool#toc4).
+  Note that it is enough to point to `languagetool.jar`.
+  **If TeXstudio doesn't fit your need, check [the list of all available LaTeX Editors](http://tex.stackexchange.com/questions/339/latex-editors-ides).**
+- Use [JabRef] to manage your bibliography (Windows: `choco install jabref`).
 
 ## Usage with docker
 
@@ -112,7 +117,7 @@ Install package `inconsolata`
 ### Q: How can I synchronize updates from the template to my repository?
 
 1. Initialize your git repository as usual
-2. Add this repository as upstream: `git remote add upstream https://github.com/latextemplates/LNCS.git`
+2. Add this repository as upstream: `git remote add upstream https://github.com/latextemplates/{template}.git`
 3. Merge the branch `upstream/main` into your `main` branch: `git merge upstream/main`.
 
 After that you can use and push the `main` branch as usual.
