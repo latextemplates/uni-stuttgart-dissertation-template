@@ -120,12 +120,19 @@ jobs:
       - run: latexmk thesis-example-listings-en
       - run: latexmk thesis-example-minted-de
       - run: latexmk thesis-example-minted-en
+      - name: Create cover.pdf
+        run: |
+          cd cover-print
+          pdflatex cover
+      - name: Create spine.pdf
+        run: |
+          cd shared/spine-print
+          pdflatex spine
       - run: |
           mkdir publish
           cp thesis-example*.pdf publish/
-          cp paper.tex publish/
-          cp README.md publish/
-          cp .github/_config.yml publish/
+          cp cover-print/cover.pdf publish/
+          cp shared/spine-print/spine.pdf publish/
       - uses: actions/upload-artifact@v4
         with:
           name: publish
