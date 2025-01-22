@@ -132,7 +132,7 @@ jobs:
           mkdir publish
           cp thesis-example*.pdf publish/
           cp print-version--cover/cover.pdf publish/
-          cp print-version--cover/spine.pdf publish/
+          cp print-version--spine/spine.pdf publish/
       - uses: actions/upload-artifact@v4
         with:
           name: publish
