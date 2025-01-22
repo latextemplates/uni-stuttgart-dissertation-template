@@ -56,31 +56,26 @@ jobs:
       - name: Prepare files
         working-directory: /tmp/ltg
         run: |
-          if [ "${{ matrix.listings }}" == "listings" ]; then
-            if [ "${{ matrix.lang }}" == "en" ]; then
-              mv thesis-example.tex thesis-example-listings-${{ matrix.lang }}.tex
-              rm Makefile
-            rm abbreviations.tex
-            fi
-            # thesis-example.tex is the German thesis with listings package
-          else
-            mv thesis-example.tex thesis-example-minted-${{ matrix.lang }}.tex
-            rm Makefile
+          # remove files which should not be overwritten
+
+          if [ "${{ matrix.listings }}" != "listings" || [ "${{ matrix.lang }}" != "de" ]; then
+            mv thesis-example.tex thesis-example-"${{ matrix.listings }}-${{ matrix.lang }}.tex
             rm abbreviations.tex
           fi
-
-          # remove files which should not be overwritten
+          # thesis-example.tex is the German thesis with listings package
 
           # Some files _latexmkrc alternates between including and excluding "--shell-escape"; we just want to keep the minted + de version of it
           if [ "${{ matrix.listings }}" != "minted" ] || [ "${{ matrix.lang }}" != "de" ]; then
+            rm Makefile
             rm _latexmkrc
             rm -r .github/workflows
           fi
 
-          # the LICENSE of the repository should be kept
+          # the LICENSE of the repository itself should be kept
           rm LICENSE
 
           # Files are ready
+
           # Overwrite old versions in $GITHUB_WORKSPACE
           cp -r * $GITHUB_WORKSPACE
           cp -r .* $GITHUB_WORKSPACE
