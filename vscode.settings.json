@@ -6,7 +6,16 @@
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.recipes": [
         {
-            "name": "pdflatex ➞ bibtex ➞ pdflatex × 2 🔃",
+            "name": "lualatex ➞ biber ➞ lualatex × 2 🔃",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex ➞ biber ➞ pdflatex × 2 🔃",
             "tools": [
                 "pdflatex",
                 "bibtex",
@@ -18,32 +27,6 @@
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
-                "-outdir=%OUTDIR%",
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "lualatexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-lualatex",
-                "-outdir=%OUTDIR%",
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "latexmk_rconly",
             "command": "latexmk",
             "args": [
                 "%DOC%"
@@ -62,7 +45,18 @@
             "env": {}
         },
         {
-            "name": "bibtex",
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
             "command": "biber",
             "args": [
                 "%DOCFILE%"
