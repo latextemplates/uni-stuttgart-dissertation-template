@@ -1,6 +1,10 @@
+.github
+Dockerfile
+generator-latex-template
+
 thesis-example.pdf
 thesis-example-*.pdf
-figures/*.pdf_tex
+graphics/*.pdf_tex
 
 # spelling
 *.spell.bad

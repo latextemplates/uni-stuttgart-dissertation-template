@@ -11,10 +11,6 @@
 % grid
 ]{bookcover}
 
-
-% UTF-8
-\usepackage[utf8]{inputenc}
-
 % Font
 \usepackage{XCharter}
 \usepackage[T1]{fontenc}
@@ -58,7 +54,7 @@
 \vfill
 \centering
 %SOURCE: http://tex.stackexchange.com/a/12712/9075
-\begin{tabular}{C{.3\textwidth}C{.3\textwidth}R{.3\textwidth}}
+\begin{tabular}{C{.3\linewidth}C{.3\linewidth}R{.3\linewidth}}
 & \includegraphics{barcode.png} & \includegraphics[scale=.5]{publisher-logo.pdf}\phantom{.....} \\
 \end{tabular}
 \vspace{0.9cm}
@@ -70,7 +66,6 @@
 %\centering
 %\includegraphics{barcode.png}
 %}
-
 
 % Buchruecken
 \setbookcover{fgfirst}{spine}{
@@ -84,7 +79,7 @@ Vorname Nachname} \\
 %
 \centering
 \rotatebox[origin=c]{90}{%
-Der komplette Titel der Dissertation} \\
+Titel der Dissertation} \\
 %
 \vfill
 %
@@ -94,13 +89,10 @@ Der komplette Titel der Dissertation} \\
 \vspace{1.0cm}
 }
 
-
 % Titelseite
 \setbookcover{fgfirst}{front}{
-%\includegraphics{thesis-titlepage.pdf}
-\includegraphics{../thesis-example.pdf}
+  \includegraphics{../thesis-example.pdf}
 }
-
 
 \makebookcover
 \end{document}

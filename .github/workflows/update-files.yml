@@ -1,0 +1,150 @@
+name: Update Files
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+concurrency:
+  group: update-files
+  cancel-in-progress: true
+jobs:
+  generatetex:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        listings: [listings, minted]
+        lang: ["de", "en"]
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          ref: '${{ github.event.pull_request.head.ref }}'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: 'generator-latex-template/package-lock.json'
+      - name: Make generator available globally
+        working-directory: ${{ github.workspace }}/generator-latex-template
+        run: |
+          npm install
+          npm link
+          npm install -g yo
+      - run: mkdir /tmp/ltg
+      - name: Generate template
+        shell: bash
+        working-directory: /tmp/ltg
+        run: |
+          yo $GITHUB_WORKSPACE/generator-latex-template/generators/app/index.js \
+           --githubpublish\
+           --docker=iot\
+           --documentclass=ustutt\
+           --latexcompiler=both\
+           --overleaf=true\
+           --texlive=2024\
+           --lang=${{ matrix.lang }}\
+           --listings=${{ matrix.listings }}\
+           --enquotes=csquotes\
+           --tweakouterquote=babel\
+           --todo=pdfcomment\
+           --examples=true\
+           --howtotext=true
+        env:
+          yeoman_test: false
+      - name: Prepare files
+        working-directory: /tmp/ltg
+        run: |
+          # remove files which should not be overwritten
+
+          if [ "${{ matrix.listings }}" != "listings" ] || [ "${{ matrix.lang }}" != "de" ]; then
+            mv thesis-example.tex thesis-example-${{ matrix.listings }}-${{ matrix.lang }}.tex
+            rm abbreviations.tex
+          fi
+          # thesis-example.tex is the German thesis with listings package
+
+          # Some files _latexmkrc alternates between including and excluding "--shell-escape"; we just want to keep the minted + de version of it
+          if [ "${{ matrix.listings }}" != "minted" ] || [ "${{ matrix.lang }}" != "de" ]; then
+            rm Makefile
+            rm _latexmkrc
+            rm -r .github/workflows
+          fi
+
+          # the LICENSE of the repository itself should be kept
+          rm LICENSE
+
+          # Files are ready
+
+          # Overwrite old versions in $GITHUB_WORKSPACE
+          cp -r * $GITHUB_WORKSPACE
+          cp -r .* $GITHUB_WORKSPACE
+
+          # output current status
+          cd ${{ github.workspace }}
+          git status
+          git diff
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Add latex template generator updates'
+          author_name: 'github-actions[bot]'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          push: false
+      - name: Push changes
+        run: |
+          parallel --retries 10 --delay 9 ::: "git status; git pull --rebase && git push"
+  publish:
+    runs-on: ubuntu-latest
+    needs: [generatetex]
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+        with:
+          ref: '${{ github.event.pull_request.head.ref }}'
+      - run: |
+          # ensure latest updates
+          git pull
+          # use latexmkrc (which is disabled due to easy overleaf usage)
+          cp _latexmkrc latexmkrc
+          head latexmkrc
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v3
+        with:
+          package_file: '${{ github.workspace }}/Texlivefile'
+      - name: Prepare latexmk
+        run: |
+          updmap -sys
+          texhash
+          tlmgr generate language --rebuild-sys
+      - run: latexmk thesis-example
+      - run: latexmk thesis-example-listings-en
+      - run: latexmk thesis-example-minted-de
+      - run: latexmk thesis-example-minted-en
+      - name: Create cover.pdf
+        run: |
+          cd print-version--cover
+          pdflatex cover
+      - name: Create spine.pdf
+        run: |
+          cd print-version--spine
+          pdflatex spine
+      - run: |
+          mkdir publish
+          cp thesis-example*.pdf publish/
+          cp print-version--cover/cover.pdf publish/
+          cp print-version--spine/spine.pdf publish/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: publish
+          path: publish/
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          enable_jekyll: true
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'

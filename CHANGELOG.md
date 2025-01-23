@@ -5,12 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
-## [Unreleased]
+## [2025-01-23]
 
 ### Changed
 
 - Major restructuring to support the [LaTeX Template Generator](https://github.com/latextemplates/generator-latex-template).
 - Moved contents of `shared/template.tex` into `thesis-example.tex` for having a single `.tex` file.
+
+### Fixed
+
+- Year on the title page is derived from `\date{\today}`.
 
 ## 2022-06-04
 
@@ -27,6 +31,6 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `Dockerfile` is now for TeXLive 2022
 
-[Unreleased]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2022-06-04...HEAD
+[2025-01-23]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2022-06-04...2025-01-23
 
 <!-- markdownlint-disable-file MD013 MD024 CHANGELOG-RULE-003 -->
