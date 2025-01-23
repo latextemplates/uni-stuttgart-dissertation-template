@@ -12,6 +12,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - Major restructuring to support the [LaTeX Template Generator](https://github.com/latextemplates/generator-latex-template).
 - Moved contents of `shared/template.tex` into `thesis-example.tex` for having a single `.tex` file.
 
+### Fixed
+
+- Year on the title page is derived from `\date{\today}`.
+
 ## 2022-06-04
 
 ### Added
