@@ -14,8 +14,14 @@
 ## Usage
 
 - `thesis-example.tex` is the main document
-- `make` or `latexmk` for compilation
-- `make clean` or `latexmk -C` for cleaning up
+- Use "lualatex + biber" in your TeX editor or `latexmk  thesis-example`/`make` in the command line
+
+Advanced:
+
+On the command line, there are additional features:
+
+- `latexmk -C` or `make clean` for cleaning up
+- `make format` to reformat the `.tex` files (one sentence per line and indent)
 - `make aspell` for interactive spell checking
 
 To build the whole document, execute following command.
@@ -95,10 +101,10 @@ Update the following lines in the VSCode `settings.json` to contain:
 ```json
     "latex-workshop.latex.recipes": [
         {
-            "name": "lualatex ➞ biber ➞ lualatex × 2 🔃",
+            "name": "lualatex ➞ biblatex ➞ lualatex × 2 🔃",
             "tools": [
                 "lualatex",
-                "biber",
+                "biblatex",
                 "lualatex",
                 "lualatex"
             ]
@@ -107,8 +113,8 @@ Update the following lines in the VSCode `settings.json` to contain:
     "latex-workshop.latex.tools": [
         ...
         {
-            "name": "biber",
-            "command": "biber", # make sure this is not bibtex!
+            "name": "biblatex",
+            "command": "biblatex",
             "args": [
                 "%DOCFILE%"
             ],

@@ -6,7 +6,7 @@
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.recipes": [
         {
-            "name": "lualatex ➞ biber ➞ lualatex × 2 🔃",
+            "name": "lualatex ➞ biblatex ➞ lualatex × 2 🔃",
             "tools": [
                 "pdflatex",
                 "bibtex",
@@ -15,7 +15,7 @@
             ]
         },
         {
-            "name": "pdflatex ➞ biber ➞ pdflatex × 2 🔃",
+            "name": "pdflatex ➞ biblatex ➞ pdflatex × 2 🔃",
             "tools": [
                 "pdflatex",
                 "bibtex",
@@ -56,8 +56,8 @@
             "env": {}
         },
         {
-            "name": "biber",
-            "command": "biber",
+            "name": "biblatex",
+            "command": "biblatex",
             "args": [
                 "%DOCFILE%"
             ],
