@@ -14,15 +14,12 @@
 ## Usage
 
 - `thesis-example.tex` is the main document
-- Use "lualatex + biber" in your TeX editor or `latexmk  thesis-example`/`make` in the command line
+- Use "lualatex + biblatex" in your TeX editor or `latexmk  thesis-example` / `make` in the command line
 
-Advanced:
+### Using `latexmk`
 
-On the command line, there are additional features:
-
-- `latexmk -C` or `make clean` for cleaning up
-- `make format` to reformat the `.tex` files (one sentence per line and indent)
-- `make aspell` for interactive spell checking
+[latexmk] is a very smart tool for latex compilation.
+It executes the latex tools as often as needed to get the final PDF.
 
 To build the whole document, execute following command.
 Note that this requires a working perl installation.
@@ -31,13 +28,21 @@ Note that this requires a working perl installation.
 latexmk thesis-example
 ```
 
-To enable this, please move `_latexmkrc` to `latexmkrc`.
+To enable latexmk, please move `_latexmkrc` to `latexmkrc`.
 
 In case something goes wrong, you can instruct the LaTeX compiler to stop at the first error:
 
 ```bash
 lualatex thesis-example
 ```
+
+### Advanced usage
+
+On the command line, there are additional features:
+
+- `latexmk -C` or `make clean` for cleaning up
+- `make format` to reformat the `.tex` files (one sentence per line and indent)
+- `make aspell` for interactive spell checking
 
 ## Benefits
 
