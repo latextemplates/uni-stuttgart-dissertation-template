@@ -87,7 +87,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          message: 'Update files based on generated files by template generator'
+          message: 'Add latex template generator updates'
           author_name: 'github-actions[bot]'
           author_email: 'github-actions[bot]@users.noreply.github.com'
           push: false
