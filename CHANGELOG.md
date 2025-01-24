@@ -10,6 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Fixed
 
 - Fixed links to example PDFs. [#23](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/23)
+- Fixed indent issues in German example document.
 
 ### Added
 
