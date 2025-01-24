@@ -7,15 +7,15 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ## [2025-01-25]
 
-### Fixed
-
-- Fixed links to example PDFs. [#23](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/23)
-- Fixed indent issues in German example document.
-
 ### Added
 
 - Added [TeXcount](https://app.uio.no/ifi/texcount/index.html) to GitHub workflow summary.
 - GitHub workflow job summary for `latexmk` generated using [texlogsieve](https://ctan.org/pkg/texlogsieve).
+
+### Fixed
+
+- Fixed links to example PDFs. [#23](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/23)
+- Fixed indent issues in German example document.
 
 ## [2025-01-23]
 
