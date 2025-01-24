@@ -58,13 +58,13 @@ jobs:
           package_file: '${{ github.workspace }}/Texlivefile'
       - name: Count words
         run: |
-          texcount -utf8 -inc -out-stderr thesis-example.tex > texcount.txt
+          texcount -utf8 -inc thesis-example.tex > texcount.txt
           echo "## TeXcount word count" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          cat "texcount.html" >> $GITHUB_STEP_SUMMARY
+          cat "texcount.txt" >> $GITHUB_STEP_SUMMARY
 
-          texcount -utf8 -inc -v -html -out-stderr thesis-example.tex > texcount.html
-          texcount -utf8 -inc -v -htmlcore -out-stderr thesis-example.tex > texcount.html-body
+          texcount -utf8 -inc -v -html thesis-example.tex > texcount.html
+          texcount -utf8 -inc -v -htmlcore thesis-example.tex > texcount.html-body
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## TeXcount LaTeX interpretation" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
