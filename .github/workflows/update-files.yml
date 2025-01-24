@@ -119,42 +119,18 @@ jobs:
           updmap -sys
           texhash
           tlmgr generate language --rebuild-sys
-      - run: |
-          latexmk thesis-example
+      - name: Build all examples
+        run: |
+          for doc in "thesis-example" "thesis-example-listings-en" "thesis-example-minted-de" "thesis-example-minted-en"; do
+            latexmk "$doc"
 
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo "## thesis-example" >>  $GITHUB_STEP_SUMMARY
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          texlogsieve < thesis-example.log >> $GITHUB_STEP_SUMMARY || true
-          echo '```' >> $GITHUB_STEP_SUMMARY
-      - run: |
-          latexmk thesis-example-listings-en
-
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo "## thesis-example-listings-en" >>  $GITHUB_STEP_SUMMARY
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          texlogsieve < thesis-example-listings-en.log >> $GITHUB_STEP_SUMMARY || true
-          echo '```' >> $GITHUB_STEP_SUMMARY
-      - run: |
-          latexmk thesis-example-minted-de
-
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo "## thesis-example-minted-de" >>  $GITHUB_STEP_SUMMARY
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          texlogsieve < thesis-example-minted-de.log >> $GITHUB_STEP_SUMMARY || true
-          echo '```' >> $GITHUB_STEP_SUMMARY
-      - run:  |
-          latexmk thesis-example-minted-en
-
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo "## thesis-example-minted-en" >>  $GITHUB_STEP_SUMMARY
-          echo "" >>  $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          texlogsieve < thesis-example-minted-en.log >> $GITHUB_STEP_SUMMARY || true
-          echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## $doc" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            texlogsieve < "$doc.log" >> "$GITHUB_STEP_SUMMARY" || true
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          done
       - name: Create cover.pdf
         run: |
           cd print-version--cover
