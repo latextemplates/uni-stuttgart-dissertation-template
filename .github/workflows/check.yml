@@ -27,6 +27,8 @@ jobs:
             cp "_latexmkrc" "latexmkrc"
           fi
       - run: latexmk thesis-example
+
+      # Highlight mis-spelled words in the PDF
       - uses: bscott-zebra/cache-apt-pkgs-action@avoid_using_xargs
         with:
           packages: aspell aspell-en aspell-de
