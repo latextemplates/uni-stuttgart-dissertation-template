@@ -80,6 +80,8 @@ jobs:
           cp -r * $GITHUB_WORKSPACE
           cp -r .* $GITHUB_WORKSPACE
 
+          ls -la
+
           # output current status
           cd ${{ github.workspace }}
           git status
@@ -117,18 +119,40 @@ jobs:
           updmap -sys
           texhash
           tlmgr generate language --rebuild-sys
-      - run: latexmk thesis-example
-      - run: latexmk thesis-example-listings-en
-      - run: latexmk thesis-example-minted-de
-      - run: latexmk thesis-example-minted-en
+      - name: Build all examples
+        run: |
+          for doc in "thesis-example" "thesis-example-listings-en" "thesis-example-minted-de" "thesis-example-minted-en"; do
+            latexmk "$doc"
+
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## $doc" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            texlogsieve < "$doc.log" >> "$GITHUB_STEP_SUMMARY" || true
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          done
       - name: Create cover.pdf
         run: |
           cd print-version--cover
           pdflatex cover
+
+          echo "" >>  $GITHUB_STEP_SUMMARY
+          echo "## cover" >>  $GITHUB_STEP_SUMMARY
+          echo "" >>  $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          texlogsieve < cover.log >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
       - name: Create spine.pdf
         run: |
           cd print-version--spine
           pdflatex spine
+
+          echo "" >>  $GITHUB_STEP_SUMMARY
+          echo "## spine" >>  $GITHUB_STEP_SUMMARY
+          echo "" >>  $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          texlogsieve < spine.log >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
       - run: |
           mkdir publish
           cp thesis-example*.pdf publish/

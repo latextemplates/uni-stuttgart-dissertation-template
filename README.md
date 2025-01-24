@@ -4,10 +4,10 @@
 
 ## Example PDFs
 
-- Thesis 🇩🇪: [thesis-example.pdf](thesis-example.pdf)
-- Thesis 🇺🇸: [thesis-example-listings-en.pdf](thesis-example-listings-en.pdf)
-- Thesis (minted) 🇩🇪: [thesis-example-minted-de.pdf](thesis-example-minted-de.pdf)
-- Thesis (minted) 🇺🇸: [thesis-example-example-minted-en.pdf](thesis-example-example-minted-en.pdf)
+- Thesis 🇩🇪: [thesis-example.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example.pdf)
+- Thesis 🇺🇸: [thesis-example-listings-en.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-listings-en.pdf)
+- Thesis (minted) 🇩🇪: [thesis-example-minted-de.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-minted-de.pdf)
+- Thesis (minted) 🇺🇸: [thesis-example-example-minted-en.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-example-minted-en.pdf)
 - Book cover: [cover.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/cover.pdf)
 - Spine of the book cover: [spine.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/spine.pdf)
 
