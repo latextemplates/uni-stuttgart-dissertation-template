@@ -127,10 +127,16 @@ jobs:
         run: |
           cd print-version--cover
           pdflatex cover
+          echo "```" >> $GITHUB_STEP_SUMMARY || true
+          texlogsieve < cover.log >> $GITHUB_STEP_SUMMARY || true
+          echo "```" >> $GITHUB_STEP_SUMMARY || true
       - name: Create spine.pdf
         run: |
           cd print-version--spine
           pdflatex spine
+          echo "```" >> $GITHUB_STEP_SUMMARY || true
+          texlogsieve < spine.log >> $GITHUB_STEP_SUMMARY || true
+          echo "```" >> $GITHUB_STEP_SUMMARY || true
       - run: |
           mkdir publish
           cp thesis-example*.pdf publish/
