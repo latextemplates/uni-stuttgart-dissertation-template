@@ -43,7 +43,10 @@ jobs:
       - run: latexmk thesis-example
 
       - name: Job summary using texlogsieve
-        run: texlogsieve < thesis-example.log >> $GITHUB_STEP_SUMMARY || true
+        run: |
+          echo "```" >> $GITHUB_STEP_SUMMARY || true
+          texlogsieve < thesis-example.log >> $GITHUB_STEP_SUMMARY || true
+          echo "```" >> $GITHUB_STEP_SUMMARY || true
       - uses: actions/upload-artifact@v4
         with:
           name: test-result
