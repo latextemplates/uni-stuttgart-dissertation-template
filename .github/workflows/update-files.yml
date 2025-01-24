@@ -80,6 +80,8 @@ jobs:
           cp -r * $GITHUB_WORKSPACE
           cp -r .* $GITHUB_WORKSPACE
 
+          ls -la
+
           # output current status
           cd ${{ github.workspace }}
           git status
