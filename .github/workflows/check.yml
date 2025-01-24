@@ -64,19 +64,22 @@ jobs:
           cat "texcount.txt" >> $GITHUB_STEP_SUMMARY
 
           texcount -utf8 -inc -v -html thesis-example.tex > texcount.html
-          texcount -utf8 -inc -v -htmlcore thesis-example.tex > texcount.html-body
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## TeXcount LaTeX interpretation" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          cat "texcount.html-body" >> $GITHUB_STEP_SUMMARY
+
+          # output for summary
+          # too verbose - therefore disabled
+          #
+          # texcount -utf8 -inc -v -htmlcore thesis-example.tex > texcount.html-body
+          # echo "" >> $GITHUB_STEP_SUMMARY
+          # echo "## TeXcount LaTeX interpretation" >> $GITHUB_STEP_SUMMARY
+          # echo "" >> $GITHUB_STEP_SUMMARY
+          # cat "texcount.html-body" >> $GITHUB_STEP_SUMMARY
       - uses: actions/upload-artifact@v4
         with:
           name: test-result
           path: |
-            thesis-example.pdf
             texcount.txt
             texcount.html
-  spell-checking:
+  spell-check:
     # This is based on https://github.com/mh61503891/action-paper-aspell/tree/master
     #
     runs-on: ubuntu-latest
