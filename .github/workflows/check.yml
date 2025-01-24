@@ -18,6 +18,19 @@ jobs:
         uses: zauguin/install-texlive@v3
         with:
           package_file: '${{ github.workspace }}/Texlivefile'
+      - name: Count words
+        run: |
+          texcount -utf8 -inc -out-stderr thesis-example.tex > texcount.txt
+          echo "## TeXcount word count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat "texcount.txt" >> $GITHUB_STEP_SUMMARY
+
+          texcount -utf8 -inc -v -html -out-stderr thesis-example.tex > texcount.html
+          texcount -utf8 -inc -v -htmlcore -out-stderr thesis-example.tex > texcount.html-body
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## TeXcount LaTeX interpretation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat "texcount.html-body" >> $GITHUB_STEP_SUMMARY
       - name: Prepare latexmk
         run: |
           updmap -sys
@@ -42,21 +55,6 @@ jobs:
           done
       - run: latexmk thesis-example
 
-      - name: Count words
-        run: |
-          texcount -utf8 -inc -out-stderr thesis-example.tex > texcount.txt
-          echo "## TeXcount word count" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          cat "texcount.html" >> $GITHUB_STEP_SUMMARY
-
-          texcount -utf8 -inc -v -html -out-stderr thesis-example.tex
-
-          texcount -utf8 -inc -v -html -out-stderr thesis-example.tex > texcount.html
-          texcount -utf8 -inc -v -htmlcore -out-stderr thesis-example.tex > texcount.html-body
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## TeXcount LaTeX interpretation" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          cat "texcount.html-body" >> $GITHUB_STEP_SUMMARY
       - uses: actions/upload-artifact@v4
         with:
           name: test-result
