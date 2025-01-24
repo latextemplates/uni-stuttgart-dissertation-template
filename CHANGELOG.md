@@ -11,6 +11,11 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - Fixed links to example PDFs. [#23](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/23)
 
+### Added
+
+- Added [TeXcount](https://app.uio.no/ifi/texcount/index.html) to GitHub workflow.
+- GitHub workflow job summary for `latexmk` generated using [texlogsieve](https://ctan.org/pkg/texlogsieve).
+
 ## [2025-01-23]
 
 ### Changed
