@@ -49,6 +49,8 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           cat "texcount.html" >> $GITHUB_STEP_SUMMARY
 
+          texcount -utf8 -inc -v -html -out-stderr thesis-example.tex
+
           texcount -utf8 -inc -v -html -out-stderr thesis-example.tex > texcount.html
           texcount -utf8 -inc -v -htmlcore -out-stderr thesis-example.tex > texcount.html-body
           echo "" >> $GITHUB_STEP_SUMMARY
