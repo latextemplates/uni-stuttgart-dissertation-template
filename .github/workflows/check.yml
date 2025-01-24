@@ -39,11 +39,26 @@ jobs:
             aspell --mode=tex -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.en.pws list < $tex | sort | uniq >> thesis-example.spell.bad
           done
       - run: latexmk thesis-example
+
+      - name: Count words
+        run: |
+          texcount -inc thesis-example.tex > texcount.txt
+          echo "## TeXcount word count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat "texcount.html" >> $GITHUB_STEP_SUMMARY
+
+          texcount -inc -v -html thesis-example.tex > texcount.html
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## TeXcount LaTeX interpretation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat "texcount.html" >> $GITHUB_STEP_SUMMARY
       - uses: actions/upload-artifact@v4
         with:
           name: test-result
           path: |
             thesis-example.pdf
+            texcount.txt
+            texcount.html
   spell-checking:
     # This is based on https://github.com/mh61503891/action-paper-aspell/tree/master
     #
