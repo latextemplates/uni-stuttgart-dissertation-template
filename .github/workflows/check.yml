@@ -42,11 +42,14 @@ jobs:
           done
       - run: latexmk thesis-example
 
+      - name: Job summary using texlogsieve
+        run: texlogsieve < thesis-example.log >> $GITHUB_STEP_SUMMARY || true
       - uses: actions/upload-artifact@v4
         with:
           name: test-result
           path: |
             thesis-example.pdf
+            thesis-example.log
   word-count:
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +78,7 @@ jobs:
           # cat "texcount.html-body" >> $GITHUB_STEP_SUMMARY
       - uses: actions/upload-artifact@v4
         with:
-          name: test-result
+          name: word-count
           path: |
             texcount.txt
             texcount.html
