@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
-## [2025-01-24]
+## [2025-01-25]
 
 ### Fixed
 
@@ -14,7 +14,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
-- Added [TeXcount](https://app.uio.no/ifi/texcount/index.html) to GitHub workflow.
+- Added [TeXcount](https://app.uio.no/ifi/texcount/index.html) to GitHub workflow summary.
 - GitHub workflow job summary for `latexmk` generated using [texlogsieve](https://ctan.org/pkg/texlogsieve).
 
 ## [2025-01-23]
@@ -43,7 +43,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `Dockerfile` is now for TeXLive 2022
 
-[2025-01-24]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-01-23...2025-01-24
+[2025-01-25]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-01-23...2025-01-25
 [2025-01-23]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2022-06-04...2025-01-23
 
 <!-- markdownlint-disable-file MD013 MD024 CHANGELOG-RULE-003 -->
