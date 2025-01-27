@@ -260,6 +260,15 @@ If you don't do this, `latexmk` tries to execute `latex`, which tries to produce
 
 - Other templates: <https://latextemplates.github.io/>
 
+## License
+
+The license of this work is [0BSD](https://spdx.org/licenses/0BSD.html) which corresponds to "public domain".
+Any derived work can freely be relicensed and can omit original copyright and license information.
+
+### Exceptions
+
+- `ustutt-logo.pdf` is restricted. See section "Verwendung des Logos bei Abschlussarbeiten wie Dissertationen, Bachelor- und Masterarbeiten sowie Hausarbeiten" at <https://www.beschaeftigte.uni-stuttgart.de/uni-services/oeffentlichkeitsarbeit/corporate-design/logo-und-schrift/> for details.
+
 [biber]: https://www.ctan.org/pkg/biber
 [biblatex]: http://tex.stackexchange.com/tags/biblatex/info
 [bibtex]: https://www.ctan.org/pkg/bibtex
