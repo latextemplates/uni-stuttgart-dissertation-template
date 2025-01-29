@@ -11,6 +11,12 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - Changed names of example files (no `-listings` part for English template).
 
+### Fixed
+
+- Fixed magic comment `!BIB program` for biblatex.
+- Database mode for JabRef is now biblatex.
+- Fixed path to `cover.tex` in `README.md`.
+
 ## [2025-01-25]
 
 ### Added
