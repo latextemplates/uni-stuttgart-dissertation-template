@@ -216,12 +216,12 @@ Following additional files are included, which do not need to be adapted:
 You probably don't want your document to be named `example`. In order to change this,
 replace the term `thesis-example` by e.g., `thesis-topic-name` in the following locations:
 
-| location                | occurrence                                |
-|-------------------------|-------------------------------------------|
-| `cover-print/cover.tex` | `\includegraphics{../thesis-example.pdf}` |
-| `.gitignore`            | `thesis-example.pdf`                      |
-| `.gitignore`            | `thesis-example*.png`                     |
-| `Makefile`              | `MASTER_TEX = thesis-example.tex`         |
+| location                         | occurrence                                |
+|----------------------------------|-------------------------------------------|
+| `print-version--cover/cover.tex` | `\includegraphics{../thesis-example.pdf}` |
+| `.gitignore`                     | `thesis-example.pdf`                      |
+| `.gitignore`                     | `thesis-example*.png`                     |
+| `Makefile`                       | `MASTER_TEX = thesis-example.tex`         |
 
 ### Q: I get the error `Reload initiated (formats: otf,ttf,ttc); reason: Font "Inconsolatazi4" not found.`
 
