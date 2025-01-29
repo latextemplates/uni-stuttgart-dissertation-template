@@ -9,7 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
-- Changed names of example files (no `-listings` part and `-german` and `-english` instead of `-de` / `-en`).
+- Changed names of example files (no `-listings` part for English template).
 
 ## [2025-01-25]
 
