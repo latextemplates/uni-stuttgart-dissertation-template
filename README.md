@@ -79,7 +79,7 @@ Following features are enabled in this template:
 - Nice chapter headings
 - Most recent LaTeX packages and package configuration based on long-time experience.
 - (Optional) Typesetting of listings using advanced highlighting powered by the [minted] package.
- `mitned` provides better output than [listings], but requires [pygments] to be installed.
+  `mitned` provides better output than [listings], but requires [pygments] to be installed.
 - Generated PDF allows for copy and paste of text without getting words with [ligatures](https://en.wikipedia.org/wiki/Typographic_ligature) such as "workflow" destroyed.
   This is enabled by `glyphtounicode`, which encodes ligatures (such as fl) using unicode characters.
 - Ligatures are removed if they are typeset at the wrong place.
@@ -115,7 +115,6 @@ Congratulations. You chose to use all available features.
 - Linux: Recent TeX Live distribution
 
 See [docs/latex-setup](docs/latex-setup) for refined installation instructions.
-
 
 ### Usage of `minted`
 
@@ -218,7 +217,6 @@ Following one-time setup is required:
 ```cmd
 docker build -t ltg .
 ```
-
 
 ## Contained Directories and Files
 
