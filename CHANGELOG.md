@@ -7,6 +7,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- `commands.tex` now collects all LaTeX macros / commands for a better overview on available (custom) LaTeX commands.
+
 ### Changed
 
 - Changed names of example files (no `-listings` part for English template).
