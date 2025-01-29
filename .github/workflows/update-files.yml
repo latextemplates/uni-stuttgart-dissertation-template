@@ -133,7 +133,7 @@ jobs:
           tlmgr generate language --rebuild-sys
       - name: Build all examples
         run: |
-          for doc in "thesis-*.tex"; do
+          for doc in thesis-*.tex; do
             latexmk "$doc"
 
             echo "" >> "$GITHUB_STEP_SUMMARY"
