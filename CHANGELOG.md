@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Added
+
+- `commands.tex` now collects all LaTeX macros / commands for a better overview on available (custom) LaTeX commands.
+
+### Changed
+
+- Changed names of example files (no `-listings` part for English template).
+
+### Fixed
+
+- Fixed magic comment `!BIB program` for biblatex.
+- Database mode for JabRef is now biblatex.
+- Fixed path to `cover.tex` in `README.md`.
+
 ## [2025-01-25]
 
 ### Added
@@ -43,6 +59,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `Dockerfile` is now for TeXLive 2022
 
+[Unreleased]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-01-25...main
 [2025-01-25]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-01-23...2025-01-25
 [2025-01-23]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2022-06-04...2025-01-23
 

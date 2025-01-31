@@ -3,7 +3,7 @@
 % !TeX encoding = utf8
 % !TeX program = lualatex
 % !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
-% !BIB program = biblatex
+% !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 
 \documentclass[
@@ -775,6 +775,9 @@
 \floatname{algorithm}{Algorithmus}
 \renewcommand{\listalgorithmname}{Algorithmenverzeichnis}
 
+\newcommand{\commentchar}{\ensuremath{/\mkern-4mu/}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill $\commentchar$ #1}
+
 % Extensions for references inside the document (\cref{fig:sample}, ...)
 % Enable usage \cref{...} and \Cref{...} instead of \ref: Type of reference included in the link
 % That means, "Figure 5" is a full link instead of just "5".
@@ -869,6 +872,8 @@
   % May not be hypphenated
   AROMA TOSCA BPMN OASIS OMG DMTF IT DevOps
 }
+
+\input{commands}
 
 \ifpdftex
   % Enable copy and paste of text from the PDF

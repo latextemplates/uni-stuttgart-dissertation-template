@@ -56,11 +56,23 @@ jobs:
       - name: Prepare files
         working-directory: /tmp/ltg
         run: |
+          if [ "${{ matrix.lang }}" = "de" ]; then
+            LANG_PART=""
+          else
+            LANG_PART="-${{ matrix.lang }}"
+          fi
+          if [ "${{ matrix.listings }}" = "listings" ]; then
+            LISTINGS_PART=""
+          else
+            LISTINGS_PART="-${{ matrix.listings }}"
+          fi
+
           # remove files which should not be overwritten
 
           if [ "${{ matrix.listings }}" != "listings" ] || [ "${{ matrix.lang }}" != "de" ]; then
-            mv thesis-example.tex thesis-example-${{ matrix.listings }}-${{ matrix.lang }}.tex
+            mv thesis-example.tex thesis-example${LISTINGS_PART}${LANG_PART}.tex
             rm abbreviations.tex
+            rm commands.tex
           fi
           # thesis-example.tex is the German thesis with listings package
 
@@ -121,7 +133,7 @@ jobs:
           tlmgr generate language --rebuild-sys
       - name: Build all examples
         run: |
-          for doc in "thesis-example" "thesis-example-listings-en" "thesis-example-minted-de" "thesis-example-minted-en"; do
+          for doc in thesis-*.tex; do
             latexmk "$doc"
 
             echo "" >> "$GITHUB_STEP_SUMMARY"
