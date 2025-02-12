@@ -29,6 +29,7 @@
 % \newcommand{\IfNotDraftElse}[2]{\ifx\@draft\@undefined #1 \else #2 \fi}
 
 \usepackage{iftex}
+\usepackage{ifplatform}
 
 % backticks (`) are rendered as such in verbatim environments.
 % See following links for details:
@@ -162,7 +163,6 @@
   \usepackage[no-math]{fontspec}
   \usepackage{unicode-math}
 
-  \usepackage{ifplatform}
   \ifwindows
     \setmainfont{XCharter}
     \setsansfont[Ligatures=TeX]{Arial}
