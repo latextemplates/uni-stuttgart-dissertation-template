@@ -14,7 +14,7 @@
 ## Usage
 
 - `thesis-example.tex` is the main document
-- Use "lualatex + biblatex" in your TeX editor or `latexmk  thesis-example` / `make` in the command line
+- Use "lualatex + biblatex" in your TeX editor or `latexmk thesis-example` / `make` in the command line
 
 ### Using `latexmk`
 
