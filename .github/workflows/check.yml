@@ -35,6 +35,7 @@ jobs:
           version: 1.0
           execute_install_scripts: true
       - name: post-setup aspell
+        # Refs https://github.com/awalsh128/cache-apt-pkgs-action/issues/157
         run: |
           sudo apt-get install -y aspell-en aspell-de
       - name: aspell
