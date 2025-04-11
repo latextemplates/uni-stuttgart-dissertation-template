@@ -34,6 +34,9 @@ jobs:
           packages: aspell aspell-en aspell-de
           version: 1.0
           execute_install_scripts: true
+      - name: post-setup aspell
+        run: |
+          [ -e /etc/alternatives/de_DE.multi ] || sudo ln -s /usr/lib/aspell/de.multi /etc/alternatives/de_DE.multi
       - name: aspell
         run: |
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
