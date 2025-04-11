@@ -5,12 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
-## [2025-04-09]
+## [2025-04-11]
 
 ### Added
 
 - Added support to use `lualatex-dev`.
 - Added more words to personal aspell dictionary.
+- Added `.aspell.de.pws` for German documents.
 - Added support for TeXLive 2025.
 
 ### Fixed
@@ -87,7 +88,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `Dockerfile` is now for TeXLive 2022
 
-[2025-04-09]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-03-04...2025-04-09
+[2025-04-11]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-03-04...2025-04-11
 [2025-03-04]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-02-12...2025-03-04
 [2025-02-12]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-01-31...2025-02-12
 [2025-01-31]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-01-25...2025-01-31
