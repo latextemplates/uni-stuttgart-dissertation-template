@@ -36,11 +36,9 @@ jobs:
           execute_install_scripts: true
       - name: post-setup aspell
         run: |
-          ls -la /etc/alternatives/de_DE.multi
-          ls -la /usr/lib/aspell/de_DE.multi
-          [ -e /etc/alternatives/de_DE.multi ] || sudo ln -s /usr/lib/aspell/de_DE.multi /etc/alternatives/de_DE.multi
-          ls -la /etc/alternatives/de_DE.multi
-          ls -la /usr/lib/aspell/de_DE.multi
+          ls -la /usr/lib/aspell/de_DE-neu.multi || true
+          [ -e /etc/alternatives/de_DE.multi ] || sudo ln -s /usr/lib/aspell/de_DE-neu.multi /etc/alternatives/de_DE.multi
+          ls -la /etc/alternatives/de_DE.multi || true
       - name: aspell
         run: |
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
