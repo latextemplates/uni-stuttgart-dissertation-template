@@ -36,18 +36,7 @@ jobs:
           execute_install_scripts: true
       - name: post-setup aspell
         run: |
-          sudo aspell-autobuildhash
-          DIR="/usr/lib/aspell"
-          sudo update-alternatives \
-              --install $DIR/de.multi de.multi $DIR/de-neu.multi 1996 \
-              --slave $DIR/de_AT.multi de_AT.multi $DIR/de_AT-neu.multi \
-              --slave $DIR/de_CH.multi de_CH.multi $DIR/de_CH-neu.multi \
-              --slave $DIR/de_DE.multi de_DE.multi $DIR/de_DE-neu.multi
-
-          # sudo ln -sf /usr/lib/aspell/de_DE-neu.multi /etc/alternatives/de_DE.multi
-          # sudo ln -sf /etc/alternatives/de_DE.multi /usr/lib/aspell/de_DE.multi
-          # sudo ln -sf /var/lib/aspell/de-common.rws /usr/lib/aspell/de-common.rws
-          ls -la /usr/lib/aspell/de-common.rws || true
+          sudo apt-get install -y aspell-en aspell-de
       - name: aspell
         run: |
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
