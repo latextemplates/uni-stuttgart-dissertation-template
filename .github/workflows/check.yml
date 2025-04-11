@@ -36,7 +36,7 @@ jobs:
           execute_install_scripts: true
       - name: post-setup aspell
         run: |
-          aspell-autobuildhash
+          sudo aspell-autobuildhash
           DIR="/usr/lib/aspell"
           sudo update-alternatives \
               --install $DIR/de.multi de.multi $DIR/de-neu.multi 1996 \
