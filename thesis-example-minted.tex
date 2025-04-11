@@ -30,6 +30,7 @@
 % \newcommand{\IfNotDraftElse}[2]{\ifx\@draft\@undefined #1 \else #2 \fi}
 
 \usepackage{iftex}
+
 \usepackage{ifplatform}
 
 % backticks (`) werden als solches in verbatim-Umgebungen dargestellt
@@ -173,6 +174,7 @@
   % For more information see https://ctan.org/pkg/selnolig
   % language "english" or "ngerman" is passed to selnolig by the document class
   \usepackage{selnolig}
+
 \else
   \usepackage{XCharter}
   \usepackage[scaled=.95]{helvet}
@@ -1591,6 +1593,11 @@ Bei \verb1\textmarker1 wird nur die Textfarbe geändert, da dies auch bei einige
 
 \begin{ltgexample}
 \textcomment{Markierter Text.}{Kommentar dazu.}
+\end{ltgexample}
+
+\begin{ltgexample}
+\hl{In Gelb hervorgehoben.}
+Provided indirectly by pdfcomment.sty (soulpos).
 \end{ltgexample}
 
 \begin{ltgexample}
