@@ -30,6 +30,7 @@
 % \newcommand{\IfNotDraftElse}[2]{\ifx\@draft\@undefined #1 \else #2 \fi}
 
 \usepackage{iftex}
+
 \usepackage{ifplatform}
 
 % backticks (`) are rendered as such in verbatim environments.
@@ -183,6 +184,7 @@
   % For more information see https://ctan.org/pkg/selnolig
   % language "english" or "ngerman" is passed to selnolig by the document class
   \usepackage{selnolig}
+
 \else
   \usepackage{XCharter}
   \usepackage[scaled=.95]{helvet}
@@ -859,12 +861,6 @@
 % Add manual adapted hyphenation of English words
 % See https://ctan.org/pkg/hyphenex and https://tex.stackexchange.com/a/22892/9075 for details
 \input{ushyphex}
-
-\ifluatex
-  % Enable correct rendering of ligatures - provided by https://ctan.org/pkg/selnolig
-  % See ADR-0009 for alternatives
-  \usepackage{selnolig}
-\fi
 
 % correct bad hyphenation here
 \hyphenation{
@@ -1565,6 +1561,11 @@ Bei \verb1\textmarker1 wird nur die Textfarbe geändert, da dies auch bei einige
 
 \begin{ltgexample}
 \textcomment{Markierter Text.}{Kommentar dazu.}
+\end{ltgexample}
+
+\begin{ltgexample}
+\hl{In Gelb hervorgehoben.}
+Provided indirectly by pdfcomment.sty (soulpos).
 \end{ltgexample}
 
 \begin{ltgexample}
