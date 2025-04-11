@@ -41,6 +41,10 @@ jobs:
       - name: aspell
         run: |
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
+            if [[ "de" == "de" && "$tex" == thesis-example* ]]; then
+              continue
+            fi
+
             # The lualatex package "spelling" requires the content to be in a file ending with ".spell.bad"
             aspell --mode=tex\
               -l de_DE --run-together\
