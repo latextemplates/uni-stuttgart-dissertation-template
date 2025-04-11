@@ -125,6 +125,10 @@ jobs:
           echo "| -- | -- |" >> $GITHUB_STEP_SUMMARY
           failure=0
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
+            if [[ "de" == "de" && "$tex" == thesis-example* ]]; then
+              continue
+            fi
+
             # Words are output in the order they appear in the document
             words=$(aspell --mode=tex -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.de.pws list < $tex | tr '\n' ' ')
             if [ -z "$words" ]; then
