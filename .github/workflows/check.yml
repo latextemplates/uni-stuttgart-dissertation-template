@@ -57,6 +57,8 @@ jobs:
 
       - name: Job summary using texlogsieve
         run: |
+          texlogsieve --version | head -n 1
+
           echo '```' >> $GITHUB_STEP_SUMMARY
           texlogsieve thesis-example.log | tee -a "$GITHUB_STEP_SUMMARY" || true
           echo '```' >> $GITHUB_STEP_SUMMARY
