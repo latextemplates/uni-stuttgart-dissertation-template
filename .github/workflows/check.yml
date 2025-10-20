@@ -45,16 +45,16 @@ jobs:
       - name: aspell
         run: |
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
-            if [[ "en" == "de" && "$tex" == thesis-example* ]]; then
+            if [[ "de" == "de" && "$tex" == thesis-example* ]]; then
               continue
             fi
 
             # The lualatex package "spelling" requires the content to be in a file ending with ".spell.bad"
             aspell --mode=tex\
-              -l en_US\
+              -l de_DE --run-together\
               --encoding=utf-8\
               --conf=./.aspell.conf\
-              -p ./.aspell.en.pws list\
+              -p ./.aspell.de.pws list\
               < $tex | sort | uniq >> thesis-example.spell.bad
           done
       - run: latexmk thesis-example
@@ -131,14 +131,14 @@ jobs:
           echo "| -- | -- |" >> $GITHUB_STEP_SUMMARY
           failure=0
           for tex in $(ls *.tex content/*.tex 2>/dev/null); do
-            if [[ "en" == "de" && "$tex" == thesis-example* ]]; then
+            if [[ "de" == "de" && "$tex" == thesis-example* ]]; then
               echo "$tex skipped"
               continue
             fi
             echo "Checking $tex..."
 
             # Words are output in the order they appear in the document
-            words=$(aspell --mode=tex -l en_US --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.en.pws list < $tex | tr '\n' ' ')
+            words=$(aspell --mode=tex -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.de.pws list < $tex | tr '\n' ' ')
             if [ -z "$words" ]; then
               echo "| $tex | ✅ |" >> $GITHUB_STEP_SUMMARY
             else
@@ -150,7 +150,7 @@ jobs:
           done
           if [[ "$failure" -eq 1 ]]; then
              echo "" >> $GITHUB_STEP_SUMMARY
-             echo 'If you want to ignore words, add them to `.aspell.en.pws` (your personal aspell dictionary)' >> $GITHUB_STEP_SUMMARY
+             echo 'If you want to ignore words, add them to `.aspell.de.pws` (your personal aspell dictionary)' >> $GITHUB_STEP_SUMMARY
             exit 1
           fi
   indent:
