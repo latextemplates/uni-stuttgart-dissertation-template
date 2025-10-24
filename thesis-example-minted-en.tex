@@ -7,7 +7,7 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 
 \documentclass[
-  fontsize=10pt
+  fontsize=10pt,
   numbers=noenddot,
   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
   paper=a5,
@@ -1021,6 +1021,8 @@
 % fix incompatibilities between KOMA and other packages, mainly float.
 % should be loaded at the very end - see http://tex.stackexchange.com/a/156256/9075
 \usepackage{scrhack}
+
+
 \begin{document}
 \setstretch{1.2}
 \raggedbottom
