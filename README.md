@@ -14,9 +14,10 @@
 ## Quick start
 
 1. Download
-2. Windows: Open MiKTeX Console and install package `inconsolata`.
-3. Install Python and install minted3: `python -m pip install --force-reinstall latexminted`
-4. Start texing
+2. Windows: Open MiKTeX Console and install package `inconsolata`
+3. Install font [Inconsolata](https://fonts.google.com/specimen/Inconsolata)
+4. Install Python and install minted3: `python -m pip install --force-reinstall latexminted`
+5. Start texing
 
 ## Usage
 
