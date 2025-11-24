@@ -122,7 +122,7 @@ Congratulations. You chose to use all available features.
 - Mac OS X: Recent [TeX Live](https://www.tug.org/texlive/) (e.g. through [MacTeX](https://tug.org/mactex/)) - Try `sudo tlmgr update --all` if you encounter issues with biblatex
 - Linux: Recent TeX Live distribution
 
-See [docs/latex-setup](docs/latex-setup) for refined installation instructions.
+See <docs/latex-setup.md> for refined installation instructions.
 
 ### Usage of `minted`
 
