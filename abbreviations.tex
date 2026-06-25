@@ -1,6 +1,10 @@
 % Hier stehen alle Abkürzungen
-\newabbreviation{er}{ER}{error rate}
+% `fr` wird vom deutschen Beispiel verwendet, `er` vom englischen. Beide sind in
+% beiden Abkürzungslisten definiert, weil das Template eine einzige abbreviations.tex
+% ausliefert, die jede Hauptdatei (deutsch und englisch) lädt -- ein undefinierter
+% Eintrag bricht den Build ab.
 \newabbreviation{fr}{FR}{Fehlerrate}
+\newabbreviation{er}{ER}{error rate}
 \newabbreviation[shortplural={RDBMS},longplural={RDBMS}]{rdbms}{RDBMS}{Relational Database Management System}
 \newabbreviation[category=abbreviationdot]{dante}{DANTE e.V.}{Deutschsprachige Anwendervereinigung \TeX\ e.V.}
 \newabbreviation{gp}{G.P.}{General Practitioner}
