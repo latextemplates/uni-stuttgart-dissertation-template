@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [2026-06-25]
+
+### Added
+
+- New example sections in the "LaTeX Hints" chapter: Formulas and Equations, Figures with TikZ, Plots with pgfplots, tables spanning multiple pages (`longtable`), and an optional UML diagram example (`tikz-uml` or PlantUML).
+- Instructions for using VS Code with the LaTeX Workshop extension.
+
+### Changed
+
+- Typesetting improvements: widow/orphan control, top-aligned floats on float-only pages, and more table row spacing.
+
 ## [2025-04-11]
 
 ### Added
