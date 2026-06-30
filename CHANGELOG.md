@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [2026-06-30]
+
+### Added
+
+- Inline acronym typesetting with `\initialism` (and the ready-made `\OMG`, `\BPEL`, `\BPMN`, `\UML`) — a lightweight alternative to the glossary (`\gls`) for acronyms you do not want in the list of abbreviations. It now works (the required `lccaps` package is loaded) and is demonstrated by a new example in the "LaTeX Hints" chapter.
+
+### Fixed
+
+- The generated German aspell dictionary (`.aspell.de.pws`) is now tagged as language `de` (was `en`), fixing the CI spell-check for the German thesis.
+
 ## [2026-06-25]
 
 ### Added
@@ -99,7 +109,8 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `Dockerfile` is now for TeXLive 2022
 
-[Unreleased]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-06-25...HEAD
+[Unreleased]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-06-30...HEAD
+[2026-06-30]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-06-25...2026-06-30
 [2026-06-25]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-04-11...2026-06-25
 [2025-04-11]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-03-04...2025-04-11
 [2025-03-04]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2025-02-12...2025-03-04
