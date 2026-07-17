@@ -596,6 +596,11 @@
 % Reduce size of bib font: http://tex.stackexchange.com/questions/329/how-to-change-font-size-for-bibliography
 \renewcommand{\bibfont}{\normalfont\small}
 
+% Embed the bibliography data into the PDF so that readers can extract it
+% (e.g., with JabRef via "Import into database" on the PDF)
+\usepackage{embedfile}
+\embedfile[mimetype=application/x-bibtex,desc={BibTeX entries of all references}]{bibliography.bib}
+
 % Farbige Tabellen
 % ----------------
 % Das Paket colortbl wird inzwischen automatisch durch xcolor geladen
