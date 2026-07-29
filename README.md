@@ -19,6 +19,8 @@
 4. Install Python and install minted3: `python -m pip install --force-reinstall latexminted`
 5. Start texing
 
+The LaTeX snippets this template is assembled from can be inspected at <https://latextemplates.github.io/latex-snippets/>.
+
 ## Usage
 
 - `thesis-example.tex` is the main document
