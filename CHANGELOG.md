@@ -13,6 +13,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - [`docs/thesis-checklist.md`](docs/thesis-checklist.md): a checklist to work through before handing in your thesis, linked from the README and the writing hints.
 - The README and the writing hints recommend the open-access book [Student Thesis Projects](https://vdf.ch/product/student-thesis-projects-en.html), and the writing hints explain how to write both for readers who read from beginning to end and for readers who open the thesis anywhere.
 - The figure examples show how to include a JPEG photo (`figures/ulm-minster.jpg`, CC0 from Wikimedia Commons).
+- The listings example shows a listing spanning multiple pages: use a non-floating listing for long code, because floating listings cannot break across pages.
 
 ### Changed
 
