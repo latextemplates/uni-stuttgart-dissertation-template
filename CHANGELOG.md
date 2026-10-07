@@ -19,7 +19,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - Cross-references use [zref-clever](https://ctan.org/pkg/zref-clever) instead of [cleveref](https://ctan.org/pkg/cleveref), because zref-clever works with tagged (accessible) PDFs: write `\zcref{...}` instead of `\cref` and, at the start of a sentence, `\Zcref{...}` (short for `\zcref[S]{...}`) instead of `\Cref`. Page-aware references use `\zvref` ([zref-vario](https://ctan.org/pkg/zref-vario)) instead of `\vref`.
 - `_latexmkrc` is organized in sections and lists commented-out alternatives for continuous preview (`-pvc`), the job name, and the PDF viewer (e.g., evince).
-- The example texts avoid words that textlint's `write-good` rule flags (`rarely`, `a few`, `several`). A sentence-initial `Finally,` is allowed in `.textlintrc.json`, because it marks a sequence rather than weakening a statement.
+- The example texts and the writing hints (abstract guide, chapter-structure hints) avoid words that textlint's `write-good` rule flags (`rarely`, `a few`, `several`, `usually`, `various`, `likely`), so a fresh thesis has no textlint annotations. A sentence-initial `Finally,` is allowed in `.textlintrc.json`, because it marks a sequence rather than weakening a statement.
 
 ### Fixed
 
