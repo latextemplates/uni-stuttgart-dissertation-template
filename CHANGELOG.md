@@ -13,11 +13,14 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - [`docs/thesis-checklist.md`](docs/thesis-checklist.md): a checklist to work through before handing in your thesis, linked from the README and the writing hints.
 - The README and the writing hints recommend the open-access book [Student Thesis Projects](https://vdf.ch/product/student-thesis-projects-en.html), and the writing hints explain how to write both for readers who read from beginning to end and for readers who open the thesis anywhere.
 - The figure examples show how to include a JPEG photo (`figures/ulm-minster.jpg`, CC0 from Wikimedia Commons).
+- The listings example shows a listing spanning multiple pages: use a non-floating listing for long code, because floating listings cannot break across pages.
 
 ### Changed
 
 - Cross-references use [zref-clever](https://ctan.org/pkg/zref-clever) instead of [cleveref](https://ctan.org/pkg/cleveref), because zref-clever works with tagged (accessible) PDFs: write `\zcref{...}` instead of `\cref` and, at the start of a sentence, `\Zcref{...}` (short for `\zcref[S]{...}`) instead of `\Cref`. Page-aware references use `\zvref` ([zref-vario](https://ctan.org/pkg/zref-vario)) instead of `\vref`.
 - `_latexmkrc` is organized in sections and lists commented-out alternatives for continuous preview (`-pvc`), the job name, and the PDF viewer (e.g., evince).
+- The example texts and the writing hints (abstract guide, chapter-structure hints) avoid words that textlint's `write-good` rule flags (`rarely`, `a few`, `several`, `usually`, `various`, `likely`), so a fresh thesis has no textlint annotations. A sentence-initial `Finally,` is allowed in `.textlintrc.json`, because it marks a sequence rather than weakening a statement.
+- The paragraph example links Andrew Stacey's *Document Revision System* by title with the URL in a footnote, and the hyphenation example shows the short `\verb` snippets `\allowbreak{}` and `"=` instead of whole words, so that neither runs out of a narrow column.
 
 ### Fixed
 
