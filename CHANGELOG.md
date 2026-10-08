@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- The README's tool hints distinguish a Docker-based setup (recommended) from a traditional installation: the [TeX Live image by the Island of TeX](https://gitlab.com/islandoftex/images/texlive) works the same on Windows, macOS, and Linux and makes `minted` work without a separate Python setup. The "Usage with docker" section and the VS Code hints (LaTeX Workshop can compile in the container) are linked from there.
+- `docs/latex-setup.md` is structured the same way: "Docker-based (recommended)" with the Docker installation, the command line, and the TeXstudio commands for all operating systems, and "Traditional" with the former Ubuntu and Windows hints.
+- The quick start notes that the font and `latexminted` steps are not needed with the Docker-based setup.
+
 ## [2026-10-08]
 
 ### Added
