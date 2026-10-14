@@ -11,6 +11,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - The LaTeX hints show how to color table rows and cells (`\rowcolor`, `\cellcolor`). [scientific-thesis-template#87](https://github.com/latextemplates/scientific-thesis-template/pull/87)
 
+### Fixed
+
+- The README links the `figures/` directory (instead of the old `graphics/`), and `.dockerignore` excludes the generated `figures/*.pdf_tex` files. [generator-latex-template#586](https://github.com/latextemplates/generator-latex-template/pull/586)
+
 ## [2026-10-14]
 
 ### Added
