@@ -4,7 +4,7 @@ generator-latex-template
 
 thesis-example.pdf
 thesis-example-*.pdf
-graphics/*.pdf_tex
+figures/*.pdf_tex
 
 # spelling
 *.spell.bad
