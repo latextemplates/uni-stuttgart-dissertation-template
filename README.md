@@ -66,7 +66,7 @@ You can run the [latex template generator] to enable the features.
 
 Congratulations. You chose to use all available features.
 
-## Contained Directories and Files
+## Contained directories and files
 
 ### Directories
 
