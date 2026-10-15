@@ -5,7 +5,9 @@ figures/*.pdf_tex
 printer-version--cover/cover.pdf
 
 # glossaries
+*.glg-abr
 *.glo-abr
+*.gls-abr
 
 # glossaries-extra
 *.ist
