@@ -29,6 +29,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - `make` runs the LaTeX tools in the Docker image (`make LOCAL=1` runs them locally).
 - `vscode.settings.json` contains the Docker settings of LaTeX Workshop and does not build on save.
 - README.md: compilation hints consolidated in "LaTeX compilation".
+- minted compiles without `--shell-escape`.
 
 ### Fixed
 
