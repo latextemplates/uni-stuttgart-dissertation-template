@@ -10,6 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Added
 
 - The LaTeX hints show UML diagrams without further tools: MetaUML class and component diagrams (LuaLaTeX) and a pgf-umlsd sequence diagram.
+- README.md: how to generate an own copy with PlantUML or Mermaid.
 
 ### Changed
 
