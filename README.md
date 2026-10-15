@@ -6,8 +6,8 @@
 
 - Thesis 🇩🇪: [thesis-example.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example.pdf)
 - Thesis 🇺🇸: [thesis-example-en.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-en.pdf)
-- Thesis with listings instead of minted 🇩🇪: [thesis-example-basic-listings.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-basic-listings.pdf)
-- Thesis with listings instead of minted 🇺🇸: [thesis-example-basic-listings-en.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-basic-listings-en.pdf)
+- Thesis using the listings package (instead of minted) for source code 🇩🇪: [thesis-example-basic-listings.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-basic-listings.pdf)
+- Thesis using the listings package (instead of minted) for source code 🇺🇸: [thesis-example-basic-listings-en.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example-basic-listings-en.pdf)
 - Book cover: [cover.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/cover.pdf)
 - Spine of the book cover: [spine.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/spine.pdf)
 
