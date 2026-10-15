@@ -16,6 +16,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Changed
 
 - `thesis-example*.tex` use minted; the variants using the listings package are `thesis-example-basic-listings*.tex`.
+- README.md: minted FAQs merged and moved up.
 
 ### Fixed
 
