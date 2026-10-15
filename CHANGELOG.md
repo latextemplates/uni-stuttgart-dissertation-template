@@ -18,6 +18,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - VS Code: the background of the PDF viewer follows the light or dark theme.
 - Dependabot groups all GitHub Actions updates into one weekly PR.
 - `check.yml` pins all GitHub Actions to commit SHAs.
+- README: "Quick start" shows how to compile; "Using `latexmk`" and "Advanced usage" moved to "Tool hints"; "Debugging LaTeX errors" is the first FAQ.
 
 ### Fixed
 
