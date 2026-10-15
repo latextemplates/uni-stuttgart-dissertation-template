@@ -26,6 +26,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - The README links the `figures/` directory, and `.dockerignore` excludes the generated `figures/*.pdf_tex` files. [generator-latex-template#586](https://github.com/latextemplates/generator-latex-template/pull/586)
 - The list of abbreviations is generated when building with `latexmk`.
 - The `.markdown.in` file of the markdown package is ignored by git and removed by `latexmk -c`.
+- textlint ignores expl3 function names, Markdown reference IDs, and the name of the markdown package.
 
 ## [2026-10-14]
 
