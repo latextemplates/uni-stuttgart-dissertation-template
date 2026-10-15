@@ -19,6 +19,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - Dependabot groups all GitHub Actions updates into one weekly PR.
 - `check.yml` pins all GitHub Actions to commit SHAs.
 - README.md: sections reordered.
+- Embedding the `.bib` file into the PDF is opt-in.
 
 ### Fixed
 
