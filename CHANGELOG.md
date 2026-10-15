@@ -7,6 +7,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- The LaTeX hints show UML diagrams without further tools: MetaUML class and component diagrams (LuaLaTeX) and a pgf-umlsd sequence diagram.
+
 ### Changed
 
 - `thesis-example*.tex` use minted; the variants using the listings package are `thesis-example-basic-listings*.tex`.
