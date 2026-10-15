@@ -223,19 +223,9 @@ You can manually trigger compilation by hitting the green button in the extensio
 
 [LTeX+] is an offline grammar and spell checker with support for LaTeX and Markdown.
 
-Add a magic comment to your files to tell LTeX+ which language to use:
+The main file starts with a magic comment that tells LTeX+ the language of the document: `% LTeX: language=de-DE`.
+Add the same comment to further `.tex` files.
 
-```latex
-% LTeX: language=de-DE
-```
-
-If you want to use different languages in the text, use the `\foreignlanguage{language}{text}` command.
-LTeX+ will detect these elements and automatically switch the spell checker's language.
-For example:
-
-```latex
-\foreignlanguage{english}{Therefore, our proposed approach will change the world.}
-```
 ## FAQs
 
 ### Q: How do I find the cause of a LaTeX error?
@@ -247,6 +237,16 @@ lualatex --synctex=1 --shell-escape thesis-example
 ```
 
 Run `biber thesis-example` to get the bibliography rendered (execute `lualatex` afterwards).
+
+### Q: How do I check a passage in another language?
+
+Use the `\foreignlanguage{language}{text}` command.
+LTeX+ will detect these elements and automatically switch the spell checker's language.
+For example:
+
+```latex
+\foreignlanguage{english}{Therefore, our proposed approach will change the world.}
+```
 
 ### Q: How to rename `thesis-example.tex`?
 
