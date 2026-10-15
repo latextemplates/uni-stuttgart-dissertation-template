@@ -39,6 +39,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - German documents load only `autotype` (not additionally `selnolig`) for correct ligatures.
 - `make view` opens the PDF on Linux and macOS.
 - German documents configure `autotype` with `ligatures=selective` instead of the outdated `ligbreak`.
+- `vscode.settings.json`: the recipes run `lualatex` (resp. `pdflatex`) with the right bibliography tool.
 
 ## [2026-10-14]
 
