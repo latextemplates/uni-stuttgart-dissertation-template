@@ -11,6 +11,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - The LaTeX hints show UML diagrams without further tools: MetaUML class and component diagrams (LuaLaTeX) and a pgf-umlsd sequence diagram.
 - README.md: how to generate an own copy with PlantUML or Mermaid.
+- [TeXtidote](https://github.com/sylvainhalle/textidote) checks spelling, grammar, and style (configuration `.textidote`); CI checks English documents only.
 
 ### Changed
 
