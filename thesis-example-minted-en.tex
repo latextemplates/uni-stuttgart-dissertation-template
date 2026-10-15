@@ -2,12 +2,11 @@
 % LTeX: language=en-US
 % !TeX encoding = utf8
 % !TeX program = lualatex
-% !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  The content starts in line 1106 (\begin{document}); the first
-%           heading (\chapter{Introduction}) is in line 1249.
+% vvvvvvvv  The content starts in line 1103 (\begin{document}); the first
+%           heading (\chapter{Introduction}) is in line 1246.
 %           Everything above is the preamble: document class, packages, and settings.
 
 \documentclass[
@@ -15,7 +14,7 @@
   numbers=noenddot,
   english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
   paper=a5,
-  twoside,  % we are optimizing for both screen and two-sided printing. So the page numbers will jump, but the content is configured to stay in the middle (by using the geometry package)
+  twoside,  % the dissertation is printed as a book: the inner margin is narrower than the outer one, so the text alternates between left-hand and right-hand pages
   DIV=calc,
   headings=small,
   bibliography=totoc,
@@ -134,7 +133,7 @@
 
 %% !!! If you change the font, be sure that words such as "workflow" can
 %% !!! still be copied from the PDF. If this is not the case, you have
-%% !!! to use glyphtounicode. See comment at cmap package.
+%% !!! to use glyphtounicode (pdflatex only). See the comment at \input{glyphtounicode}.
 %%
 %% Background: "workflow" contains "fl" which is a ligature, which in turn
 %%             is rendered as one character in the PDF and needs to be split
@@ -196,9 +195,8 @@
     \setmonofont[StylisticSet={1,3}]{Inconsolatazi4}
   \fi
 
-  % Enable proper ligatures
+  % Enable proper ligatures for English documents (German documents use autotype, see ADR-0008)
   % For more information see https://ctan.org/pkg/selnolig
-  % language "english" or "ngerman" is passed to selnolig by the document class
   \usepackage{selnolig}
 
 \else
@@ -217,7 +215,7 @@
 
 % Fallback font - if the subsequent font packages do not define a font (e.g., monospaced)
 %     This is the modern package for "Computer Modern".
-%     In case this gets activated, one has to switch from cmap package to glyphtounicode (in the case of pdflatex)
+%     In case this gets activated, check that ligatures can still be copied (pdflatex: glyphtounicode)
 %\usepackage[%
 %    rm={oldstyle=false,proportional=true},%
 %    sf={oldstyle=false,proportional=true},%
@@ -527,10 +525,9 @@
 % Reduce size of bib font: http://tex.stackexchange.com/questions/329/how-to-change-font-size-for-bibliography
 \renewcommand{\bibfont}{\normalfont\small}
 
-% Embed the bibliography data into the PDF so that readers can extract it
-% (e.g., with JabRef via "Import into library" on the PDF)
-\usepackage{embedfile}
-\embedfile[mimetype=application/x-bibtex,desc=BibTeX entries of all references]{bibliography.bib}
+% To embed the bibliography into the PDF (readers can extract it, e.g., with JabRef via "Import into library" on the PDF), uncomment:
+%\usepackage{embedfile}
+%\embedfile[mimetype=application/x-bibtex,desc=BibTeX entries of all references]{bibliography.bib}
 
 % Farbige Tabellen
 % ----------------
@@ -1118,8 +1115,8 @@
 \author{Author Name}
 \date{\today}
 \keywords{TODO}
-\firstexaminer{Prof.~Dr.~Max Mustermann}
-\secondexaminer{Prof.~Dr.~Emma Musterfrau}
+\firstexaminer{Prof.~Dr.~Eike Kraft}
+\secondexaminer{Prof.~Dr.~Luca Wind}
 \dateofexamination{unbekannt}
 \placeofbirth{Gebortsort}
 \faculty{Fakultät für Informatik, Elektrotechnik und Informationstechnik}
@@ -1896,6 +1893,25 @@ Coordinates can also be given explicitly instead of as a function:
     \midrule
     One      & Two      \\
     Three    & Four     \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{ltgexample}
+
+Rows and cells can be colored with \verb|\rowcolor| and \verb|\cellcolor| from the \href{https://ctan.org/pkg/colortbl}{colortbl} package, which \href{https://ctan.org/pkg/xcolor}{xcolor} loads with its option \verb|table|.
+
+\begin{ltgexample}
+\begin{table}
+  \caption{Table with colored cells}
+  \label{tab:colored}
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    \rowcolor{gray!20}
+    Test & Result                   \\
+    \midrule
+    A    & \cellcolor{green!20}pass \\
+    B    & \cellcolor{red!20}fail   \\
     \bottomrule
   \end{tabular}
 \end{table}
