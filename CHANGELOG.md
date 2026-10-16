@@ -17,10 +17,12 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `thesis-example*.tex` use minted; the variants using the listings package are `thesis-example-basic-listings*.tex`.
 - README.md: minted FAQs merged and moved up.
+- docs/thesis-checklist.md: spell-checking tools named.
 
 ### Fixed
 
 - Example texts: spelling and grammar fixed.
+- `make aspell` uses the German word list.
 
 ## [2026-10-15]
 
