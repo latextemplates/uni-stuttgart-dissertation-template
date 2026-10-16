@@ -11,18 +11,20 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - The LaTeX hints show UML diagrams without further tools: MetaUML class and component diagrams (LuaLaTeX) and a pgf-umlsd sequence diagram.
 - README.md: how to generate an own copy with PlantUML or Mermaid.
-- [TeXtidote](https://github.com/sylvainhalle/textidote) checks spelling, grammar, and style (configuration `.textidote`, `make textidote`); CI checks English documents only.
+- [TeXtidote](https://github.com/sylvainhalle/textidote) checks spelling, grammar, and style (configuration `.textidote`, `make spellcheck-textidote`); CI checks English documents only.
 
 ### Changed
 
 - `thesis-example*.tex` use minted; the variants using the listings package are `thesis-example-basic-listings*.tex`.
 - README.md: minted FAQs merged and moved up.
 - docs/thesis-checklist.md: spell-checking tools named.
+- `make spellcheck` runs all spell checkers (`make aspell` is now `make spellcheck-aspell`).
 
 ### Fixed
 
 - Example texts: spelling and grammar fixed.
-- `make aspell` uses the German word list.
+- `make spellcheck-aspell` uses the German word list.
+- Makefile: `.PHONY` lists all targets; `make spellcheck-aspell` and `make showundef` work.
 
 ## [2026-10-15]
 
