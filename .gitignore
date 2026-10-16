@@ -23,7 +23,7 @@ printer-version--cover/cover.pdf
 # ltmermaid (rendered Mermaid diagrams)
 mermaid/
 
-# TeXtidote (make textidote)
+# TeXtidote (make spellcheck-textidote)
 textidote.jar
 textidote.html
 
