@@ -102,11 +102,11 @@ edit:
 ##   Schreiben der LaTeX-Befehle in eine config Dateiname. Sieht so aus:
 ##   add-tex-command democommand PO // PO := prüfe []{} ;; po := ignoriere []{}
 ##
-## .aspell.en.pws - persönliches Wörterbuch
+## .aspell.de.pws - persönliches Wörterbuch
 aspell:
 	for tex in $(TEX_FILES);
 		do
-			aspell --mode=tex -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.en.pws -c $$tex;
+			aspell --mode=tex -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.de.pws -c $$tex;
 		done
 
 ## Spelling, grammar, and style with TeXtidote (https://github.com/sylvainhalle/textidote): writes textidote.html
