@@ -20,6 +20,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - README.md: minted FAQs merged and moved up.
 - docs/thesis-checklist.md: spell-checking tools named.
 - `make spellcheck` runs all spell checkers (`make aspell` is now `make spellcheck-aspell`).
+- GitHub workflows: actions pinned to commit SHAs.
 
 ### Fixed
 
