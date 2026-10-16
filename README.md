@@ -2,6 +2,8 @@
 
 > Unofficial LaTeX template for PhD theses at the University of Stuttgart, Germany.
 
+The LaTeX snippets this template is assembled from can be inspected at <https://latextemplates.github.io/latex-snippets/>.
+
 ## Example PDFs
 
 - Thesis 🇩🇪: [thesis-example.pdf](http://latextemplates.github.io/uni-stuttgart-dissertation-template/thesis-example.pdf)
@@ -21,8 +23,6 @@
 6. Compile with "lualatex + biber" in your TeX editor or with `latexmk thesis-example` / `make` on the command line.
 
 With the Docker-based setup (see ["Docker-based (recommended)"](#docker-based-recommended)), steps 2 to 4 are not needed: the image contains the font and `latexminted`.
-
-The LaTeX snippets this template is assembled from can be inspected at <https://latextemplates.github.io/latex-snippets/>.
 
 ## Writing your thesis
 
