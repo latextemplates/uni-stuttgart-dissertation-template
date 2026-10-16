@@ -12,6 +12,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - The LaTeX hints show UML diagrams without further tools: [MetaUML](https://ctan.org/pkg/metauml) class and component diagrams (LuaLaTeX) and a [pgf-umlsd](https://ctan.org/pkg/pgf-umlsd) sequence diagram.
 - README.md: how to generate an own copy with PlantUML or Mermaid.
 - [TeXtidote](https://github.com/sylvainhalle/textidote) checks spelling, grammar, and style (configuration `.textidote`, `make spellcheck-textidote`); CI checks English documents only.
+- VS Code: [JabRef 4 VSCode](https://marketplace.visualstudio.com/items?itemName=jabref.jabref-4-vscode) recommended.
 
 ### Changed
 
