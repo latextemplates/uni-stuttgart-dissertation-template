@@ -17,12 +17,12 @@ jobs:
         lang: ["de", "en"]
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           submodules: recursive
           ref: '${{ github.event.pull_request.head.ref }}'
           token: ${{ secrets.GH_TOKEN_WRITE }}
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '22'
           cache: 'npm'
@@ -64,19 +64,19 @@ jobs:
             LANG_PART="-${{ matrix.lang }}"
           fi
           if [ "${{ matrix.listings }}" = "listings" ]; then
-            LISTINGS_PART=""
+            LISTINGS_PART="-basic-listings"
           else
-            LISTINGS_PART="-${{ matrix.listings }}"
+            LISTINGS_PART=""
           fi
 
           # remove files which should not be overwritten
 
-          if [ "${{ matrix.listings }}" != "listings" ] || [ "${{ matrix.lang }}" != "de" ]; then
+          if [ "${{ matrix.listings }}" != "minted" ] || [ "${{ matrix.lang }}" != "de" ]; then
             mv thesis-example.tex thesis-example${LISTINGS_PART}${LANG_PART}.tex
             rm abbreviations.tex
             rm commands.tex
           fi
-          # thesis-example.tex is the German thesis with listings package
+          # thesis-example.tex is the German thesis with minted
 
           # Some files .latexmkrc alternates between including and excluding "--shell-escape"; we just want to keep the minted + de version of it
           if [ "${{ matrix.listings }}" != "minted" ] || [ "${{ matrix.lang }}" != "de" ]; then
@@ -101,7 +101,7 @@ jobs:
           git status
           git diff
       - name: Commit changes
-        uses: EndBug/add-and-commit@v11
+        uses: EndBug/add-and-commit@cc9c08ba6c8df3b93a8f2db63e89b98368ae2ae8 # v11.1.1
         with:
           message: 'Update files based on generated files by template generator'
           author_name: 'github-actions[bot]'
@@ -115,14 +115,14 @@ jobs:
     needs: [generatetex]
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: '${{ github.event.pull_request.head.ref }}'
       - run: |
           # ensure latest updates
           git pull
       - name: Install TeX Live
-        uses: zauguin/install-texlive@v4
+        uses: zauguin/install-texlive@6671d0c62046c7e349fe154d5208fe746b07e037 # v4.4.0
         with:
           package_file: '${{ github.workspace }}/Texlivefile'
       - name: Prepare latexmk
@@ -169,13 +169,13 @@ jobs:
           cp thesis-example*.pdf publish/
           cp print-version--cover/cover.pdf publish/
           cp print-version--spine/spine.pdf publish/
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: publish
           path: publish/
       - name: Deploy
         if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./publish
