@@ -118,21 +118,11 @@ jobs:
     # This is based on https://github.com/mh61503891/action-paper-aspell/tree/master
     #
     runs-on: ubuntu-latest
+    # The DANTE e.V. image contains aspell with English and German dictionaries
+    container: danteev/texlive:edge
     steps:
       - name: Set up Git repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      # Original action does not work well - see https://github.com/awalsh128/cache-apt-pkgs-action/pull/136
-      # The action is not updated - and thus the dictionaries are not updated
-      - uses: awalsh128/cache-apt-pkgs-action@553a35bb8ebd9fcabcb1c9451aa4c98e1b4ca8a9 # v1.6.3
-        with:
-          packages: aspell aspell-en aspell-de
-          version: 1.0
-          execute_install_scripts: true
-      - name: post-setup aspell
-        # refs https://github.com/awalsh128/cache-apt-pkgs-action/issues/157
-        run: |
-          sudo apt-get install -y aspell-en aspell-de
       - name: aspell
         run: |
           echo "| file | status |" >> $GITHUB_STEP_SUMMARY
