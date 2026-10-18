@@ -10,6 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Added
 
 - A chapter written in plain Markdown (`chapters/NN - markdown.<lang>.md`, LuaLaTeX).
+- Optional `[PDF]` link to the cited paper from JabRef's `file` field.
 
 ### Changed
 
