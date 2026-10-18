@@ -24,7 +24,6 @@ printer-version--cover/cover.pdf
 mermaid/
 
 # TeXtidote (make spellcheck-textidote)
-textidote.jar
 textidote.html
 *.textidote.html
 
