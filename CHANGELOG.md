@@ -7,8 +7,14 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- A chapter written in plain Markdown (`chapters/NN - markdown.<lang>.md`, LuaLaTeX).
+
 ### Changed
 
+- Each chapter is a file in `chapters/` (`NN - <name>.<lang>.tex`), included by the main file.
+- The parts of the writing hints (background, problem exposition, …, evaluation) are chapters.
 - README.md: link to the LaTeX snippets moved to the introduction.
 - README.md: "Disabled features" is a subsection of "Benefits".
 
