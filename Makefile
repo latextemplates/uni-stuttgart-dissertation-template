@@ -110,6 +110,10 @@ spellcheck-aspell:
 		[ -e "$$tex" ] || continue; \
 		aspell --mode=tex -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.de.pws -c "$$tex" || exit 1; \
 	done
+	for md in chapters/*.de.md; do \
+		[ -e "$$md" ] || continue; \
+		aspell --mode=markdown -l de_DE --run-together --encoding=utf-8 --conf=./.aspell.conf -p ./.aspell.de.pws -c "$$md" || exit 1; \
+	done
 
 ## Spelling, grammar, and style with TeXtidote (https://github.com/sylvainhalle/textidote): writes textidote.html and chapters/*.textidote.html
 ## Needs Java (contained in the Docker image); the options are in .textidote (its --check en is overridden here).
@@ -121,9 +125,9 @@ spellcheck-textidote: textidote.jar
 	@# TeXtidote exits with the number of findings, which is no failure here
 	$(RUN) java -Djdk.xml.totalEntitySizeLimit=0 -jar textidote.jar --check de --output html $(MASTER_TEX) > textidote.html || test -s textidote.html
 	@# TeXtidote mixes up the text of \include lines, so .textidote removes them and each chapter is checked on its own
-	for tex in chapters/*.de.tex; do \
+	for tex in chapters/*.de.tex chapters/*.de.md; do \
 		[ -e "$$tex" ] || continue; \
-		$(RUN) java -Djdk.xml.totalEntitySizeLimit=0 -jar textidote.jar --check de --output html --read-all "$$tex" > "$${tex%.tex}.textidote.html" || test -s "$${tex%.tex}.textidote.html"; \
+		$(RUN) java -Djdk.xml.totalEntitySizeLimit=0 -jar textidote.jar --check de --output html --read-all "$$tex" > "$${tex%.*}.textidote.html" || test -s "$${tex%.*}.textidote.html"; \
 	done
 	@echo "Reports: textidote.html and chapters/*.textidote.html"
 
