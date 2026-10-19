@@ -10,6 +10,7 @@ extend-exclude = [
   "*-de.md",
   "*.de.md",
   "chapters-de/",
+  "abbreviations.tex",
   "thesis-example.tex",
   "thesis-example-basic-listings.tex",
   "print-version--*/",
