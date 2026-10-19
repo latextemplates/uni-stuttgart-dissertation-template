@@ -5,8 +5,8 @@
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  The content starts in line 1260 (\begin{document}); the first
-%           chapter (\include{chapters-en/10 - introduction}) is included in line 1406.
+% vvvvvvvv  The content starts in line 1258 (\begin{document}); the first
+%           chapter (\include{chapters-en/10 - introduction}) is included in line 1400.
 %           The chapters are in the directory "chapters-en".
 %           Everything above is the preamble: document class, packages, and settings.
 
@@ -268,9 +268,9 @@
 %\usepackage{stmaryrd} % for \ovee, \owedge, \otimes
 %\usepackage{marvosym} % for \Writinghand %patched to not redefine \Rightarrow
 %\usepackage{mathrsfs} % nice cursive letters via \mathscr{}
-%\usepackage{calrsfs} %\mathcal{} ein bisserl dickeren buchstaben erzeugen - sieht net so gut aus.
+%\usepackage{calrsfs} %\mathcal{} with slightly bolder letters - does not look that good.
 
-% Zusatzliche Symbole (Text Companion font extension)
+% Additional symbols (Text Companion font extension)
 \usepackage{textcomp}
 
 \setkomafont{sectioning}{\normalfont\normalcolor\rmfamily\mdseries}
@@ -390,10 +390,10 @@
 }
 
 \usepackage[dvipsnames, table]{xcolor}
-% Für die finale Druckfassung empfohlen:
+% Recommended for the final print version:
 %\usepackage[dvipsnames, table, gray]{xcolor}
 
-% Farben fuer die Links im PDF
+% Colors of the links in the PDF
 \definecolor{pdfurlcolor}{rgb}{0,0,0.6}
 \definecolor{pdffilecolor}{rgb}{0.7,0,0}
 \definecolor{pdflinkcolor}{rgb}{0,0,0.6}
@@ -450,7 +450,7 @@
   basicstyle=\small\ttfamily,
   stepnumber=2,               % Abstand zwischen den Zeilennummern
   numbersep=5pt,              % Abstand der Nummern zum Text
-  % keywordstyle=[1]\textbf,    % Stil der Keywords
+  % keywordstyle=[1]\textbf,    % Style of the keywords
   % keywordstyle=[2]\textbf,    %
   % keywordstyle=[3]\textbf,    %
   % keywordstyle=[4]\textbf,    %
@@ -631,37 +631,37 @@
 %\usepackage{embedfile}
 %\embedfile[mimetype=application/x-bibtex,desc=BibTeX entries of all references]{bibliography.bib}
 
-% Farbige Tabellen
-% ----------------
-% Das Paket colortbl wird inzwischen automatisch durch xcolor geladen
+% Colored tables
+% --------------
+% xcolor loads the package colortbl
 %
-% Erweiterte Funktionen innerhalb von Tabellen
-% --------------------------------------------
+% Extended functions within tables
+% --------------------------------
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/multirow/multirow.sty
-\usepackage{multirow} % Mehrfachspalten
+\usepackage{multirow} % cells spanning multiple rows
 %
 %%% Doc: Documentation inside dtx Package
-\usepackage{dcolumn}  % Ausrichtung an Komma oder Punkt
+\usepackage{dcolumn}  % alignment at the decimal separator
 
-% Etwas mehr Luft zwischen den Tabellenzeilen (\extrarowheight wird von array bereitgestellt, das dcolumn lädt)
+% A bit more space between the rows of a table (\extrarowheight is provided by array, which dcolumn loads)
 \setlength{\extrarowheight}{1pt}
 
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/supertabular/supertabular.pdf
 %\usepackage{supertabular}
 
-%%% Neue Tabellen-Umgebungen:
-% ---------------------------
-% Spalten automatischer Breite:
+%%% New table environments:
+% -------------------------
+% Columns of automatic width:
 %%% Doc: Documentation inside dtx Package
 % \usepackage{tabularx}
-% -> nach hyperref Laden
-% -> wird von ltxtable geladen
+% -> load after hyperref
+% -> loaded by ltxtable
 
-% Tabellen ueber mehere Seiten
-% ----------------------------
+% Tables spanning multiple pages
+% ------------------------------
 %%% Doc: http://mirror.ctan.org/tex-archive/macros/latex/contrib/carlisle/ltxtable.pdf
 % \usepackage{ltxtable} % Longtable + tabularx (multi-page tables) + (auto-sized columns in a fixed width table)
-% -> nach hyperref laden
+% -> load after hyperref
 
 % tikz / pgfplots stack used by the "Figures with tikz" and "Plots with pgfplots"
 % examples. Loading pgfplots pulls in tikz.
@@ -744,7 +744,7 @@
 %
 % - \textmarker
 % - \modified
-% - \change      - adresses a review comment
+% - \change      - addresses a review comment
 
 % Enable nice comments
 \usepackage{pdfcomment}
@@ -850,8 +850,8 @@
   plainpages=false,        % Anchors even on plain pages ?
   pageanchor=true,         % Pages are linkable
   % PDF Informationen
-  pdftitle={},             % Titel
-  pdfauthor={},            % Autor
+  pdftitle={},             % Title
+  pdfauthor={},            % Author
   pdfcreator={LaTeX, hyperref, KOMA-Script}, % Ersteller
   %pdfproducer={pdfeTeX 1.10b-2.1} %Produzent
   pdfdisplaydoctitle=true, % document title instead of file name in the window title
@@ -958,7 +958,7 @@
 
 % https://ctan.org/pkg/algorithms
 % Consists of two environments: algorithm and algorithmic
-% Although oudated, it defines the "algorithm" float enviornment
+% Although outdated, it defines the "algorithm" float environment
 % TODO: Define floating environment "algorithm" in other ways
 \usepackage[chapter]{algorithm}
 
@@ -966,8 +966,6 @@
 % Successor of algorithmicx; more modern than https://ctan.org/pkg/algorithms
 \usepackage{algpseudocodex}
 
-\floatname{algorithm}{Algorithmus}
-\renewcommand{\listalgorithmname}{Algorithmenverzeichnis}
 
 \newcommand{\commentchar}{\ensuremath{/\mkern-4mu/}}
 \algrenewcommand{\algorithmiccomment}[1]{\hfill $\commentchar$ #1}
@@ -1087,7 +1085,7 @@
 \newcommand{\ie}{i.e.,\ }
 
 % Enable hyphenation at other places as the dash.
-% Example: applicaiton\hydash specific
+% Example: application\hydash specific
 \makeatletter
 \newcommand{\hydash}{\penalty\@M-\hskip\z@skip}
 % Definition of "= taken from http://mirror.ctan.org/macros/latex/contrib/babel-contrib/german/ngermanb.dtx
@@ -1261,11 +1259,9 @@
 \setstretch{1.2}
 \raggedbottom
 
-% Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
-% Spielereien mit römischen Ziffern usw. - Die ISO 7144 schreibt das sogar für
-% wissenschaftliche Werke vor.
-% Von Promitionsordnung verlangt!
-% Deshalb ist \frontmatter DEAKTIVIERT
+% The page numbering runs continuously from the title page, so no Roman numerals etc.
+% ISO 7144 even requires this for scientific works, and so do the doctoral regulations.
+% Therefore, \frontmatter is DISABLED
 %\frontmatter
 \title{Thesis Title}
 %\author{\texorpdfstring{\href{http://www.example.org/}{Author Name}}{Author Name}}
@@ -1377,15 +1373,13 @@ Without their probing equipment, the medical experiments on the monkeys describe
 
 \listoftables
 
-% We use lstlisting environments with caption paramters.
+% We use lstlisting environments with caption parameters.
 % Thus, we need that command.
 % Alternative: \listof{Listing}{List of Listings}
 \lstlistoflistings
 
-% mittels \newfloat wurde die Algorithmus-Gleitumgebung definiert.
-% Mit folgendem Befehl werden alle floats dieses Typs ausgegeben
-%\listof{Algorithmus}{List of Algorithms}
-%\listofalgorithms %Ist nur für Algorithmen, die mittels \begin{algorithm} umschlossen werden, nötig
+% List of the algorithms (only for algorithms within \begin{algorithm} ... \end{algorithm})
+%\listofalgorithms
 
 \chapter*{List of Definitions}
 \addcontentsline{toc}{chapter}{List of Definitions}
@@ -1421,7 +1415,7 @@ Without their probing equipment, the medical experiments on the monkeys describe
 
 \printbibliography
 
-% Enfore empty line after bibliography
+% Enforce empty line after bibliography
 \ \\
 %
 \noindent
