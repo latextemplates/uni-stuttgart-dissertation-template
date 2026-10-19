@@ -20,6 +20,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - A short README.md in `chapters-en/` and `chapters-de/`.
 - The parts of the writing hints (background, problem exposition, …, evaluation) are chapters.
 - The caption of the cross-reference example table is above the table.
+- Lines in minted listings are labeled with `\label` and referenced with `\zcref` like everything else (`\labelline` and `\refline` removed).
 - Markdown example: "a whole chapter" instead of "a longer part".
 - CI: aspell, textlint, and TeXtidote also check the Markdown chapter.
 - CI and `make spellcheck`: aspell and TeXtidote run in the [Docker image by DANTE e.V.](https://hub.docker.com/r/danteev/texlive).
