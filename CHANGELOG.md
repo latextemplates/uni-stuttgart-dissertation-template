@@ -10,6 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Changed
 
 - `docs/latex-setup.md` no longer mentions Ubuntu 16.04.
+- `docs/latex-setup.md` recommends the [JabRef beta version](https://github.com/JabRef/jabref/releases), because the stable version 5.15 is too old.
 
 ## [2026-10-19]
 
