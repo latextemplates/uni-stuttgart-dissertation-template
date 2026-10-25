@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- `docs/latex-setup.md` no longer mentions Ubuntu 16.04.
+
 ## [2026-10-19]
 
 ### Added
