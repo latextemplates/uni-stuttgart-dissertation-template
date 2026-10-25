@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- Progress bars below headings show how far each chapter is written: `\progress{60}` below a heading draws a bar filled to 60 %; `\showprogressfalse` hides all bars for the submitted version.
 - [fewerfloatpages](https://ctan.org/pkg/fewerfloatpages) avoids pages that contain only a few floats.
 - `.devcontainer/devcontainer.json`: open the repository in VS Code ("Reopen in Container") or in GitHub Codespaces to work inside the TeX Live image, without a local LaTeX installation.
 
