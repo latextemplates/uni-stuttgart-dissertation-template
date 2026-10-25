@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- LuaLaTeX: [linebreaker](https://ctan.org/pkg/linebreaker) sets a paragraph again with more tolerance when a line would run into the margin.
 - README: "Further information" links common questions of LaTeX beginners (often referenced questions on TeX.SE, Barbara Beeton's "What every LaTeX newbie should know").
 - Progress bars below headings show how far each chapter is written: `\progress{60}` below a heading draws a bar filled to 60 %; `\showprogressfalse` hides all bars for the submitted version.
 - [fewerfloatpages](https://ctan.org/pkg/fewerfloatpages) avoids pages that contain only a few floats.
@@ -16,6 +17,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
+- LuaLaTeX: widows and orphans are removed by [lua-widow-control](https://ctan.org/pkg/lua-widow-control), which keeps pages full by lengthening or shortening a paragraph by one line; pdfLaTeX keeps [nowidow](https://ctan.org/pkg/nowidow).
 - Long URLs may break after any character ([xurl](https://ctan.org/pkg/xurl)), so they no longer run into the margin.
 - `docs/latex-setup.md` no longer mentions Ubuntu 16.04.
 - The README and `docs/latex-setup.md` recommend the [JabRef beta version](https://github.com/JabRef/jabref/releases), because the stable version 5.15 is too old.
