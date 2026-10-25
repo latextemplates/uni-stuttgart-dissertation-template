@@ -18,6 +18,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - `docs/latex-setup.md` no longer mentions Ubuntu 16.04.
 - The README and `docs/latex-setup.md` recommend the [JabRef beta version](https://github.com/JabRef/jabref/releases), because the stable version 5.15 is too old.
 
+### Removed
+
+- The switched-off [spelling](https://ctan.org/pkg/spelling) package is no longer loaded.
+
 ## [2026-10-19]
 
 ### Added
