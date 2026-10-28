@@ -10,6 +10,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Fixed
 
 - `\textcomment`: the highlighted text breaks across lines with LuaLaTeX; before, a longer passage ran into the margin.
+- Table captions: the space is now between caption and table, not above the caption (KOMA-Script option `captions=tableheading`).
 
 ## [2026-10-26]
 
