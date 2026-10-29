@@ -16,7 +16,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
-- The list of abbreviations is sorted by TeX itself (`\makenoidxglossaries`); no `makeglossaries` run is needed, so the list also appears when compiling without latexmk.
+- The list of abbreviations is sorted by TeX itself (`\makenoidxglossaries`); no `makeglossaries` run is needed, so the list also appears when compiling without latexmk; `.latexmkrc` no longer calls `makeglossaries-lite`.
 
 ### Fixed
 
