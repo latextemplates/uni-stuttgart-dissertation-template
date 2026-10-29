@@ -11,6 +11,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `\textcomment`: the highlighted text breaks across lines with LuaLaTeX; before, a longer passage ran into the margin.
 - Table captions: the space is now between caption and table, not above the caption (KOMA-Script option `captions=tableheading`).
+- Abbreviations example: the first use of `\glspl{rdbms}` reads "Relational Database Management Systems (RDBMS)" instead of "RDBMS (RDBMS)".
 
 ## [2026-10-26]
 
