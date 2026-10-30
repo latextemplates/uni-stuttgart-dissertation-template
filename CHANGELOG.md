@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Fixed
+
+- The footer no longer shows "Inhaltsverzeichnis" or the previous chapter's last section on pages where no section of the current chapter has started yet. [#16](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/16)
+
 ## [2026-10-30]
 
 ### Added
