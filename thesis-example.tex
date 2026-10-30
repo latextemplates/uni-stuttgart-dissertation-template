@@ -5,8 +5,8 @@
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1284 (\begin{document}); das erste
-%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1427 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1286 (\begin{document}); das erste
+%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1429 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -315,27 +315,29 @@
 \pagestyle{scrheadings}
 \clearmainofpairofpagestyles
 
+% KOMA convention: \markboth sets the chapter (left mark) and clears the section (right mark),
+% so the start of a chapter never shows the previous chapter's last section or the table of contents.
+% \markright sets the section only.
 \newcommand{\setchapterfooter}[1]{%
   \def\mydummy{#1}
   \renewcommand{\chaptermark}[1]{%
-    \markright{\textbf{\thechapter}~|~\mydummy}{}}
+    \markboth{\textbf{\thechapter}~|~\mydummy}{}}
 }
 
 \newcommand{\resetchapterfooter}{%
   \renewcommand{\chaptermark}[1]{%
-    \markright{\textbf{\thechapter}~|~##1}{}}
+    \markboth{\textbf{\thechapter}~|~##1}{}}
 }
 
 \renewcommand{\chaptermark}[1]{%
-  \markright{\textbf{\thechapter}~|~#1}{}}
+  \markboth{\textbf{\thechapter}~|~#1}{}}
 
 \renewcommand{\sectionmark}[1]{%
-  \markleft{\textbf{\thesection}~|~#1}{}}
+  \markright{\textbf{\thesection}~|~#1}}
 
 \ofoot[\pagemark]{\pagemark}
-\refoot{\rightmark}
-%\refoot{\chaptermark -- \thechapter}
-\lofoot{\leftmark}
+\refoot{\leftmark}
+\lofoot{\rightmark}
 
 % daniel's style for abstract (summary / abstract)
 \deftriplepagestyle{justpagenums}{}{}{}{}{}{\textbf{\thepage}}
