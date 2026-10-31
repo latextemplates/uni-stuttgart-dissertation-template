@@ -6,8 +6,8 @@
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1375 (\begin{document}); das erste
-%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1522 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1376 (\begin{document}); das erste
+%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1523 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -354,7 +354,8 @@
 \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
 \renewcommand{\DOCH}{%
   \setlength{\fboxrule}{\RW}
-  \makebox[12.34cm][r]{
+  % \textwidth, not a fixed width: a wider box overflows the line on every chapter page ("Overfull \hbox")
+  \makebox[\textwidth][r]{
     \rotatebox{90}{
       \makebox[2cm]{
         \resizebox{2.5cm}{!}{ %\fboxsep=6pt
