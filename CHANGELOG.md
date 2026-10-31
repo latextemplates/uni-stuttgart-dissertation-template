@@ -10,9 +10,11 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 ### Added
 
 - Document version from git in the page header via [gitver](https://ctan.org/pkg/gitver) (commit and build time); the template is now compiled with `--shell-escape`. [#1](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/1)
+- README: FAQ on an English thesis with the German title page and Kurzfassung (use `thesis-example-en.tex`, or `\selectlanguage{english}` before `\tableofcontents` in `thesis-example.tex`). [#20](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/20)
 
 ### Fixed
 
+- `thesis-example.tex` (German) passes `ngerman` instead of `english` to the document class, so packages that read the class options (e.g., selnolig) treat the thesis as German.
 - The chapter number box is as wide as the text, so chapter pages no longer produce an "Overfull \hbox" warning. [#21](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/21)
 - The footer no longer shows "Inhaltsverzeichnis" or the previous chapter's last section on pages where no section of the current chapter has started yet. [#16](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/16)
 
