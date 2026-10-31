@@ -356,6 +356,11 @@ replace the term `thesis-example` by e.g., `thesis-topic-name` in the following 
 | `.gitignore`                     | `thesis-example*.png`                     |
 | `Makefile`                       | `MASTER_TEX = thesis-example.tex`         |
 
+### Q: The thesis is in English, but the title page and the Kurzfassung have to be in German. Which main file do I use?
+
+`thesis-example-en.tex`: its title page is German anyway (the examination regulations prescribe it), the "Kurzfassung" is set in German with `\begin{otherlanguage}{ngerman}`, and everything else is English, including "Contents", "List of Figures", "Chapter", and "Figure".
+To keep an existing German `thesis-example.tex` instead, put `\selectlanguage{english}` in front of `\tableofcontents`; all headings and captions from there on are English.
+
 ### Q: I get the error `Reload initiated (formats: otf,ttf,ttc); reason: Font "Inconsolatazi4" not found.`
 
 Install package `inconsolata`
