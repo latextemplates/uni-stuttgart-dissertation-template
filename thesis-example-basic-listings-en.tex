@@ -6,8 +6,8 @@
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  The content starts in line 1348 (\begin{document}); the first
-%           chapter (\include{chapters-en/10 - introduction}) is included in line 1488.
+% vvvvvvvv  The content starts in line 1349 (\begin{document}); the first
+%           chapter (\include{chapters-en/10 - introduction}) is included in line 1489.
 %           The chapters are in the directory "chapters-en".
 %           Everything above is the preamble: document class, packages, and settings.
 
@@ -359,7 +359,8 @@
 \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
 \renewcommand{\DOCH}{%
   \setlength{\fboxrule}{\RW}
-  \makebox[12.34cm][r]{
+  % \textwidth, not a fixed width: a wider box overflows the line on every chapter page ("Overfull \hbox")
+  \makebox[\textwidth][r]{
     \rotatebox{90}{
       \makebox[2cm]{
         \resizebox{2.5cm}{!}{ %\fboxsep=6pt
