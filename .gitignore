@@ -1,5 +1,7 @@
 thesis-example.pdf
 thesis-example-*.pdf
+# single chapters compiled on their own (see chapters-*/README.md)
+chapters-*/*.pdf
 figures/*.pdf_tex
 
 printer-version--cover/cover.pdf

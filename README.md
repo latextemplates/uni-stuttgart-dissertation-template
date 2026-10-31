@@ -54,6 +54,8 @@ Following features are enabled in this template:
 - Most recent LaTeX packages and package configuration based on long-time experience.
 - (Optional) Typesetting of listings using advanced highlighting powered by the [minted] package.
   `minted` provides better output than [listings], but requires [latexminted] to be installed.
+- Each chapter compiles on its own, which is much faster than the whole thesis while writing: `latexmk "10 - introduction"` in `chapters-en/`.
+  This is enabled by the [subfiles](https://ctan.org/pkg/subfiles) package; see [chapters-en/README.md](chapters-en/README.md).
 - Numbered research questions: `\defRQ` prints "Research Question 1 (RQ1)", `\refRQ` references it as "RQ1".
   This is enabled by the [refenums](https://github.com/koppor/refenums) package; `refenums.sty` is part of this repository, because TeX Live contains an older version.
 - Generated PDF allows for copy and paste of text without getting words with [ligatures](https://en.wikipedia.org/wiki/Typographic_ligature) such as "workflow" destroyed.
@@ -364,6 +366,13 @@ To keep an existing German `thesis-example.tex` instead, put `\selectlanguage{en
 ### Q: I get the error `Reload initiated (formats: otf,ttf,ttc); reason: Font "Inconsolatazi4" not found.`
 
 Install package `inconsolata`
+
+### Q: How do I compile a single chapter?
+
+In `chapters-en/`, run `latexmk "10 - introduction"`; the result is `10-introduction.pdf`.
+Each chapter file starts with `\documentclass[../<main file>]{subfiles}`, and the [subfiles](https://ctan.org/pkg/subfiles) package loads the preamble of that main file.
+The `.latexmkrc` in the chapter directory takes the settings of the main directory and lets LaTeX find the packages, figures and the bibliography there.
+References to other chapters show as `??` and the bibliography is not printed; the full document has them.
 
 ### Q: How can I synchronize updates from the template to my repository?
 
