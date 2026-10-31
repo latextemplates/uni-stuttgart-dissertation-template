@@ -9,7 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
-- Document version from git in the page header via [gitver](https://ctan.org/pkg/gitver) (commit and build time) when compiling with `--shell-escape`; empty otherwise. [#1](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/1)
+- Document version from git in the page header via [gitver](https://ctan.org/pkg/gitver) (commit and build time); the template is now compiled with `--shell-escape`. [#1](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/1)
 
 ### Fixed
 
