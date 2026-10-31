@@ -7,6 +7,7 @@
 \usepackage{charter}
 \usepackage[charter]{mathdesign}
 \usepackage[scaled=.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault} % sans serif, as modern titles are set
 \usepackage[T1]{fontenc} % T1 Schrift Encoding
 \usepackage{textcomp}	 % Zusatzliche Symbole (Text Companion font extension)
 
@@ -15,9 +16,12 @@
 \newcommand{\boxcol}{white}
 
 \begin{document} %
-% Name
+% Name and title are rotated by 180 degrees: the spine reads from bottom to top when the book stands upright.
+% Logo and year stay at the bottom, so the name (the start of the text) ends up next to them.
 \vspace{-5pt} %
-\noindent\fcolorbox{\boxcol}{white}{%
+\noindent\raisebox{-2pt}{\rotatebox[origin=c]{180}{%
+% Name
+\fcolorbox{\boxcol}{white}{%
 \begin{minipage}{\dimexpr0.15\textwidth-2\fboxrule-2\fboxsep\relax}
 \begin{center}
 {\Large Author Name}
@@ -25,13 +29,13 @@
 \end{minipage}}%
 %
 % Title
-\noindent\fcolorbox{\boxcol}{white}{%
+\fcolorbox{\boxcol}{white}{%
 \begin{minipage}{\dimexpr0.75\textwidth-2\fboxrule-2\fboxsep\relax}
 \begin{center}
 \vspace{3pt} % No idea why this is not aligned correctly
 {\Large Titel der Dissertation}
 \end{center}
-\end{minipage}}%
+\end{minipage}}}}%
 %
 % Logo
 \noindent\fcolorbox{\boxcol}{white}{%

@@ -2,18 +2,19 @@
 % LTeX: language=de-DE
 % !TeX encoding = utf8
 % !TeX program = lualatex
+% !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1357 (\begin{document}); das erste
-%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1504 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1383 (\begin{document}); das erste
+%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1530 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
 \documentclass[
   fontsize=10pt,
   numbers=noenddot,
-  english,  % English as main language; this parameter is passed to other packages (e.g., selnolig in the case of lualatex)
+  ngerman,  % Neue deutsche Rechtschreibung; der Parameter wird an andere Pakete weiter gegeben (z.B. selnolig bei lualatex)
   paper=a5,
   twoside,  % die Dissertation wird als Buch gedruckt: der innere Rand ist schmaler als der äußere, daher wechselt der Text zwischen linken und rechten Seiten
   DIV=calc,
@@ -315,27 +316,32 @@
 \pagestyle{scrheadings}
 \clearmainofpairofpagestyles
 
+% KOMA convention: \markboth sets the chapter (left mark) and clears the section (right mark),
+% so the start of a chapter never shows the previous chapter's last section or the table of contents.
+% \markright sets the section only.
 \newcommand{\setchapterfooter}[1]{%
   \def\mydummy{#1}
   \renewcommand{\chaptermark}[1]{%
-    \markright{\textbf{\thechapter}~|~\mydummy}{}}
+    \markboth{\textbf{\thechapter}~|~\mydummy}{}}
 }
 
 \newcommand{\resetchapterfooter}{%
   \renewcommand{\chaptermark}[1]{%
-    \markright{\textbf{\thechapter}~|~##1}{}}
+    \markboth{\textbf{\thechapter}~|~##1}{}}
 }
 
 \renewcommand{\chaptermark}[1]{%
-  \markright{\textbf{\thechapter}~|~#1}{}}
+  \markboth{\textbf{\thechapter}~|~#1}{}}
 
 \renewcommand{\sectionmark}[1]{%
-  \markleft{\textbf{\thesection}~|~#1}{}}
+  \markright{\textbf{\thesection}~|~#1}}
 
 \ofoot[\pagemark]{\pagemark}
-\refoot{\rightmark}
-%\refoot{\chaptermark -- \thechapter}
-\lofoot{\leftmark}
+% Document version in the (otherwise empty) header (see gitver below); empty when compiled without --shell-escape.
+% The footer is taken by the chapter and section marks, which are too long to share the line with the version.
+\chead*{\versionBox}
+\refoot{\leftmark}
+\lofoot{\rightmark}
 
 % daniel's style for abstract (summary / abstract)
 \deftriplepagestyle{justpagenums}{}{}{}{}{}{\textbf{\thepage}}
@@ -348,7 +354,8 @@
 \ChTitleVar{\normalfont\Huge\scshape\color{black}\raggedleft}
 \renewcommand{\DOCH}{%
   \setlength{\fboxrule}{\RW}
-  \makebox[12.34cm][r]{
+  % \textwidth, not a fixed width: a wider box overflows the line on every chapter page ("Overfull \hbox")
+  \makebox[\textwidth][r]{
     \rotatebox{90}{
       \makebox[2cm]{
         \resizebox{2.5cm}{!}{ %\fboxsep=6pt
@@ -934,6 +941,18 @@
 \patchcmd{\@decl@short}{\bbl@info}{\@gobble}{}{}
 \makeatother
 
+% Document version from git: \gitVer is the commit (with "-dirty" when there are uncommitted changes) and
+% \versionBox a framed "Manuscript version: #<commit> - <build time>", e.g. for the footer or the title page.
+% gitver needs git and --shell-escape (add it to $pdflatex in .latexmkrc), so it is loaded only when the
+% document is compiled with --shell-escape; without, both commands are empty.
+% Without a git repository (e.g. a downloaded zip), gitver reports an error and the version reads "unknown".
+% Doc: https://ctan.org/pkg/gitver
+\ExplSyntaxOn
+\sys_if_shell_unrestricted:T { \RequirePackage [ noheader , nopdfinfo ] { gitver } }
+\ExplSyntaxOff
+\providecommand{\gitVer}{}
+\providecommand{\versionBox}{}
+
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % figures and placement
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1091,13 +1110,14 @@
 {\LTGendlineexample=\numexpr\inputlineno-1\relax%
   \tcbinputlisting{%
     listing only,
-    listing file=\currfilepath,
+    % \currfilename statt \currfilepath: ein Kapitel wird über den Import-Pfad von subfiles gelesen, den minted sonst noch einmal voranstellt
+    listing file=\currfilename,
     colback=green!5!white,
     colframe=green!25,
     coltitle=black!90,
     coltext=black!90,
     left=8mm,
-    title=Zugehöriger \LaTeX{}-Quelltext aus \texttt{\currfilepath},
+    title=Zugehöriger \LaTeX{}-Quelltext aus \texttt{\currfilename},
     listing options={
         frame=none,
         language={[LaTeX]TeX},
@@ -1354,6 +1374,12 @@
   \usepackage{linebreaker}
 \fi
 
+% Each chapter compiles on its own: its file starts with \documentclass[../<main file>]{subfiles}, and
+% "latexmk" in chapters-de/ builds it with this preamble (see chapters-de/README.md).
+% In the full document, \subfileinclude works like \include.
+% subfiles is loaded as the last package.
+% Doc: https://ctan.org/pkg/subfiles
+\usepackage{subfiles}
 \begin{document}
 \setstretch{1.2}
 \raggedbottom     % Variable Seitenhoehen zulassen
@@ -1501,17 +1527,17 @@ Ohne ihre Sondiergeräte wären die in dieser Arbeit beschriebenen medizinischen
 \renewcommand*{\chapterpagestyle}{scrplain}
 \pagestyle{scrheadings}
 
-\include{chapters-de/10 - einleitung}
-\include{chapters-de/20 - hintergrund}
-\include{chapters-de/30 - problemdarstellung}
-\include{chapters-de/40 - erstes kapitel}
-\include{chapters-de/50 - zweites kapitel}
-\include{chapters-de/60 - evaluation}
+\subfileinclude{chapters-de/10 - einleitung}
+\subfileinclude{chapters-de/20 - hintergrund}
+\subfileinclude{chapters-de/30 - problemdarstellung}
+\subfileinclude{chapters-de/40 - erstes kapitel}
+\subfileinclude{chapters-de/50 - zweites kapitel}
+\subfileinclude{chapters-de/60 - evaluation}
 \ifluatex
   \markdownInput{chapters-de/70 - markdown.md}
 \fi
-\include{chapters-de/80 - latex-hinweise}
-\include{chapters-de/90 - zusammenfassung}
+\subfileinclude{chapters-de/80 - latex-hinweise}
+\subfileinclude{chapters-de/90 - zusammenfassung}
 
 %%% ===============================================================================
 %%% Bibliography
