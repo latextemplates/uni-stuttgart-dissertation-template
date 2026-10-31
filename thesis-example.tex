@@ -2,11 +2,12 @@
 % LTeX: language=de-DE
 % !TeX encoding = utf8
 % !TeX program = lualatex
+% !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1300 (\begin{document}); das erste
-%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1443 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1302 (\begin{document}); das erste
+%           Kapitel (\include{chapters-de/10 - einleitung}) wird in Zeile 1445 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -336,7 +337,7 @@
   \markright{\textbf{\thesection}~|~#1}}
 
 \ofoot[\pagemark]{\pagemark}
-% Document version in the (otherwise empty) header when compiled with --shell-escape (see gitver below); otherwise empty.
+% Document version in the (otherwise empty) header (see gitver below); empty when compiled without --shell-escape.
 % The footer is taken by the chapter and section marks, which are too long to share the line with the version.
 \chead*{\versionBox}
 \refoot{\leftmark}
@@ -874,6 +875,7 @@
 % \versionBox a framed "Manuscript version: #<commit> - <build time>", e.g. for the footer or the title page.
 % gitver needs git and --shell-escape (add it to $pdflatex in .latexmkrc), so it is loaded only when the
 % document is compiled with --shell-escape; without, both commands are empty.
+% Without a git repository (e.g. a downloaded zip), gitver reports an error and the version reads "unknown".
 % Doc: https://ctan.org/pkg/gitver
 \ExplSyntaxOn
 \sys_if_shell_unrestricted:T { \RequirePackage [ noheader , nopdfinfo ] { gitver } }

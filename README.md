@@ -159,6 +159,8 @@ To have `minted` running with a traditional installation, you have to do followi
 
 1. Install python: `choco install python` - that uses [chocolatey](https://chocolatey.org/) to install Python
 2. Install [latexminted]: `pip install latexminted` - that uses the Python package manager to install the minted library
+3. When latexing, use `-shell-escape`: `pdflatex -shell-escape thesis-example`.
+   You can also just execute `latexmk thesis-example`.
 
 ### latexmk hints
 
@@ -284,7 +286,7 @@ Add the same comment to further `.tex` files.
 In case something goes wrong, you can instruct the LaTeX compiler to stop at the first error:
 
 ```bash
-lualatex --synctex=1 thesis-example
+lualatex --synctex=1 --shell-escape thesis-example
 ```
 
 Run `biber thesis-example` to get the bibliography rendered (execute `lualatex` afterwards).
@@ -308,6 +310,13 @@ For a local installation:
 2. Install or repair [latexminted]: `python -m pip install --force-reinstall latexminted` (see [minted#425](https://github.com/gpoore/minted/issues/425)).
 
 Without Python, use the `*-basic-listings*.tex` variant: it typesets source code with the [listings] package.
+
+### Q: I cannot get minted to run. There is this `-shell-escape` warning.
+
+Please ensure that your compilation command includes `-shell-escape`.
+E.g., `lualatex -shell-escape -synctex=1 thesis-example.tex`.
+When compiling `thesis-example.tex` with TeXStudio, you will see a dialog warning about overriding the compilation command.
+Just answer "(a) allow for this document" and it will work.
 
 ### Q: How do I spell check a passage in another language?
 
