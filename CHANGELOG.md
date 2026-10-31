@@ -7,6 +7,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Document version from git in the page header via [gitver](https://ctan.org/pkg/gitver) (commit and build time) when compiling with `--shell-escape`; empty otherwise. [#1](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/1)
+
 ### Fixed
 
 - The footer no longer shows "Inhaltsverzeichnis" or the previous chapter's last section on pages where no section of the current chapter has started yet. [#16](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/16)
