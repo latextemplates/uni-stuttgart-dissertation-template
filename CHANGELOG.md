@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- Each chapter compiles on its own: `latexmk "10 - introduction"` in `chapters-en/` (or `chapters-de/`) builds that chapter with the preamble of the thesis via [subfiles](https://ctan.org/pkg/subfiles); the main files include the chapters with `\subfileinclude`. [#11](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/11)
 - Document version from git in the page header via [gitver](https://ctan.org/pkg/gitver) (commit and build time); the template is now compiled with `--shell-escape`. [#1](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/1)
 - README: FAQ on an English thesis with the German title page and Kurzfassung (use `thesis-example-en.tex`, or `\selectlanguage{english}` before `\tableofcontents` in `thesis-example.tex`). [#20](https://github.com/latextemplates/uni-stuttgart-dissertation-template/issues/20)
 
