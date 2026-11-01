@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- README: FAQ on a precompiled preamble with pdfLaTeX (`mylatexformat`) and its caveats, with a link to the decision record on compilation speed; `*.fmt` is ignored by git.
 - The main file header and the PDF properties (custom entry `Template`) name the template and the generator version the document is based on. [scientific-thesis-template#93](https://github.com/latextemplates/scientific-thesis-template/issues/93)
 - `Check` workflow: the weekly run compares the built PDF with the published one and uploads the highlighted differences as artifact `pdf-diff`, so a changed output after a TeX Live update is visible without an error.
 - README: FAQ on changing the citation style to APA, Chicago, IEEE, etc., with a link to rendered examples of each style. [scientific-thesis-template#151](https://github.com/latextemplates/scientific-thesis-template/issues/151)
