@@ -12,6 +12,11 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - `Check` workflow: the weekly run compares the built PDF with the published one and uploads the highlighted differences as artifact `pdf-diff`, so a changed output after a TeX Live update is visible without an error.
 - README: FAQ on changing the citation style to APA, Chicago, IEEE, etc., with a link to rendered examples of each style. [scientific-thesis-template#151](https://github.com/latextemplates/scientific-thesis-template/issues/151)
 
+### Fixed
+
+- The abbreviations example names the right file (`abbreviations.tex`) and command (`\newabbreviation`) and explains that `\glsunset`/`\glsreset` act on the next `\gls`; README FAQ on it. [scientific-thesis-template#121](https://github.com/latextemplates/scientific-thesis-template/issues/121)
+
+
 ## [2026-11-01]
 
 ### Added
