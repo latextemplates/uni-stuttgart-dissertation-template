@@ -487,6 +487,21 @@ The effect shows at the next `\gls{...}` of that abbreviation: after `\glsunset{
 Put them before that `\gls{...}` in the text, use the key from `abbreviations.tex` (`\newabbreviation{nlp}{NLP}{natural language processing}`), and compile twice (`latexmk` does), because the first-use information comes from the previous run.
 `\glsresetall` after the abstract lets every abbreviation appear in its long form again in the main text.
 
+### Q: How do I speed up compilation with a precompiled preamble?
+
+With pdfLaTeX, the preamble of `thesis-example.tex` can be dumped into a format file once ([mylatexformat](https://ctan.org/pkg/mylatexformat), part of TeX Live); later runs load the format instead of reading all packages, which saved 26 % per run for the example thesis.
+
+```bash
+pdflatex -ini -jobname=thesis-example "&pdflatex" mylatexformat.ltx """thesis-example.tex"""
+pdflatex -fmt=thesis-example thesis-example.tex
+```
+
+Caveats: a run with the format skips the preamble of the `.tex` file, so after every change to the preamble, and after a TeX Live update, the first command has to be repeated; otherwise the change is silently ignored.
+`latexmk` does not rebuild the format, so this is for runs by hand while writing; `latexmk` builds the final version as usual.
+The file `thesis-example.fmt` (about 14 MB) is a build product and in `.gitignore`.
+LuaLaTeX (the default of this template) cannot dump its preamble: Lua states and the loaded fonts are not part of a format.
+The other ways to shorten the edit-compile loop, with measurements, are in the decision record [How to speed up compilation](https://github.com/latextemplates/gadr-latex-packages/blob/main/compilation-speed.md).
+
 ### Q: How do I change the citation style (APA, Chicago, IEEE, ...)?
 
 The bibliography is typeset by [biblatex] with its built-in styles: `alphabetic` here (`--authoryear` at generation time switches to `authoryear`).
