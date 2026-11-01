@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- `Check` workflow: the weekly run compares the built PDF with the published one and uploads the highlighted differences as artifact `pdf-diff`, so a changed output after a TeX Live update is visible without an error.
 - README: FAQ on changing the citation style to APA, Chicago, IEEE, etc., with a link to rendered examples of each style. [scientific-thesis-template#151](https://github.com/latextemplates/scientific-thesis-template/issues/151)
 
 ## [2026-11-01]
