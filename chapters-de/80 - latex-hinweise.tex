@@ -1,3 +1,8 @@
+% Compiles on its own: latexmk "80 - latex-hinweise" (in this directory, see README.md).
+% The subfiles package loads the preamble of the main file named here.
+\documentclass[../thesis-example]{subfiles}
+%\documentclass[../thesis-example-basic-listings]{subfiles}
+\begin{document}
 \chapter{LaTeX Hinweise}
 \label{sec:latexhints}
 
@@ -484,9 +489,9 @@ The header (\verb+\endhead+) and footer (\verb+\endfoot+) rows are repeated on e
 
 % The main file loads either the minted or the listings package
 \ifdefined\inputminted
-  \input{chapters-de/80 - latex-hinweise - minted}
+  \input{80 - latex-hinweise - minted}
 \else
-  \input{chapters-de/80 - latex-hinweise - listings}
+  \input{80 - latex-hinweise - listings}
 \fi
 
 \section{Itemization}
@@ -801,3 +806,4 @@ Note that, when \texttt{enumitem} is loaded, this behaves differently than with 
 \begin{gfquote}{T.\ Scientist}
   The program will be finished by next Friday.
 \end{gfquote}
+\end{document}

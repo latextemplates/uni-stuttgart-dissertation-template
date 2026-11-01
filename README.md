@@ -54,6 +54,8 @@ Following features are enabled in this template:
 - Most recent LaTeX packages and package configuration based on long-time experience.
 - (Optional) Typesetting of listings using advanced highlighting powered by the [minted] package.
   `minted` provides better output than [listings], but requires [latexminted] to be installed.
+- Each chapter compiles on its own, which is much faster than the whole thesis while writing: `latexmk "10 - introduction"` in `chapters-en/`.
+  This is enabled by the [subfiles](https://ctan.org/pkg/subfiles) package; see [chapters-en/README.md](chapters-en/README.md).
 - Numbered research questions: `\defRQ` prints "Research Question 1 (RQ1)", `\refRQ` references it as "RQ1".
   This is enabled by the [refenums](https://github.com/koppor/refenums) package; `refenums.sty` is part of this repository, because TeX Live contains an older version.
 - Generated PDF allows for copy and paste of text without getting words with [ligatures](https://en.wikipedia.org/wiki/Typographic_ligature) such as "workflow" destroyed.
@@ -159,6 +161,8 @@ To have `minted` running with a traditional installation, you have to do followi
 
 1. Install python: `choco install python` - that uses [chocolatey](https://chocolatey.org/) to install Python
 2. Install [latexminted]: `pip install latexminted` - that uses the Python package manager to install the minted library
+3. When latexing, use `-shell-escape`: `pdflatex -shell-escape thesis-example`.
+   You can also just execute `latexmk thesis-example`.
 
 ### latexmk hints
 
@@ -284,7 +288,7 @@ Add the same comment to further `.tex` files.
 In case something goes wrong, you can instruct the LaTeX compiler to stop at the first error:
 
 ```bash
-lualatex --synctex=1 thesis-example
+lualatex --synctex=1 --shell-escape thesis-example
 ```
 
 Run `biber thesis-example` to get the bibliography rendered (execute `lualatex` afterwards).
@@ -308,6 +312,13 @@ For a local installation:
 2. Install or repair [latexminted]: `python -m pip install --force-reinstall latexminted` (see [minted#425](https://github.com/gpoore/minted/issues/425)).
 
 Without Python, use the `*-basic-listings*.tex` variant: it typesets source code with the [listings] package.
+
+### Q: I cannot get minted to run. There is this `-shell-escape` warning.
+
+Please ensure that your compilation command includes `-shell-escape`.
+E.g., `lualatex -shell-escape -synctex=1 thesis-example.tex`.
+When compiling `thesis-example.tex` with TeXStudio, you will see a dialog warning about overriding the compilation command.
+Just answer "(a) allow for this document" and it will work.
 
 ### Q: How do I spell check a passage in another language?
 
@@ -347,9 +358,21 @@ replace the term `thesis-example` by e.g., `thesis-topic-name` in the following 
 | `.gitignore`                     | `thesis-example*.png`                     |
 | `Makefile`                       | `MASTER_TEX = thesis-example.tex`         |
 
+### Q: The thesis is in English, but the title page and the Kurzfassung have to be in German. Which main file do I use?
+
+`thesis-example-en.tex`: its title page is German anyway (the examination regulations prescribe it), the "Kurzfassung" is set in German with `\begin{otherlanguage}{ngerman}`, and everything else is English, including "Contents", "List of Figures", "Chapter", and "Figure".
+To keep an existing German `thesis-example.tex` instead, put `\selectlanguage{english}` in front of `\tableofcontents`; all headings and captions from there on are English.
+
 ### Q: I get the error `Reload initiated (formats: otf,ttf,ttc); reason: Font "Inconsolatazi4" not found.`
 
 Install package `inconsolata`
+
+### Q: How do I compile a single chapter?
+
+In `chapters-en/`, run `latexmk "10 - introduction"`; the result is `10-introduction.pdf`.
+Each chapter file starts with `\documentclass[../<main file>]{subfiles}`, and the [subfiles](https://ctan.org/pkg/subfiles) package loads the preamble of that main file.
+The `.latexmkrc` in the chapter directory takes the settings of the main directory and lets LaTeX find the packages, figures and the bibliography there.
+References to other chapters show as `??` and the bibliography is not printed; the full document has them.
 
 ### Q: How can I synchronize updates from the template to my repository?
 

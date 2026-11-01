@@ -1,4 +1,4 @@
-$pdflatex = 'lualatex --file-line-error --synctex=-1 %O %S';
+$pdflatex = 'lualatex --shell-escape --file-line-error --synctex=-1 %O %S';
 
 #------------------------------------------------------------------------------#
 # compilation
