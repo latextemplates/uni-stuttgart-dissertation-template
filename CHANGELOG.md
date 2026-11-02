@@ -18,6 +18,10 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - `Check` workflow: the weekly run compares the built PDF with the published one and uploads the highlighted differences as artifact `pdf-diff`, so a changed output after a TeX Live update is visible without an error.
 - README: FAQ on changing the citation style to APA, Chicago, IEEE, etc., with a link to rendered examples of each style. [scientific-thesis-template#151](https://github.com/latextemplates/scientific-thesis-template/issues/151)
 
+### Changed
+
+- README FAQ "How do I find the cause of a LaTeX error?": `-halt-on-error`, how to read the `!` line, `make log`, and what to look for when there is no PDF although the log shows only warnings (missing font or encoding file). [scientific-thesis-template#134](https://github.com/latextemplates/scientific-thesis-template/issues/134)
+
 ### Fixed
 
 - LuaLaTeX: math and siunitx numbers are set in XCharter Math, the math font matching the text font; before, they were Latin Modern Math and differed in design and weight from numbers in the text. [scientific-thesis-template#36](https://github.com/latextemplates/scientific-thesis-template/issues/36)
