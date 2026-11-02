@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- writing hints from the ISTE fork of the thesis template: how to document the literature search (search engines, keywords, inclusion criteria; JabRef for the papers), an explicit contribution paragraph, who benefits and lessons learned in the conclusion, and the Goal Question Metric approach and the case-study checklist of Runeson and Höst in the evaluation. [scientific-thesis-template#70](https://github.com/latextemplates/scientific-thesis-template/issues/70)
 - README FAQ on the continuous page numbering (ISO 7144) and the generator flag `--pagenumbering=roman` for roman numerals in the front matter. [scientific-thesis-template#69](https://github.com/latextemplates/scientific-thesis-template/issues/69)
 - README: FAQ on including an SVG file (one-time Inkscape conversion to PDF, the `svg` package and its constraints). [scientific-thesis-template#122](https://github.com/latextemplates/scientific-thesis-template/issues/122)
 - Tables: example of a wide table scaled to the text width with [adjustbox](https://ctan.org/pkg/adjustbox) (`max width=\textwidth`, scales only if too wide), with a hint when to prefer `tabularx` or a landscape page instead. [scientific-thesis-template#80](https://github.com/latextemplates/scientific-thesis-template/issues/80)
