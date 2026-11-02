@@ -8,7 +8,7 @@
 % Generated with generator-latex-template 2026.11.1 for latextemplates/uni-stuttgart-dissertation-template
 %
 % vvvvvvvv  Der Inhalt beginnt in Zeile 1425 (\begin{document}); das erste
-%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1572 eingebunden.
+%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1568 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -1433,10 +1433,8 @@
 
 % Die Seitennummerierung erfolgt durchlaufend ab der Titelseite. Also keine
 % Spielereien mit römischen Ziffern usw. - Die ISO 7144 schreibt das sogar für
-% wissenschaftliche Werke vor.
-% Von Promitionsordnung verlangt!
-% Deshalb ist \frontmatter DEAKTIVIERT
-%\frontmatter
+% wissenschaftliche Werke vor. Von der Promotionsordnung verlangt!
+% Deshalb wird \frontmatter nicht verwendet (mit --pagenumbering=roman neu erzeugen, um es zu nutzen).
 \title{Thesis Title}
 %\author{\texorpdfstring{\href{http://www.example.org/}{Author Name}}{Author Name}}
 \author{Author Name}
@@ -1452,8 +1450,6 @@
 % Default: Dr. rer. nat.
 %\degree{Doktors der Naturwissenschaften (Dr.~rer.~nat.)}
 \maketitle
-
-%\mainmatter
 
 \pagestyle{scrheadings}
 
