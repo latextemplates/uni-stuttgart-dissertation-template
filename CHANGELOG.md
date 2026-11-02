@@ -26,6 +26,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Fixed
 
+- Warnings in the log of a clean build are gone: "Command `\@parboxrestore` has changed", "Token not allowed in a PDF string" (the todo on abbreviations), `ifplatform` under pdfLaTeX, and the undefined italic shape of Inconsolata under LuaLaTeX; the diagonal-cell table uses `\centering`. [scientific-thesis-template#135](https://github.com/latextemplates/scientific-thesis-template/issues/135)
 - LuaLaTeX: math and siunitx numbers are set in XCharter Math, the math font matching the text font; before, they were Latin Modern Math and differed in design and weight from numbers in the text. [scientific-thesis-template#36](https://github.com/latextemplates/scientific-thesis-template/issues/36)
 - `rotating` is loaded before `tablefootnote`, so packages added later that need it (`ctable`, `sidewaystable`) no longer fail with "Package rotating loaded after tablefootnote". [scientific-thesis-template#101](https://github.com/latextemplates/scientific-thesis-template/issues/101)
 - The abbreviations example names the right file (`abbreviations.tex`) and command (`\newabbreviation`) and explains that `\glsunset`/`\glsreset` act on the next `\gls`; README FAQ on it. [scientific-thesis-template#121](https://github.com/latextemplates/scientific-thesis-template/issues/121)
