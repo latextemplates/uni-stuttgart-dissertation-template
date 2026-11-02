@@ -21,6 +21,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
+- Writing hints that are question lists or short notes (the self-check questions on the scientific argument, the notes on the evaluation setup) are set as `mindflow` notes, gray and separated from the text, so they are visible as hints and not as thesis text.
 - The longtable example uses booktabs rules (`\toprule`, `\midrule`, `\bottomrule`) without vertical lines, like the other table examples.
 - README FAQ "How do I find the cause of a LaTeX error?": `-halt-on-error`, how to read the `!` line, `make log` and `texfot`, and what to look for when there is no PDF although the log shows only warnings (missing font or encoding file). [scientific-thesis-template#134](https://github.com/latextemplates/scientific-thesis-template/issues/134)
 
