@@ -9,6 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- README FAQ on the continuous page numbering (ISO 7144) and the generator flag `--pagenumbering=roman` for roman numerals in the front matter. [scientific-thesis-template#69](https://github.com/latextemplates/scientific-thesis-template/issues/69)
 - README: FAQ on including an SVG file (one-time Inkscape conversion to PDF, the `svg` package and its constraints). [scientific-thesis-template#122](https://github.com/latextemplates/scientific-thesis-template/issues/122)
 - Tables: example of a wide table scaled to the text width with [adjustbox](https://ctan.org/pkg/adjustbox) (`max width=\textwidth`, scales only if too wide), with a hint when to prefer `tabularx` or a landscape page instead. [scientific-thesis-template#80](https://github.com/latextemplates/scientific-thesis-template/issues/80)
 - pdfLaTeX, `listings`: the `literate` table that maps UTF-8 characters in listings covers more characters (ñ, Ø, ý, ł, Czech, Polish, and Turkish letters, €, £, §, °, µ, …, dashes, and quotes); README FAQ on the error "Invalid UTF-8 byte sequence (`\lst@EC`)" and how to add a character. LuaLaTeX needs no table. [scientific-thesis-template#9](https://github.com/latextemplates/scientific-thesis-template/issues/9)
