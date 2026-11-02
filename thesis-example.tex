@@ -7,8 +7,8 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 % Generated with generator-latex-template 2026.11.1 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1328 (\begin{document}); das erste
-%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1471 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1330 (\begin{document}); das erste
+%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1473 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -178,6 +178,8 @@
     \usepackage{helvet} % source: comment to https://tex.stackexchange.com/q/212357/9075
     \setmainfont{XCharter}
   \fi
+  % Math (and siunitx numbers) in the matching math font; unicode-math would use Latin Modern Math otherwise
+  \setmathfont{XCharter-Math.otf}
 
   % Use Inconsolata font (https://ctan.org/pkg/inconsolata)
   % See https://tex.stackexchange.com/q/2241/9075 for a list of other alternative mono-spaced fonts
