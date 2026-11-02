@@ -521,6 +521,17 @@ The effect shows at the next `\gls{...}` of that abbreviation: after `\glsunset{
 Put them before that `\gls{...}` in the text, use the key from `abbreviations.tex` (`\newabbreviation{nlp}{NLP}{natural language processing}`), and compile twice (`latexmk` does), because the first-use information comes from the previous run.
 `\glsresetall` after the abstract lets every abbreviation appear in its long form again in the main text.
 
+### Q: Why are the pages numbered continuously, without roman numerals for the front matter?
+
+ISO 7144 ("Presentation of theses and similar documents") numbers the pages consecutively with arabic numerals from the title page on, and the doctoral regulations of the University of Stuttgart require that.
+Furthermore, the page number in the PDF viewer then equals the printed one, and a page reference is unambiguous.
+See the [decision record](https://github.com/latextemplates/generator-latex-template/blob/main/docs/decisions/0027-number-pages-continuously.md).
+If your institution wants roman numerals for the front matter, put `\frontmatter` before the title page and `\mainmatter` before the first chapter of the main file, or generate an own copy of the template with the [latex template generator]:
+
+```bash
+npx -p yo -p generator-latex-template -c 'yo latex-template --documentclass=ustutt --latexcompiler=both --overleaf=true --texlive=2026 --enquotes=csquotes --tweakouterquote=babel --todo=pdfcomment --examples=true --howtotext=true --pagenumbering=roman'
+```
+
 ### Q: How do I speed up compilation with a precompiled preamble?
 
 With pdfLaTeX, the preamble of `thesis-example.tex` can be dumped into a format file once ([mylatex](https://ctan.org/pkg/mylatex), part of TeX Live); later runs load the format instead of reading all packages, which saved 26 % per run for the example thesis.
