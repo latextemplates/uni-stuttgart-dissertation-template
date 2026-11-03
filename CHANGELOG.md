@@ -9,7 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Fixed
 
-- `minted` listings use the same font size as `listings` ones (`\footnotesize`) instead of the text size.
+- `minted` listings use the same font size as `listings` ones (`\small`) instead of the text size.
 
 ## [2026-11-03]
 
