@@ -7,8 +7,8 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 % Generated with generator-latex-template 2026.11.3 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  The content starts in line 1318 (\begin{document}); the first
-%           chapter (\subfileinclude{chapters-en/10 - introduction}) is included in line 1451.
+% vvvvvvvv  The content starts in line 1320 (\begin{document}); the first
+%           chapter (\subfileinclude{chapters-en/10 - introduction}) is included in line 1453.
 %           The chapters are in the directory "chapters-en".
 %           Everything above is the preamble: document class, packages, and settings.
 
@@ -445,6 +445,8 @@
 \usepackage[newfloat]{minted}
 
 \setminted{
+  % Same size as the listings package uses (basicstyle)
+  fontsize=\footnotesize,
   % Line numbers not flowing out of the margin
   numbersep=5pt,
   xleftmargin=12pt,
@@ -493,7 +495,7 @@
 \makeatother
 
 % Zeilennummern innerhalb vom Rand:
-\setminted{numbersep=5pt, xleftmargin=12pt}
+\setminted{numbersep=5pt, xleftmargin=12pt, fontsize=\small}
 
 % For easy quotations: \enquote{text}
 % This package is very smart when nesting is applied, otherwise textcmds (see below) provides a shorter command
