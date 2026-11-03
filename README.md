@@ -198,6 +198,7 @@ On the command line, there are additional features:
 - `latexmk -C` or `make clean` for cleaning up
 - `make log` shows only the relevant messages of the last LaTeX run (using [texlogsieve](https://ctan.org/pkg/texlogsieve))
 - `make format` to reformat the `.tex` files (one sentence per line and indent)
+- `make chktex` checks the LaTeX sources for typographic and syntax issues with [ChkTeX](https://ctan.org/pkg/chktex); the `Check` workflow runs it as job `chktex`. Warnings to ignore are configured in `.chktexrc` (`chktex -l` lists all), a single line with `% chktex <number>` at its end.
 - `make spellcheck` runs all spell checkers (in the [Docker image by DANTE e.V.](https://hub.docker.com/r/danteev/texlive), which contains them; `make LOCAL=1 spellcheck` uses local installations):
   - `make spellcheck-aspell` for interactive spell checking with aspell
   - `make spellcheck-textidote` checks spelling, grammar, and style with [TeXtidote](https://github.com/sylvainhalle/textidote) (report in `textidote.html`, for the chapters in `chapters-*/*.textidote.html`)
@@ -283,15 +284,48 @@ Add the same comment to further `.tex` files.
 
 ## FAQs
 
-### Q: How do I find the cause of a LaTeX error?
+### Q: pdfLaTeX stops with "Invalid UTF-8 byte sequence (\lst@EC)" in a listing, or an umlaut is missing in it.
 
-In case something goes wrong, you can instruct the LaTeX compiler to stop at the first error:
+Under pdfLaTeX, the `listings` package reads a listing byte by byte, so a character outside ASCII has to be mapped to its LaTeX command.
+The template does this for accented Latin letters and common punctuation with `literate=` in `\lstset` (search for `extendedchars` in `thesis-example.tex`).
+A character that is not in the table triggers the error and is dropped.
+Add it with the same pattern, e.g., `{ő}{{\H{o}}}1` (the `1` is its width in characters).
+LuaLaTeX reads UTF-8 directly and needs no table, which is why the table is inside `\ifpdftex`.
+[listingsutf8](https://ctan.org/pkg/listingsutf8) helps with `\lstinputlisting` only, not with the `lstlisting` environment.
+
+### Q: How do I include an SVG file?
+
+Convert it once to PDF with Inkscape (1.0 or later) and include the PDF with `\includegraphics`:
 
 ```bash
-lualatex --synctex=1 --shell-escape thesis-example
+inkscape figure.svg --export-type=pdf --export-filename=figure.pdf
 ```
 
+The [svg](https://ctan.org/pkg/svg) package automates this (`\includesvg{figure}` converts at every build), but it needs Inkscape on the machine that compiles and `--shell-escape`, so the conversion fails on Overleaf and in CI; the one-time conversion has neither constraint.
+Text in the SVG stays as it is; the `--export-latex` option of Inkscape writes the text to a `.pdf_tex` file set by LaTeX in the document font instead (see the svg package manual for the `\includeinkscape` workflow).
+
+### Q: How do I find the cause of a LaTeX error?
+
+Run the compiler so that it stops at the first error instead of continuing with a damaged document:
+
+```bash
+lualatex -halt-on-error --synctex=1 --shell-escape thesis-example
+```
+
+The line starting with `!` in the output (and in `thesis-example.log`) names the error, the following `l.<number>` line the line of the source.
+`make log` shows only the relevant messages of the last run (using [texlogsieve](https://ctan.org/pkg/texlogsieve)).
+For an interactive run, [texfot](https://ctan.org/pkg/texfot) wraps the compiler and prints only the lines that probably need a change in the source:
+
+```bash
+texfot lualatex --shell-escape thesis-example
+```
+
+Which tool fits which situation is compared in the [decision record on log filtering](https://github.com/latextemplates/gadr-latex-packages/blob/main/log-filtering.md).
 Run `biber thesis-example` to get the bibliography rendered (execute `lualatex` afterwards).
+
+If there is no PDF although the log shows only warnings, the compiler stopped on a missing file without an `!` line: search the end of the log for `not found`, `cannot find`, or `Fatal error`.
+A missing font or encoding file is the usual cause (see the questions on `.enc` files and `LatinModernMath` below); warnings such as "THIS IS AN ALPHA VERSION" of a package are harmless.
+The `Check` workflow builds this template on every change, so a build that fails locally comes from the local TeX installation; compare with the PDF at <https://latextemplates.github.io/uni-stuttgart-dissertation-template/> or build in the Docker image (see the Makefile).
 
 ### Q: I get `! Package minted Error: minted v3+ executable is not installed`
 
@@ -479,6 +513,48 @@ lualatex -shell-escape --extra-mem-top=10000000 --synctex=1 thesis-example.tex
 ```
 
 See <https://tex.stackexchange.com/a/124206/9075> for details.
+
+### Q: `\glsunset{...}` or `\glsreset{...}` seem to do nothing. Why?
+
+They only change the "already used" flag of an abbreviation; nothing is printed where they stand.
+The effect shows at the next `\gls{...}` of that abbreviation: after `\glsunset{nlp}`, `\gls{nlp}` prints the short form; after `\glsreset{nlp}`, the long form.
+Put them before that `\gls{...}` in the text, use the key from `abbreviations.tex` (`\newabbreviation{nlp}{NLP}{natural language processing}`), and compile twice (`latexmk` does), because the first-use information comes from the previous run.
+`\glsresetall` after the abstract lets every abbreviation appear in its long form again in the main text.
+
+### Q: Why are the pages numbered continuously, without roman numerals for the front matter?
+
+ISO 7144 ("Presentation of theses and similar documents") numbers the pages consecutively with arabic numerals from the title page on, and the doctoral regulations of the University of Stuttgart require that.
+Furthermore, the page number in the PDF viewer then equals the printed one, and a page reference is unambiguous.
+See the [decision record](https://github.com/latextemplates/generator-latex-template/blob/main/docs/decisions/0027-number-pages-continuously.md).
+If your institution wants roman numerals for the front matter, put `\frontmatter` before the title page and `\mainmatter` before the first chapter of the main file, or generate an own copy of the template with the [latex template generator]:
+
+```bash
+npx -p yo -p generator-latex-template -c 'yo latex-template --documentclass=ustutt --latexcompiler=both --overleaf=true --texlive=2026 --enquotes=csquotes --tweakouterquote=babel --todo=pdfcomment --examples=true --howtotext=true --pagenumbering=roman'
+```
+
+### Q: How do I speed up compilation with a precompiled preamble?
+
+With pdfLaTeX, the preamble of `thesis-example.tex` can be dumped into a format file once ([mylatex](https://ctan.org/pkg/mylatex), part of TeX Live); later runs load the format instead of reading all packages, which saved 26 % per run for the example thesis.
+
+```bash
+pdflatex -ini "&pdflatex" mylatex.ltx thesis-example
+pdflatex "&mylatex" thesis-example
+```
+
+Caveats: a run with the format skips the preamble of the `.tex` file, so after every change to the preamble, and after a TeX Live update, the first command has to be repeated; otherwise the change is silently ignored.
+Additions placed after a line containing only `% mylatex` (put it right before `\begin{document}`) are read anyway, so new packages and macros can go there while writing.
+`latexmk` does not rebuild the format, so this is for runs by hand while writing; `latexmk` builds the final version as usual.
+The file `mylatex.fmt` (about 14 MB) is a build product and in `.gitignore`.
+LuaLaTeX (the default of this template) cannot dump its preamble: Lua states and the loaded fonts are not part of a format.
+The other ways to shorten the edit-compile loop, with measurements, are in the decision record [How to speed up compilation](https://github.com/latextemplates/gadr-latex-packages/blob/main/compilation-speed.md).
+
+### Q: How do I change the citation style (APA, Chicago, IEEE, ...)?
+
+The bibliography is typeset by [biblatex] with its built-in styles: `alphabetic` here (`--authoryear` at generation time switches to `authoryear`).
+These styles are generic and complete; they follow no published style guide, which is fine unless a department or a journal prescribes one.
+To switch to a prescribed style, replace the `bibstyle` and `citestyle` options in the `\usepackage[...]{biblatex}` block of `thesis-example.tex` by the style's option, e.g., `style=apa` ([biblatex-apa](https://ctan.org/pkg/biblatex-apa)) or `style=ieee` ([biblatex-ieee](https://ctan.org/pkg/biblatex-ieee)); Chicago comes as its own package ([biblatex-chicago](https://ctan.org/pkg/biblatex-chicago)), which is loaded instead of biblatex.
+The options `minalphanames` and `maxalphanames` belong to the `alphabetic` style and have to go.
+Rendered examples of each style and the trade-offs are in the decision record [How to cite in a given citation style](https://github.com/latextemplates/gadr-latex-packages/blob/main/citation-styles.md).
 
 ### Q: There is an output that biber/biblatex too old
 
