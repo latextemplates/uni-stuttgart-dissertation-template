@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
-## [Unreleased]
+## [2026-11-04]
 
 ### Changed
 
@@ -358,7 +358,8 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 - `Dockerfile` is now for TeXLive 2022
 
-[Unreleased]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-11-03...HEAD
+[Unreleased]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-11-04...HEAD
+[2026-11-04]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-11-03...2026-11-04
 [2026-11-03]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-11-01...2026-11-03
 [2026-11-01]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-10-30...2026-11-01
 [2026-10-30]: https://github.com/latextemplates/uni-stuttgart-dissertation-template/compare/2026-10-26...2026-10-30
