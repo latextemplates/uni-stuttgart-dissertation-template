@@ -5,10 +5,10 @@
 % !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
-% Generated with generator-latex-template 2026.11.3 for latextemplates/uni-stuttgart-dissertation-template
+% Generated with generator-latex-template 2026.11.4 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  The content starts in line 1397 (\begin{document}); the first
-%           chapter (\subfileinclude{chapters-en/10 - introduction}) is included in line 1534.
+% vvvvvvvv  The content starts in line 1400 (\begin{document}); the first
+%           chapter (\subfileinclude{chapters-en/10 - introduction}) is included in line 1537.
 %           The chapters are in the directory "chapters-en".
 %           Everything above is the preamble: document class, packages, and settings.
 
@@ -191,6 +191,10 @@
 \ifluatex
   \usepackage[no-math]{fontspec}
   \usepackage{unicode-math}
+  % newtxtext is for pdflatex. Under LuaLaTeX, it replaces the fonts set below by TeX Gyre Termes X without TeX ligatures: `` and '' appear as two single quotes (e.g., in the bibliography)
+  \newcommand{\ltgNewtxtextError}{\GenericError{}{newtxtext loaded under LuaLaTeX}{}{Remove \string\usepackage{newtxtext}: the fonts are set with fontspec in thesis-example.tex (search for \string\setmainfont).}}
+  \IfPackageLoadedTF{newtxtext}{\ltgNewtxtextError}{}
+  \AddToHook{package/newtxtext/before}{\ltgNewtxtextError}
 
   \ifwindows
     \setmainfont{XCharter}
@@ -216,7 +220,6 @@
   % Enable proper ligatures for English documents (German documents use autotype, see ADR-0008)
   % For more information see https://ctan.org/pkg/selnolig
   \usepackage{selnolig}
-
 \else
   \usepackage{XCharter}
   \usepackage[scaled=.95]{helvet}
@@ -956,7 +959,7 @@
 % Which template this document is based on, in the PDF properties (custom entry "Template"; shown by
 % "pdfinfo -custom" and in the document properties of most viewers). Keep it: it tells which version
 % of the template a document was built on, which helps when comparing or updating adapted files.
-\hypersetup{pdfinfo={Template={latextemplates/uni-stuttgart-dissertation-template, generated with generator-latex-template 2026.11.3}}}
+\hypersetup{pdfinfo={Template={latextemplates/uni-stuttgart-dissertation-template, generated with generator-latex-template 2026.11.4}}}
 
 % Document version from git: \gitVer is the commit (with "-dirty" when there are uncommitted changes) and
 % \versionBox a framed "Manuscript version: #<commit> - <build time>", e.g. for the footer or the title page.

@@ -5,10 +5,10 @@
 % !TeX TXS-program:compile = txs:///lualatex/[--shell-escape]
 % !BIB program = biber
 % -*- coding:utf-8 mod:LaTeX -*-
-% Generated with generator-latex-template 2026.11.3 for latextemplates/uni-stuttgart-dissertation-template
+% Generated with generator-latex-template 2026.11.4 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1345 (\begin{document}); das erste
-%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1484 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1350 (\begin{document}); das erste
+%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1489 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -182,6 +182,10 @@
 \ifluatex
   \usepackage[no-math]{fontspec}
   \usepackage{unicode-math}
+  % newtxtext is for pdflatex. Under LuaLaTeX, it replaces the fonts set below by TeX Gyre Termes X without TeX ligatures: `` and '' appear as two single quotes (e.g., in the bibliography)
+  \newcommand{\ltgNewtxtextError}{\GenericError{}{newtxtext loaded under LuaLaTeX}{}{Remove \string\usepackage{newtxtext}: the fonts are set with fontspec in thesis-example.tex (search for \string\setmainfont).}}
+  \IfPackageLoadedTF{newtxtext}{\ltgNewtxtextError}{}
+  \AddToHook{package/newtxtext/before}{\ltgNewtxtextError}
 
   \ifwindows
     \setmainfont{XCharter}
@@ -203,7 +207,6 @@
   \else
     \setmonofont[StylisticSet={1,3},ItalicFont=*-Regular,BoldItalicFont=*-Bold]{Inconsolatazi4} % no italic: upright instead of a font warning
   \fi
-
 \else
   \usepackage{XCharter}
   \usepackage[scaled=.95]{helvet}
@@ -441,6 +444,8 @@
 \usepackage[newfloat]{minted}
 
 \setminted{
+  % Same size as the listings package uses (basicstyle)
+  fontsize=\footnotesize,
   % Line numbers not flowing out of the margin
   numbersep=5pt,
   xleftmargin=12pt,
@@ -489,7 +494,7 @@
 \makeatother
 
 % Zeilennummern innerhalb vom Rand:
-\setminted{numbersep=5pt, xleftmargin=12pt}
+\setminted{numbersep=5pt, xleftmargin=12pt, fontsize=\small}
 
 % For easy quotations: \enquote{text}
 % This package is very smart when nesting is applied, otherwise textcmds (see below) provides a shorter command
@@ -891,7 +896,7 @@
 % Which template this document is based on, in the PDF properties (custom entry "Template"; shown by
 % "pdfinfo -custom" and in the document properties of most viewers). Keep it: it tells which version
 % of the template a document was built on, which helps when comparing or updating adapted files.
-\hypersetup{pdfinfo={Template={latextemplates/uni-stuttgart-dissertation-template, generated with generator-latex-template 2026.11.3}}}
+\hypersetup{pdfinfo={Template={latextemplates/uni-stuttgart-dissertation-template, generated with generator-latex-template 2026.11.4}}}
 
 % Hint by https://tex.stackexchange.com/a/193370/9075 to suppress strange outputs of the babel package
 % Example strange output: Package babel Info: Redefining ngerman shorthand "|
