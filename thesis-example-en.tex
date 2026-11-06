@@ -7,8 +7,8 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 % Generated with generator-latex-template 2026.11.4 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  The content starts in line 1323 (\begin{document}); the first
-%           chapter (\subfileinclude{chapters-en/10 - introduction}) is included in line 1456.
+% vvvvvvvv  The content starts in line 1326 (\begin{document}); the first
+%           chapter (\subfileinclude{chapters-en/10 - introduction}) is included in line 1459.
 %           The chapters are in the directory "chapters-en".
 %           Everything above is the preamble: document class, packages, and settings.
 
@@ -191,10 +191,12 @@
 \ifluatex
   \usepackage[no-math]{fontspec}
   \usepackage{unicode-math}
-  % newtxtext is for pdflatex. Under LuaLaTeX, it replaces the fonts set below by TeX Gyre Termes X without TeX ligatures: `` and '' appear as two single quotes (e.g., in the bibliography)
-  \newcommand{\ltgNewtxtextError}{\GenericError{}{newtxtext loaded under LuaLaTeX}{}{Remove \string\usepackage{newtxtext}: the fonts are set with fontspec in thesis-example.tex (search for \string\setmainfont).}}
-  \IfPackageLoadedTF{newtxtext}{\ltgNewtxtextError}{}
-  \AddToHook{package/newtxtext/before}{\ltgNewtxtextError}
+  % newtxtext and newtxmath are for pdflatex. Under LuaLaTeX, newtxtext replaces the fonts set below by TeX Gyre Termes X without TeX ligatures (`` and '' appear as two single quotes, e.g., in the bibliography); newtxmath clashes with unicode-math.
+  \newcommand{\ltgPdflatexOnlyError}[2]{\GenericError{}{#1 loaded under LuaLaTeX}{}{Remove \string\usepackage{#1}: the fonts are set with fontspec in thesis-example.tex (search for \string#2).}}
+  \IfPackageLoadedTF{newtxtext}{\ltgPdflatexOnlyError{newtxtext}{\setmainfont}}{}
+  \AddToHook{package/newtxtext/before}{\ltgPdflatexOnlyError{newtxtext}{\setmainfont}}
+  \IfPackageLoadedTF{newtxmath}{\ltgPdflatexOnlyError{newtxmath}{\setmathfont}}{}
+  \AddToHook{package/newtxmath/before}{\ltgPdflatexOnlyError{newtxmath}{\setmathfont}}
 
   \ifwindows
     \setmainfont{XCharter}
@@ -219,7 +221,8 @@
 
   % Enable proper ligatures for English documents (German documents use autotype, see ADR-0008)
   % For more information see https://ctan.org/pkg/selnolig
-  \usepackage{selnolig}
+  % The language has to be named: without it, selnolig loads no rules (acmart and scrbook do not pass "english" as a class option)
+  \usepackage[english]{selnolig}
 \else
   \usepackage{XCharter}
   \usepackage[scaled=.95]{helvet}
