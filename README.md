@@ -609,6 +609,19 @@ We are collecting alternatives at the issue [#25](https://github.com/latextempla
 - Charles Lipson, [Cite Right, Second Edition: A Quick Guide to Citation Styles--MLA, APA, Chicago, the Sciences, Professions, and More](http://www.press.uchicago.edu/ucp/books/book/chicago/C/bo10702043.html), Chicago Guides to Writing, Editing, and Publishing, 2011. - Recommended in case you are unsure about how to correctly cite something.
 - Other templates: <https://latextemplates.github.io/>
 
+## Printing the dissertation
+
+The dissertation is laid out for an A5 book: `paper=a5`, two-sided, with the inner margin narrower than the outer one.
+We had good experiences with the print-on-demand service [BoD – Books on Demand](https://www.bod.de); its page [Buch gestalten](https://www.bod.de/buch/buch-gestalten) describes what the files need.
+
+- **Front matter:** A book starts with four unnumbered pages, the [Titelei](https://www.bod.de/buch/buch-gestalten#c497): half-title (Schmutztitel), a blank page, title page, and imprint (Impressum, with the ISBN and the publisher). Check with the publisher and the doctoral regulations whether the title page of the submitted version can stay.
+- **Interior:** One page per PDF page (not two pages side by side), no crop marks. Bleed (5 mm on each side) is only needed if a figure reaches the edge of the page. Images need at least 300 dpi, line art without gray values 1200 dpi; RGB images can stay RGB, the printer converts them.
+- **Cover:** [`print-version--cover/cover.tex`](print-version--cover/) builds the cover (back, spine, front) with the [bookcover](https://ctan.org/pkg/bookcover) class. The front shows the first page of `thesis-example.pdf`, so cover and title page match.
+  - `spinewidth` depends on the number of pages and the paper; take it from the cover calculator of the printer (BoD: "Coverberechnung"). `coverwidth=14.80cm` and `coverheight=21cm` are A5, `bleedwidth=0.50cm` is the bleed.
+  - Replace `barcode.png` with the ISBN barcode you get from the publisher and `publisher-logo.pdf` with the publisher's logo (or use the commented variant without logo).
+  - Adjust name, title, and year on the spine.
+- **Spine only:** [`print-version--spine/spine.tex`](print-version--spine/) typesets the spine alone, e.g., for a bookbinder. For a print-on-demand book, the spine is part of `cover.pdf`.
+
 ## License
 
 The license of this work is [0BSD](https://spdx.org/licenses/0BSD.html) which corresponds to "public domain".
