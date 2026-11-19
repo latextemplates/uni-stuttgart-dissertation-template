@@ -9,10 +9,15 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
+- The LaTeX hints contain an example of a table set with [tabularray](https://ctan.org/pkg/tabularray).
 - The README explains how to prepare the print version: front matter, interior, cover, and spine, based on the requirements of BoD – Books on Demand.
 
 ### Changed
 
+- Definitions are set on a light gray background with a bar on the left.
+- The dot leaders in the table of contents and the lists of figures and tables are light gray.
+- The table written in Markdown has its caption above the table, as all other tables.
+- The lists of figures, tables, listings, definitions, and abbreviations are at the end, after the bibliography and the appendices.
 - TODOs (`\todo{...}`) are shown as a titled box in the text (package `todonotes`) instead of a PDF comment that only shows "TODO!".
 - The progress bars are hidden by default; `\showprogresstrue` in the preamble shows them.
 - The list of abbreviations is titled "List of Abbreviations" and uses the more compact style `index`.
@@ -21,6 +26,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Fixed
 
+- The example figures in the chapters show a placeholder image instead of only a caption.
 - Unnumbered chapters such as the abstract no longer show "Chapter 0", and chapter titles are not hyphenated.
 
 ## [2026-11-04]
