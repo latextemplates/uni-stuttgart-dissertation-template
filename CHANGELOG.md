@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Added
+
+- The README explains how to prepare the print version: front matter, interior, cover, and spine, based on the requirements of BoD – Books on Demand.
+
+### Changed
+
+- The progress bars are hidden by default; `\showprogresstrue` in the preamble shows them.
+- The list of abbreviations is titled "List of Abbreviations" and uses the more compact style `index`.
+- The example date the links were last followed is in 2027.
+
 ## [2026-11-04]
 
 ### Changed
