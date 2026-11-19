@@ -14,6 +14,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
+- Chapter heads show a small gray "Chapter N" line, the title, and a thin gray rule below. The previous head with the number in a gray box is kept as commented-out alternative in the preamble.
 - Definitions are set on a light gray background with a bar on the left.
 - The dot leaders in the table of contents and the lists of figures and tables are light gray.
 - The table written in Markdown has its caption above the table, as all other tables.
