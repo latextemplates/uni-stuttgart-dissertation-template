@@ -13,6 +13,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
+- TODOs (`\todo{...}`) are shown as a titled box in the text (package `todonotes`) instead of a PDF comment that only shows "TODO!".
 - The progress bars are hidden by default; `\showprogresstrue` in the preamble shows them.
 - The list of abbreviations is titled "List of Abbreviations" and uses the more compact style `index`.
 - The example date the links were last followed is in 2027.
