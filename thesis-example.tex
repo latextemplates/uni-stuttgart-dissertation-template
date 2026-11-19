@@ -7,8 +7,8 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 % Generated with generator-latex-template 2026.11.12 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1358 (\begin{document}); das erste
-%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1479 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1372 (\begin{document}); das erste
+%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1493 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -374,22 +374,36 @@
 % daniel's style for abstract (summary / abstract)
 \deftriplepagestyle{justpagenums}{}{}{}{}{}{\textbf{\thepage}}
 
-% Chapter heads: the number in a gray box with the rotated "Chapter" next to it, the title right-aligned below.
-% KOMA-Script's own interface (no fncychap): \chapterformat is used for numbered chapters only, so \chapter*,
-% \addchap, and the bibliography get the title alone.
-\setkomafont{chapter}{\normalfont\Huge\scshape\color{black}}
-\renewcommand*{\raggedchapter}{\raggedleft}
-\renewcommand*{\chapterformat}{%
-  \rotatebox{90}{\makebox[2cm]{\resizebox{2.5cm}{!}{\normalfont\Large\scshape\ \chapapp}}}%
-  \resizebox{!}{2.5cm}{\fboxsep=6pt\colorbox{black!40}{\fontsize{85}{100}\selectfont\sffamily\color{white}\thechapter}}}
+% Chapter heads: a small gray line "Chapter N", the title below, and a thin gray rule under it.
+% KOMA-Script's own interface: \chapterformat is used for numbered chapters only, so \chapter*,
+% \addchap, and the bibliography get the title (and the rule) alone.
+\setkomafont{chapter}{\normalfont\huge\bfseries}
+\renewcommand*{\raggedchapter}{\raggedright}
+\renewcommand*{\chapterformat}{{\normalfont\large\color{black!60}\chapapp~\thechapter}}
 \makeatletter
 % The title is not hyphenated: it is set on as many lines as needed.
 \renewcommand*{\chapterlinesformat}[3]{%
   \Ifstr{#1}{chapter}{%
-    \Ifstr{#2}{}{}{#2\par\nobreak}%
+    \Ifstr{#2}{}{}{#2\par\nobreak\vspace{1ex}}%
     {\hyphenpenalty=\@M\exhyphenpenalty=\@M #3}%
+    \par\nobreak\vspace{.6ex}{\color{black!30}\rule{\linewidth}{0.4pt}}%
   }{\@hangfrom{#2}{#3}}}
 \makeatother
+% Alternative: the number in a gray box with the rotated "Chapter" next to it, the title right-aligned below.
+% To use it, comment out the lines above and uncomment the following ones.
+% \setkomafont{chapter}{\normalfont\Huge\scshape\color{black}}
+% \renewcommand*{\raggedchapter}{\raggedleft}
+% \renewcommand*{\chapterformat}{%
+%   \rotatebox{90}{\makebox[2cm]{\resizebox{2.5cm}{!}{\normalfont\Large\scshape\ \chapapp}}}%
+%   \resizebox{!}{2.5cm}{\fboxsep=6pt\colorbox{black!40}{\fontsize{85}{100}\selectfont\sffamily\color{white}\thechapter}}}
+% \makeatletter
+% \renewcommand*{\chapterlinesformat}[3]{%
+%   \Ifstr{#1}{chapter}{%
+%     \Ifstr{#2}{}{}{#2\par\nobreak}%
+%     {\hyphenpenalty=\@M\exhyphenpenalty=\@M #3}%
+%     \par\nobreak\vspace{.6ex}{\color{black!30}\rule{\linewidth}{0.4pt}}%
+%   }{\@hangfrom{#2}{#3}}}
+% \makeatother
 
 \usepackage{graphicx}
 
