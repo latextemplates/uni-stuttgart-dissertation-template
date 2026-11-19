@@ -17,6 +17,11 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 - The progress bars are hidden by default; `\showprogresstrue` in the preamble shows them.
 - The list of abbreviations is titled "List of Abbreviations" and uses the more compact style `index`.
 - The example date the links were last followed is in 2027.
+- The introduction states in a TODO that the chapter structure is only an example to be agreed on with the supervisor.
+
+### Fixed
+
+- Unnumbered chapters such as the abstract no longer show "Chapter 0", and chapter titles are not hyphenated.
 
 ## [2026-11-04]
 
