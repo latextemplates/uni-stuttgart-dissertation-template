@@ -9,7 +9,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Added
 
-- `\TODO{...}` marks a TODO and `\FIXME{...}` an important one.
+- `\TODO{...}` marks a TODO, `\FIXME{...}` an important one, and `\CITE{...}` a claim that still needs a citation.
 - The LaTeX hints contain an example of a table set with [tabularray](https://ctan.org/pkg/tabularray).
 - The README explains how to prepare the print version: front matter, interior, cover, and spine, based on the requirements of BoD – Books on Demand.
 
