@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 Versioning is done using [Calendar Versioning](https://calver.org/).
 
+## [Unreleased]
+
+### Added
+
+- `\TODO{...}` marks a TODO, `\FIXME{...}` an important one, and `\CITE{...}` a claim that still needs a citation.
+- The LaTeX hints contain an example of a table set with [tabularray](https://ctan.org/pkg/tabularray).
+- The README explains how to prepare the print version: front matter, interior, cover, and spine, based on the requirements of BoD – Books on Demand.
+
+### Changed
+
+- The line numbers of code listings are not copied along with the code (in PDF viewers that support it, such as Acrobat, Evince, and Okular).
+- TODOs are set with [zebra](https://ctan.org/pkg/zebra): `\todo{...}` is a short note in the text with a numbered symbol in the margin, and all open notes are listed at the end of the document. `\usepackage[final]{zebra}` hides them for the final version.
+- Chapter heads show a small gray "Chapter N" line, the title, and a thin gray rule below. The previous head with the number in a gray box is kept as commented-out alternative in the preamble.
+- Definitions are set on a light gray background with a bar on the left.
+- The dot leaders in the table of contents and the lists of figures and tables are light gray.
+- The table written in Markdown has its caption above the table, as all other tables.
+- The lists of figures, tables, listings, definitions, and abbreviations are at the end, after the bibliography and the appendices.
+- TODOs (`\todo{...}`) are shown as a titled box in the text (package `todonotes`) instead of a PDF comment that only shows "TODO!".
+- The progress bars are hidden by default; `\showprogresstrue` in the preamble shows them.
+- The list of abbreviations is titled "List of Abbreviations" and uses the more compact style `index`.
+- The example date the links were last followed is in 2027.
+- The introduction states in a TODO that the chapter structure is only an example to be agreed on with the supervisor.
+
+### Fixed
+
+- The example figures in the chapters show a placeholder image instead of only a caption.
+- Unnumbered chapters such as the abstract no longer show "Chapter 0", and chapter titles are not hyphenated.
+
 ## [2026-11-04]
 
 ### Changed

@@ -65,6 +65,8 @@ Following features are enabled in this template:
 - Support of hyperlinked references without extra color thanx to [hyperref].
 - Better breaking of long URLs.
 - Support for `\powerset` command.
+- TODOs (`\todo{...}`) as short notes in the text with a numbered symbol in the margin, and a list of all open notes at the end of the document.
+  This is enabled by the [zebra](https://ctan.org/pkg/zebra) package.
 - Support todos as pdf annotations. This is enabled by the [pdfcomment] package.
 - [microtypographic extensions](https://www.ctan.org/pkg/microtype) for a better look of the paper.
 - Modern packages such as [microtype], [zref-clever], [csquotes], [paralist], [hyperref], [hypcap], [upquote], [booktabs].
@@ -235,7 +237,7 @@ PlantUML and Mermaid offer a more compact syntax and lay out the diagrams automa
 To use them, generate an own copy of this template with the [latex template generator]:
 
 ```bash
-npx -p yo -p generator-latex-template -c 'yo latex-template --documentclass=ustutt --latexcompiler=both --overleaf=true --texlive=2026 --enquotes=csquotes --tweakouterquote=babel --todo=pdfcomment --examples=true --howtotext=true --uml=plantuml --docker=dante'
+npx -p yo -p generator-latex-template -c 'yo latex-template --documentclass=ustutt --latexcompiler=both --overleaf=true --texlive=2026 --enquotes=csquotes --tweakouterquote=babel --todo=zebra --examples=true --howtotext=true --uml=plantuml --docker=dante'
 ```
 
 Use `--uml=mermaid` for Mermaid.
@@ -529,7 +531,7 @@ See the [decision record](https://github.com/latextemplates/generator-latex-temp
 If your institution wants roman numerals for the front matter, put `\frontmatter` before the title page and `\mainmatter` before the first chapter of the main file, or generate an own copy of the template with the [latex template generator]:
 
 ```bash
-npx -p yo -p generator-latex-template -c 'yo latex-template --documentclass=ustutt --latexcompiler=both --overleaf=true --texlive=2026 --enquotes=csquotes --tweakouterquote=babel --todo=pdfcomment --examples=true --howtotext=true --pagenumbering=roman'
+npx -p yo -p generator-latex-template -c 'yo latex-template --documentclass=ustutt --latexcompiler=both --overleaf=true --texlive=2026 --enquotes=csquotes --tweakouterquote=babel --todo=zebra --examples=true --howtotext=true --pagenumbering=roman'
 ```
 
 ### Q: How do I speed up compilation with a precompiled preamble?
@@ -593,7 +595,7 @@ We are collecting alternatives at the issue [#25](https://github.com/latextempla
 
 - If you included some version control statements, please remove them. Currently, the template does not support any, but it used to support SVN.
 - By using `\largepage` and `\shortpage`, single lines at the bottom or at the top of the page can be manually fixed.
-- Search the PDF for "TODO" or similar things. Remove `\usepackage{todonotes}` in your main `.tex` file.
+- Check the list of notes at the end of the PDF. Then switch to `\usepackage[final]{zebra}` in your main `.tex` file (the line is there as a comment): this hides all notes and the list.
 - Uncomment `\phfDisableCommentingCommands` in your main `.tex` file to hide all edits and comments made with `\FA{...}`.
 - Ensure that you run `lualatex` at least three times and that there are no "undefined references".
 - The margins are intended for good screen reading. **Do not change them** (or do exactly know what you are doing).
@@ -608,6 +610,19 @@ We are collecting alternatives at the issue [#25](https://github.com/latextempla
 - Marcus Deininger et al.: [Studienarbeiten - Ein Leitfaden zur Erstellung, Durchführung und Präsentation wissenschaftlicher Abschlussarbeiten am Beispiel Informatik](https://vdf.ch/studienarbeiten.html?author_id=2877), vdf. - Recommended as guideline for planning and working on the whole thesis.
 - Charles Lipson, [Cite Right, Second Edition: A Quick Guide to Citation Styles--MLA, APA, Chicago, the Sciences, Professions, and More](http://www.press.uchicago.edu/ucp/books/book/chicago/C/bo10702043.html), Chicago Guides to Writing, Editing, and Publishing, 2011. - Recommended in case you are unsure about how to correctly cite something.
 - Other templates: <https://latextemplates.github.io/>
+
+## Printing the dissertation
+
+The dissertation is laid out for an A5 book: `paper=a5`, two-sided, with the inner margin narrower than the outer one.
+We had good experiences with the print-on-demand service [BoD – Books on Demand](https://www.bod.de); its page [Buch gestalten](https://www.bod.de/buch/buch-gestalten) describes what the files need.
+
+- **Front matter:** A book starts with four unnumbered pages, the [Titelei](https://www.bod.de/buch/buch-gestalten#c497): half-title (Schmutztitel), a blank page, title page, and imprint (Impressum, with the ISBN and the publisher). Check with the publisher and the doctoral regulations whether the title page of the submitted version can stay.
+- **Interior:** One page per PDF page (not two pages side by side), no crop marks. Bleed (5 mm on each side) is only needed if a figure reaches the edge of the page. Images need at least 300 dpi, line art without gray values 1200 dpi; RGB images can stay RGB, the printer converts them.
+- **Cover:** [`print-version--cover/cover.tex`](print-version--cover/) builds the cover (back, spine, front) with the [bookcover](https://ctan.org/pkg/bookcover) class. The front shows the first page of `thesis-example.pdf`, so cover and title page match.
+  - `spinewidth` depends on the number of pages and the paper; take it from the cover calculator of the printer (BoD: "Coverberechnung"). `coverwidth=14.80cm` and `coverheight=21cm` are A5, `bleedwidth=0.50cm` is the bleed.
+  - Replace `barcode.png` with the ISBN barcode you get from the publisher and `publisher-logo.pdf` with the publisher's logo (or use the commented variant without logo).
+  - Adjust name, title, and year on the spine.
+- **Spine only:** [`print-version--spine/spine.tex`](print-version--spine/) typesets the spine alone, e.g., for a bookbinder. For a print-on-demand book, the spine is part of `cover.pdf`.
 
 ## License
 
