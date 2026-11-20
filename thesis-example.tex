@@ -7,8 +7,8 @@
 % -*- coding:utf-8 mod:LaTeX -*-
 % Generated with generator-latex-template 2026.11.12 for latextemplates/uni-stuttgart-dissertation-template
 %
-% vvvvvvvv  Der Inhalt beginnt in Zeile 1403 (\begin{document}); das erste
-%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1524 eingebunden.
+% vvvvvvvv  Der Inhalt beginnt in Zeile 1404 (\begin{document}); das erste
+%           Kapitel (\subfileinclude{chapters-de/10 - einleitung}) wird in Zeile 1525 eingebunden.
 %           Die Kapitel liegen im Verzeichnis "chapters-de".
 %           Alles darüber ist die Präambel: Dokumentklasse, Pakete und Einstellungen.
 
@@ -809,7 +809,7 @@
 \@ifundefined{TODO}{\newcommand{\TODO}[1]{\todo{#1}}}{}
 \@ifundefined{todofix}{\newcommand{\todofix}[1]{\todo{#1}}}{}
 \@ifundefined{FIXME}{\newcommand{\FIXME}[1]{\todofix{#1}}}{}
-\@ifundefined{CITE}{\newcommand{\CITE}[1]{\todo{CITE: #1}}}{}
+\@ifundefined{CITE}{\newcommand{\CITE}[1]{\todo{Citation needed: #1}}}{}
 \@ifundefined{change}{\newcommand{\change}[2]{#1 $\rightarrow$ #2}}{}
 \makeatother
 
@@ -860,13 +860,14 @@
         table = {
             \markdownLaTeXTable={}
             \markdownLaTeXTableAlignment={}
-            \markdownLaTeXTableEnd={\markdownLaTeXBottomRule\end{tabular}}
+            % begin and end in nested order, so ChkTeX finds the pairs
             \tl_if_empty:nF {#1} {
               \addto@hook\markdownLaTeXTable{\begin{table}\centering\caption{#1}}
               \seq_map_inline:Nn \l__markdown_table_identifiers_seq { \addto@hook\markdownLaTeXTable{\label{##1}} }
-              \addto@hook\markdownLaTeXTableEnd{\end{table}}
             }
             \addto@hook\markdownLaTeXTable{\begin{tabular}}
+            \markdownLaTeXTableEnd={\markdownLaTeXBottomRule\end{tabular}}
+            \tl_if_empty:nF {#1} { \addto@hook\markdownLaTeXTableEnd{\end{table}} }
             \markdownLaTeXRowCounter=0
             \markdownLaTeXRowTotal=#2
             \markdownLaTeXColumnTotal=#3
