@@ -15,6 +15,7 @@ Versioning is done using [Calendar Versioning](https://calver.org/).
 
 ### Changed
 
+- The line numbers of code listings are not copied along with the code (in PDF viewers that support it, such as Acrobat, Evince, and Okular).
 - TODOs are set with [zebra](https://ctan.org/pkg/zebra): `\todo{...}` is a short note in the text with a numbered symbol in the margin, and all open notes are listed at the end of the document. `\usepackage[final]{zebra}` hides them for the final version.
 - Chapter heads show a small gray "Chapter N" line, the title, and a thin gray rule below. The previous head with the number in a gray box is kept as commented-out alternative in the preamble.
 - Definitions are set on a light gray background with a bar on the left.
